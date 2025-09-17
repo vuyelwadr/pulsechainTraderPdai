@@ -72,6 +72,7 @@ src/pdai_trader/
   reporting/html.py            # Bokeh-ready HTML report generator (unchanged look & feel)
   strategies/
     registry.py                # Curated mapping for strategy imports
+    all_strategies.json        # Auto-generated catalogue of every strategy class
     ...                        # Full strategy catalogue copied from HEX project
   trading/
     backtest.py                # Decimal-safe, fee-aware backtest engine
