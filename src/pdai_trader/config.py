@@ -28,12 +28,10 @@ class Settings:
     # --- Blockchain / RPC -------------------------------------------------
     RPC_URL: str = os.getenv("RPC_URL", "https://rpc.pulsechain.com")
     _RPC_URLS_DEFAULT: List[str] = [
-        "https://rpc.pulsechainrpc.com",
-        "https://pulsechain-rpc.publicnode.com",
         "https://rpc.pulsechain.com",
         "https://rpc-pulsechain.g4mm4.io",
-        "https://rpc.owlracle.info/pulse/70d38ce1826c4a60bb2a8e05a6c8b20f",
-        "https://evex.cloud/pulserpc",
+        "https://rpc.pulsechainrpc.com",
+        "https://pulsechain-rpc.publicnode.com",
     ]
     RPC_URLS: List[str] = [u.strip() for u in os.getenv("RPC_URLS", "").split(",") if u.strip()] or _RPC_URLS_DEFAULT
     CHAIN_ID: int = int(os.getenv("CHAIN_ID", "369"))

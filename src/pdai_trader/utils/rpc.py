@@ -5,7 +5,7 @@ Bypasses rate limiting by rotating between multiple endpoints
 import time
 import logging
 from threading import Lock
-from typing import List, Optional
+from typing import Dict, List, Optional
 from web3 import Web3
 from dataclasses import dataclass
 
