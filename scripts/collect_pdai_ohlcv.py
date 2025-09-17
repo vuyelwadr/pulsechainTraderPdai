@@ -8,6 +8,14 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_PATH = REPO_ROOT / "src"
+if str(SRC_PATH) not in sys.path:
+    sys.path.insert(0, str(SRC_PATH))
+
 from pdai_trader.data.collector import PdaiDataCollector
 
 

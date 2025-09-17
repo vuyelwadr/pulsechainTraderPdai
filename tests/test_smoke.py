@@ -1,6 +1,7 @@
 import pandas as pd
 
 from pdai_trader.config import Settings
+from pdai_trader.optimization import StrategyOptimizer
 from pdai_trader.strategies.ma_crossover import MovingAverageCrossover
 from pdai_trader.trading.backtest import BacktestEngine
 
@@ -47,3 +48,12 @@ def test_sample_dataset_resamples_to_eight_hours_cleanly():
         .dropna()
     )
     assert len(resampled) == 4
+
+
+def test_optimizer_generates_report(tmp_path):
+    data = load_sample_frame()
+    optimizer = StrategyOptimizer(data, output_root=tmp_path)
+    results = optimizer.optimise(strategies=["MovingAverageCrossover"], timeframes=["8h"], trials=3)
+    assert len(results) == 1
+    report = tmp_path / "MovingAverageCrossover_8h.json"
+    assert report.exists()
