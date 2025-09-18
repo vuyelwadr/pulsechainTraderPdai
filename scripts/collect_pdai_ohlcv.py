@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import logging
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
-
-import sys
-from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_PATH = REPO_ROOT / "src"
@@ -17,6 +16,14 @@ if str(SRC_PATH) not in sys.path:
     sys.path.insert(0, str(SRC_PATH))
 
 from pdai_trader.data.collector import PdaiDataCollector
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s] %(levelname)s %(name)s: %(message)s",
+    datefmt="%H:%M:%S",
+    stream=sys.stdout,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -30,15 +37,23 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    collector = PdaiDataCollector()
-
     end = datetime.now(timezone.utc)
     start = end - timedelta(days=args.days)
+    interval_minutes = max(1, int(pd.Timedelta(args.interval).total_seconds() // 60))
+
+    logging.info(
+        "Collecting pDAI→DAI candles from %s to %s at %s-minute resolution",
+        start,
+        end,
+        interval_minutes,
+    )
+
+    collector = PdaiDataCollector()
 
     df = collector.collect_ohlcv_from_swaps(
         start_time=start,
         end_time=end,
-        interval_minutes=max(1, int(pd.Timedelta(args.interval).total_seconds() // 60)),
+        interval_minutes=interval_minutes,
         volume_asset=args.volume_asset,
     )
 

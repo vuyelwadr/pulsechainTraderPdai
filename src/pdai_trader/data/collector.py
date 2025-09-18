@@ -15,6 +15,8 @@ import pytz
 import json
 import os
 import logging
+import atexit
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import os, sys
@@ -50,16 +52,133 @@ class PdaiDataCollector:
         self._wpls_decimals = None
         self._dai_decimals = 18
         self._wpls_to_dai_cache: Dict[int, float] = {}
-        
+        self._dai_wpls_pair_address = None
+        self._dai_wpls_token0 = None
+        self._dai_wpls_token1 = None
+        self._sync_topic = None
+        self._pair_abi = None
+        self._cache_dir = Settings.CACHE_DIR
+        self._block_cache_dirty = False
+        self._rate_cache_dirty = False
+        self._cache_limits = {
+            'blocks': 250_000,
+            'rates': 250_000,
+        }
+        self._atexit_registered = False
+
         # Domain-aware predictive search optimization
         self.avg_block_time = None
         self.latest_block_info = None
-        
+
+        self._load_persistent_caches()
+        self._register_atexit()
+
         self.connect_to_blockchain()
         self.find_pdai_wpls_pair()
         self._calculate_average_block_time()
         self._init_swap_event_support()
         
+    # ------------------------------------------------------------------
+    # Persistent cache management
+    # ------------------------------------------------------------------
+    def _cache_file_path(self, name: str) -> Path:
+        base = Path(self._cache_dir)
+        return base / f"pdai_{name}.json"
+
+    def _load_persistent_caches(self) -> None:
+        try:
+            block_path = self._cache_file_path('block_ts')
+            if block_path.exists():
+                with block_path.open("r", encoding="utf-8") as fh:
+                    cached = json.load(fh)
+                for key, value in cached.items():
+                    try:
+                        block = int(key)
+                        if value is not None:
+                            self.block_cache[block] = int(value)
+                    except Exception:
+                        continue
+        except Exception as exc:
+            logger.debug(f"Failed to load block timestamp cache: {exc}")
+
+        try:
+            rate_path = self._cache_file_path('wpls_rates')
+            if rate_path.exists():
+                with rate_path.open("r", encoding="utf-8") as fh:
+                    cached = json.load(fh)
+                for key, value in cached.items():
+                    try:
+                        block = int(key)
+                        if value is not None:
+                            self._wpls_to_dai_cache[block] = float(value)
+                    except Exception:
+                        continue
+        except Exception as exc:
+            logger.debug(f"Failed to load WPLS→DAI cache: {exc}")
+
+        if self._enforce_cache_limit(self.block_cache, self._cache_limits['blocks']):
+            self._block_cache_dirty = True
+        if self._enforce_cache_limit(self._wpls_to_dai_cache, self._cache_limits['rates']):
+            self._rate_cache_dirty = True
+
+    def _register_atexit(self) -> None:
+        if not self._atexit_registered:
+            atexit.register(self._persist_caches)
+            self._atexit_registered = True
+
+    def _enforce_cache_limit(self, cache: Dict[int, object], limit: int) -> bool:
+        if len(cache) <= limit:
+            return False
+        surplus = len(cache) - limit
+        for key in sorted(cache.keys())[:surplus]:
+            cache.pop(key, None)
+        return True
+
+    def _update_block_cache(self, block: int, timestamp: Optional[int]) -> None:
+        if timestamp is None:
+            return
+        existing = self.block_cache.get(block)
+        if existing == timestamp:
+            return
+        self.block_cache[block] = timestamp
+        self._block_cache_dirty = True
+        self._enforce_cache_limit(self.block_cache, self._cache_limits['blocks'])
+
+    def _update_rate_cache(self, block: int, rate: Optional[float]) -> None:
+        if rate is None:
+            return
+        existing = self._wpls_to_dai_cache.get(block)
+        if existing == rate:
+            return
+        self._wpls_to_dai_cache[block] = rate
+        self._rate_cache_dirty = True
+        self._enforce_cache_limit(self._wpls_to_dai_cache, self._cache_limits['rates'])
+
+    def _persist_caches(self) -> None:
+        try:
+            if not (self._block_cache_dirty or self._rate_cache_dirty):
+                return
+            cache_dir = Path(self._cache_dir)
+            cache_dir.mkdir(parents=True, exist_ok=True)
+            if self._block_cache_dirty:
+                path = self._cache_file_path('block_ts')
+                tmp = path.with_suffix('.json.tmp')
+                serialisable = {str(k): v for k, v in self.block_cache.items() if v is not None}
+                with tmp.open("w", encoding="utf-8") as fh:
+                    json.dump(serialisable, fh, separators=(",", ":"))
+                tmp.replace(path)
+                self._block_cache_dirty = False
+            if self._rate_cache_dirty:
+                path = self._cache_file_path('wpls_rates')
+                tmp = path.with_suffix('.json.tmp')
+                serialisable = {str(k): v for k, v in self._wpls_to_dai_cache.items() if v is not None}
+                with tmp.open("w", encoding="utf-8") as fh:
+                    json.dump(serialisable, fh, separators=(",", ":"))
+                tmp.replace(path)
+                self._rate_cache_dirty = False
+        except Exception as exc:
+            logger.debug(f"Failed to persist caches: {exc}")
+
     def connect_to_blockchain(self):
         """Initialize RPC load balancer for maximum throughput"""
         try:
@@ -114,7 +233,22 @@ class PdaiDataCollector:
                     "name": "Swap",
                     "type": "event",
                 },
+                {
+                    "constant": True,
+                    "inputs": [],
+                    "name": "getReserves",
+                    "outputs": [
+                        {"name": "_reserve0", "type": "uint112"},
+                        {"name": "_reserve1", "type": "uint112"},
+                        {"name": "_blockTimestampLast", "type": "uint32"},
+                    ],
+                    "payable": False,
+                    "stateMutability": "view",
+                    "type": "function",
+                },
             ]
+
+            self._pair_abi = pair_abi
 
             # Use a primary endpoint for contract instantiation
             primary_w3 = self.rpc_balancer.endpoints[0].w3
@@ -142,6 +276,12 @@ class PdaiDataCollector:
 
             # Swap topic HexBytes
             self.swap_topic = primary_w3.keccak(text="Swap(address,uint256,uint256,uint256,uint256,address)")
+            self._sync_topic = primary_w3.keccak(text="Sync(uint112,uint112)")
+
+            self._dai_wpls_pair_address = Web3.to_checksum_address(self.config.DAI_WPLS_POOL)
+            dai_pair_contract = primary_w3.eth.contract(address=self._dai_wpls_pair_address, abi=pair_abi)
+            self._dai_wpls_token0 = Web3.to_checksum_address(dai_pair_contract.functions.token0().call())
+            self._dai_wpls_token1 = Web3.to_checksum_address(dai_pair_contract.functions.token1().call())
             logger.info("Swap event support initialized for OHLCV collection")
         except Exception as e:
             logger.error(f"Failed to init swap event support: {e}")
@@ -186,7 +326,7 @@ class PdaiDataCollector:
         try:
             timestamp = self.rpc_balancer.get_block_timestamp(block_num)
             if timestamp:
-                self.block_cache[block_num] = timestamp
+                self._update_block_cache(block_num, timestamp)
             return timestamp
         except Exception as e:
             logger.error(f"Error getting block {block_num}: {e}")
@@ -203,46 +343,75 @@ class PdaiDataCollector:
         """
         if target_time.tzinfo is None:
             target_time = LOCAL_TIMEZONE.localize(target_time)
-        
+
         target_time_utc = target_time.astimezone(BLOCKCHAIN_TIMEZONE)
-        
-        if not latest_block:
-            latest_block = self.rpc_balancer.get_latest_block_number()
-        
+
+        latest_info_block = (self.latest_block_info or {}).get('block')
+        latest_info_ts = (self.latest_block_info or {}).get('timestamp')
+
+        if latest_block is None:
+            latest_block = latest_info_block or self.rpc_balancer.get_latest_block_number()
+
+        if latest_info_block != latest_block or latest_info_ts is None:
+            latest_timestamp = self.get_block_timestamp(latest_block)
+        else:
+            latest_timestamp = latest_info_ts
+
         target_unix = int(target_time_utc.timestamp())
-        
-        # Simple binary search boundaries
-        left = 1
-        right = latest_block
-        closest_block = None
-        min_diff = float('inf')
-        
-        while left <= right:
-            mid = (left + right) // 2
-            
-            try:
-                mid_timestamp = self.get_block_timestamp(mid)
-                if mid_timestamp is None:
-                    right = mid - 1
+        avg_block_time = self.avg_block_time or 10.0
+
+        estimated_delta_blocks = int(round((latest_timestamp - target_unix) / avg_block_time))
+        estimate = latest_block - estimated_delta_blocks
+        estimate = max(1, min(latest_block, estimate))
+
+        pad = abs(estimated_delta_blocks) // 4
+        if pad < 500:
+            pad = 500
+        pad = min(pad, 50_000)
+
+        def search_bounds(left, right):
+            closest = None
+            min_diff = float('inf')
+            lo, hi = left, right
+            while lo <= hi:
+                mid = (lo + hi) // 2
+                try:
+                    mid_timestamp = self.get_block_timestamp(mid)
+                except Exception as exc:
+                    logger.warning(f"Error checking block {mid}: {exc}")
+                    hi = mid - 1
                     continue
-                
-                # Update closest block
+                if mid_timestamp is None:
+                    hi = mid - 1
+                    continue
+
                 diff = abs(mid_timestamp - target_unix)
                 if diff < min_diff:
                     min_diff = diff
-                    closest_block = mid
-                
-                # Adjust search range
+                    closest = mid
+
                 if mid_timestamp < target_unix:
-                    left = mid + 1
+                    lo = mid + 1
                 else:
-                    right = mid - 1
-                    
-            except Exception as e:
-                logger.warning(f"Error checking block {mid}: {e}")
-                right = mid - 1
-        
-        return closest_block if closest_block is not None else latest_block
+                    hi = mid - 1
+
+            return closest, min_diff
+
+        tolerance = max(60, avg_block_time * 12)
+
+        for _ in range(4):
+            left = max(1, estimate - pad)
+            right = min(latest_block, estimate + pad)
+            closest_block, min_diff = search_bounds(left, right)
+            if closest_block is not None:
+                if min_diff <= tolerance or (left == 1 and right == latest_block):
+                    return closest_block
+            if left == 1 and right == latest_block:
+                break
+            pad = min(latest_block, pad * 2)
+
+        fallback_block, _ = search_bounds(1, latest_block)
+        return fallback_block if fallback_block is not None else latest_block
 
     def _get_wpls_to_dai_rate(self, block_num: int) -> Optional[float]:
         if block_num in self._wpls_to_dai_cache:
@@ -260,7 +429,7 @@ class PdaiDataCollector:
             )
             dai_amount = amounts_out[-1]
             rate = dai_amount / (10 ** self._dai_decimals)
-            self._wpls_to_dai_cache[block_num] = rate
+            self._update_rate_cache(block_num, rate)
             return rate
         except Exception as e:
             logger.warning(f"Failed to fetch WPLS→DAI rate at block {block_num}: {e}")
@@ -370,15 +539,27 @@ class PdaiDataCollector:
     # =============================
     # Real OHLCV from Swap Events
     # =============================
-    def _get_logs_safe(self, w3: Web3, from_block: int, to_block: int, min_chunk: int = 200):
+    def _get_logs_safe(
+        self,
+        w3: Web3,
+        from_block: int,
+        to_block: int,
+        min_chunk: int = 200,
+        address: Optional[str] = None,
+        topics: Optional[List[str]] = None,
+    ):
         """Fetch logs with adaptive splitting to avoid RPC timeouts."""
+        if address is None:
+            address = self.pdai_wpls_pair_address
+        if topics is None:
+            topics = [self.swap_topic]
         try:
             return w3.eth.get_logs(
                 {
                     "fromBlock": from_block,
                     "toBlock": to_block,
-                    "address": self.pdai_wpls_pair_address,
-                    "topics": [self.swap_topic],
+                    "address": address,
+                    "topics": topics,
                 }
             )
         except Exception as e:
@@ -393,8 +574,8 @@ class PdaiDataCollector:
             ) and span > 1:
                 mid = from_block + span // 2
                 next_min = max(10, min_chunk // 2) if span <= min_chunk else min_chunk
-                left = self._get_logs_safe(w3, from_block, mid, next_min)
-                right = self._get_logs_safe(w3, mid + 1, to_block, next_min)
+                left = self._get_logs_safe(w3, from_block, mid, next_min, address, topics)
+                right = self._get_logs_safe(w3, mid + 1, to_block, next_min, address, topics)
                 return left + right
             raise
 
@@ -459,13 +640,54 @@ class PdaiDataCollector:
 
         return price_dai, vol_pdai, vol_dai if vol_dai is not None else 0.0
 
+    def _get_dai_wpls_reserves(self, block_num: int) -> Optional[Tuple[int, int]]:
+        if not self._pair_abi or not self._dai_wpls_pair_address:
+            return None
+
+        def _call(w3, block_identifier):
+            contract = w3.eth.contract(address=self._dai_wpls_pair_address, abi=self._pair_abi)
+            return contract.functions.getReserves().call(block_identifier=block_identifier)
+
+        try:
+            reserve0, reserve1, _ = self.rpc_balancer.execute_call(_call, block_num)
+            return reserve0, reserve1
+        except Exception as exc:
+            logger.debug(f"Failed to fetch DAI/WPLS reserves at block {block_num}: {exc}")
+            return None
+
+    def _compute_rate_from_reserves(self, reserve0: int, reserve1: int, wpls_is_token0: bool) -> Optional[float]:
+        if not reserve0 or not reserve1:
+            return None
+
+        try:
+            if wpls_is_token0:
+                wpls_reserve = reserve0 / (10 ** self._wpls_decimals)
+                dai_reserve = reserve1 / (10 ** self._dai_decimals)
+            else:
+                wpls_reserve = reserve1 / (10 ** self._wpls_decimals)
+                dai_reserve = reserve0 / (10 ** self._dai_decimals)
+            if wpls_reserve == 0:
+                return None
+            return dai_reserve / wpls_reserve
+        except Exception as exc:
+            logger.debug(f"Failed to compute WPLS→DAI rate from reserves: {exc}")
+            return None
+
     def _prefetch_wpls_to_dai_rates(self, blocks: List[int]) -> Dict[int, Optional[float]]:
         """Fetch WPLS→DAI conversion once per block using the load balancer."""
-        missing = [b for b in blocks if b not in self._wpls_to_dai_cache]
-        if missing:
-            logger.info("Fetching WPLS→DAI quotes for %s blocks", len(missing))
-            amount_in = 10 ** self._wpls_decimals
-            path = [self.config.WPLS_ADDRESS, self.config.DAI_ADDRESS]
+        missing = sorted(b for b in blocks if b not in self._wpls_to_dai_cache)
+        if not missing:
+            return {b: self._wpls_to_dai_cache.get(b) for b in blocks}
+
+        logger.info("Fetching WPLS→DAI quotes for %s blocks", len(missing))
+
+        amount_in = 10 ** self._wpls_decimals
+        path = [self.config.WPLS_ADDRESS, self.config.DAI_ADDRESS]
+        wpls_address = Web3.to_checksum_address(self.config.WPLS_ADDRESS)
+
+        def fetch_via_router(block_subset: List[int]) -> int:
+            if not block_subset:
+                return 0
 
             def fetch(block: int) -> Tuple[int, Optional[float]]:
                 try:
@@ -479,15 +701,153 @@ class PdaiDataCollector:
                     rate = amounts[-1] / (10 ** self._dai_decimals)
                     return block, rate
                 except Exception as exc:
-                    logger.debug(f"Failed WPLS→DAI quote at block {block}: {exc}")
+                    logger.debug(f"Failed router WPLS→DAI quote at block {block}: {exc}")
                     return block, None
 
-            max_workers = min(32, max(4, len(missing) // 20 or 1))
+            max_workers = min(32, max(4, (len(block_subset) // 20) or 4))
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                for idx, (blk, rate) in enumerate(executor.map(fetch, missing), 1):
-                    self._wpls_to_dai_cache[blk] = rate
-                    if idx % 200 == 0 or idx == len(missing):
-                        logger.info("  • fetched %s/%s WPLS→DAI quotes", idx, len(missing))
+                for idx, (blk, rate) in enumerate(executor.map(fetch, block_subset), 1):
+                    if rate is not None:
+                        self._update_rate_cache(blk, rate)
+                    if idx % 200 == 0 or idx == len(block_subset):
+                        logger.info(
+                            "  • fetched %s/%s WPLS→DAI quotes via router",
+                            idx,
+                            len(block_subset),
+                        )
+            return len(block_subset)
+
+        def fetch_via_reserves(block_subset: List[int]) -> int:
+            if (
+                not block_subset
+                or not self._dai_wpls_pair_address
+                or not self._sync_topic
+                or not self._pair_abi
+            ):
+                return 0
+
+            blocks_sorted = sorted(block_subset)
+            start_block = blocks_sorted[0]
+            end_block = blocks_sorted[-1]
+            initial_block = max(1, start_block - 1)
+            initial_reserves = self._get_dai_wpls_reserves(initial_block)
+            if initial_reserves is None:
+                raise RuntimeError("Unable to fetch initial DAI/WPLS reserves")
+
+            from hexbytes import HexBytes
+
+            def decode_sync(logs: List[Dict]) -> List[Dict]:
+                decoded_logs = []
+                for log in logs:
+                    try:
+                        data = log.get("data")
+                        if isinstance(data, HexBytes):
+                            payload = bytes(data)
+                        else:
+                            payload = Web3.to_bytes(hexstr=data)
+                        if len(payload) < 64:
+                            continue
+                        reserve0 = int.from_bytes(payload[0:32], byteorder="big")
+                        reserve1 = int.from_bytes(payload[32:64], byteorder="big")
+                        decoded_logs.append(
+                            {
+                                "blockNumber": log["blockNumber"],
+                                "logIndex": log.get("logIndex", 0),
+                                "reserve0": reserve0,
+                                "reserve1": reserve1,
+                            }
+                        )
+                    except Exception:
+                        continue
+                return decoded_logs
+
+            def fetch_range(args):
+                fb, tb = args
+                attempts = max(3, len(self.rpc_balancer.endpoints))
+                last_error = None
+                for attempt in range(attempts):
+                    endpoint = self.rpc_balancer.get_round_robin_endpoint()
+                    try:
+                        logs = self._get_logs_safe(
+                            endpoint.w3,
+                            fb,
+                            tb,
+                            address=self._dai_wpls_pair_address,
+                            topics=[self._sync_topic],
+                        )
+                        if not logs:
+                            return []
+                        return decode_sync(logs)
+                    except Exception as exc:
+                        last_error = exc
+                        logger.debug(
+                            "Sync log fetch retry %s/%s failed for blocks %s-%s: %s",
+                            attempt + 1,
+                            attempts,
+                            fb,
+                            tb,
+                            exc,
+                        )
+                        time.sleep(0.2)
+                if last_error:
+                    raise last_error
+                return []
+
+            ranges = []
+            chunk_size = 5_000
+            b = start_block
+            while b <= end_block:
+                e = min(b + chunk_size - 1, end_block)
+                ranges.append((b, e))
+                b = e + 1
+
+            sync_entries: List[Dict] = []
+            max_workers = min(8, max(4, len(ranges)))
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+                for res in executor.map(fetch_range, ranges):
+                    if res:
+                        sync_entries.extend(res)
+
+            sync_entries.sort(key=lambda entry: (entry['blockNumber'], entry['logIndex']))
+
+            reserve0, reserve1 = initial_reserves
+            sync_idx = 0
+            total_sync = len(sync_entries)
+            fetched_count = 0
+            wpls_is_token0 = self._dai_wpls_token0 == wpls_address
+
+            for idx, block in enumerate(blocks_sorted, 1):
+                while sync_idx < total_sync and sync_entries[sync_idx]['blockNumber'] <= block:
+                    reserve0 = sync_entries[sync_idx]['reserve0']
+                    reserve1 = sync_entries[sync_idx]['reserve1']
+                    sync_idx += 1
+                rate = self._compute_rate_from_reserves(reserve0, reserve1, wpls_is_token0)
+                if rate is not None:
+                    self._update_rate_cache(block, rate)
+                fetched_count += 1
+                if fetched_count % 500 == 0 or fetched_count == len(blocks_sorted):
+                    logger.info(
+                        "  • mapped %s/%s WPLS→DAI quotes via reserves",
+                        fetched_count,
+                        len(blocks_sorted),
+                    )
+
+            return fetched_count
+
+        fetched = 0
+        use_reserves = len(missing) > 50
+        if use_reserves:
+            try:
+                fetched += fetch_via_reserves(missing)
+            except Exception as exc:
+                logger.warning(f"Reserve-based WPLS→DAI inference failed: {exc}")
+
+        remaining = [b for b in missing if b not in self._wpls_to_dai_cache]
+        if remaining:
+            fetched += fetch_via_router(remaining)
+
+        if fetched == 0:
+            logger.warning("No WPLS→DAI rates could be fetched; results may be empty")
 
         return {b: self._wpls_to_dai_cache.get(b) for b in blocks}
 
@@ -544,17 +904,36 @@ class PdaiDataCollector:
         all_swaps = []
 
         def fetch_range(args):
-            fb, tb, endpoint_idx = args
-            ep = self.rpc_balancer.endpoints[endpoint_idx % len(self.rpc_balancer.endpoints)]
-            logs = self._get_logs_safe(ep.w3, fb, tb)
-            if not logs:
-                return []
-            return self._decode_swaps(ep.w3, logs)
+            fb, tb = args
+            attempts = max(3, len(self.rpc_balancer.endpoints))
+            last_error = None
+            for attempt in range(attempts):
+                endpoint = self.rpc_balancer.get_round_robin_endpoint()
+                try:
+                    logs = self._get_logs_safe(endpoint.w3, fb, tb)
+                    if not logs:
+                        return []
+                    return self._decode_swaps(endpoint.w3, logs)
+                except Exception as exc:
+                    last_error = exc
+                    logger.debug(
+                        "Swap fetch retry %s/%s failed for blocks %s-%s via %s: %s",
+                        attempt + 1,
+                        attempts,
+                        fb,
+                        tb,
+                        getattr(endpoint, 'url', 'unknown'),
+                        exc,
+                    )
+                    time.sleep(0.5)
+            logger.error("Failed to fetch swaps for blocks %s-%s after %s attempts", fb, tb, attempts)
+            if last_error:
+                raise last_error
+            return []
 
-        # Assign endpoints round-robin
-        tasks = [(r[0], r[1], i) for i, r in enumerate(ranges)]
+        tasks = [(r[0], r[1]) for r in ranges]
 
-        max_workers = min(16, max(8, len(tasks) // 40 or 8))
+        max_workers = min(16, max(8, (len(tasks) // 40) or 8))
         logger.info("Fetching swap logs with %s workers", max_workers)
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
             for idx, res in enumerate(ex.map(fetch_range, tasks), 1):
@@ -565,22 +944,47 @@ class PdaiDataCollector:
 
         if not all_swaps:
             logger.warning("No swap events found for requested window")
+            self._persist_caches()
             return pd.DataFrame()
 
         # Unique blocks for timestamps
         unique_blocks = sorted({s['blockNumber'] for s in all_swaps})
         logger.info("Collected %s swaps across %s blocks", len(all_swaps), len(unique_blocks))
 
-        # Parallel fetch of block timestamps (uses load balancer and cache)
-        def fetch_ts(bn):
-            return bn, self.get_block_timestamp(bn)
+        # Fetch block timestamps with batching to minimise RPC calls
+        block_ts: Dict[int, Optional[int]] = {}
+        for bn in unique_blocks:
+            cached = self.block_cache.get(bn)
+            if cached is not None:
+                block_ts[bn] = cached
 
-        block_ts = {}
-        with concurrent.futures.ThreadPoolExecutor(max_workers=64) as ex:
-            for idx, (bn, ts) in enumerate(ex.map(fetch_ts, unique_blocks), 1):
+        missing_blocks = [bn for bn in unique_blocks if bn not in block_ts]
+        if missing_blocks:
+            batch_size = 120
+            batches = [missing_blocks[i:i + batch_size] for i in range(0, len(missing_blocks), batch_size)]
+            max_workers = min(12, max(4, len(batches)))
+
+            def fetch_batch(batch: List[int]) -> Dict[int, Optional[int]]:
+                return self.rpc_balancer.get_block_timestamps_batch(batch)
+
+            resolved = len(block_ts)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+                for batch_result in ex.map(fetch_batch, batches):
+                    for bn, ts in batch_result.items():
+                        if ts is not None:
+                            self._update_block_cache(bn, ts)
+                        block_ts[bn] = ts
+                    resolved += len(batch_result)
+                    if resolved % 200 == 0 or resolved == len(unique_blocks):
+                        logger.info("  • resolved %s/%s block timestamps", resolved, len(unique_blocks))
+
+        # Fallback for any unresolved entries
+        for bn in unique_blocks:
+            if block_ts.get(bn) is None:
+                ts = self.get_block_timestamp(bn)
+                if ts is not None:
+                    self._update_block_cache(bn, ts)
                 block_ts[bn] = ts
-                if idx % 200 == 0 or idx == len(unique_blocks):
-                    logger.info("  • resolved %s/%s block timestamps", idx, len(unique_blocks))
 
         logger.info(f"Decoded {len(all_swaps)} swaps across {len(unique_blocks)} blocks")
 
@@ -610,6 +1014,7 @@ class PdaiDataCollector:
                 logger.info("  • processed %s/%s swaps into rows", idx, len(all_swaps))
 
         if not rows:
+            self._persist_caches()
             return pd.DataFrame()
 
         df = pd.DataFrame(rows).set_index('timestamp')
@@ -626,6 +1031,7 @@ class PdaiDataCollector:
         ohlcv.reset_index(inplace=True)
         # Add 'price' equal to close for compatibility
         ohlcv['price'] = ohlcv['close']
+        self._persist_caches()
         return ohlcv
     
     def collect_historical_data(self, start_time, end_time=None, interval_minutes=15):

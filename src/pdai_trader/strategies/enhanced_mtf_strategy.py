@@ -17,31 +17,48 @@ class EnhancedMTFStrategy(BaseStrategy):
     """
     
     def __init__(self, parameters: dict = None):
-        super().__init__(parameters)
-        self.name = "EnhancedMTF"
+        base_params = {
+            'ltf_period': 3,
+            'htf_period': 15,
+            'mtf_period': 30,
+            'min_strength': 0.3,
+            'momentum_threshold': 0.5,
+            'volume_multiplier': 0.8,
+            'base_position': 0.6,
+            'max_position': 0.9,
+            'use_trailing_stop': True,
+            'trailing_stop_pct': 5.0,
+            'use_acceleration': True,
+            'use_divergence': True,
+            'adaptive_periods': True,
+        }
+        if parameters:
+            base_params.update(parameters)
+        super().__init__("EnhancedMTF", base_params)
+        self.parameters = base_params
         
         # Core MTF parameters (optimized)
-        self.ltf_period = self.parameters.get('ltf_period', 3)  # Faster than original 5
-        self.htf_period = self.parameters.get('htf_period', 15)  # Faster than original 20
-        self.mtf_period = self.parameters.get('mtf_period', 30)  # Additional medium timeframe
+        self.ltf_period = int(self.parameters.get('ltf_period', 3))
+        self.htf_period = int(self.parameters.get('htf_period', 15))
+        self.mtf_period = int(self.parameters.get('mtf_period', 30))
         
         # Signal parameters (more aggressive)
-        self.min_strength = self.parameters.get('min_strength', 0.3)  # Lower than 0.5
-        self.momentum_threshold = self.parameters.get('momentum_threshold', 0.5)  # Lower threshold
-        self.volume_multiplier = self.parameters.get('volume_multiplier', 0.8)  # Less strict
+        self.min_strength = float(self.parameters.get('min_strength', 0.3))
+        self.momentum_threshold = float(self.parameters.get('momentum_threshold', 0.5))
+        self.volume_multiplier = float(self.parameters.get('volume_multiplier', 0.8))
         
         # Position sizing
-        self.base_position = self.parameters.get('base_position', 0.6)  # Higher than 0.5
-        self.max_position = self.parameters.get('max_position', 0.9)  # Can go up to 90%
+        self.base_position = float(self.parameters.get('base_position', 0.6))
+        self.max_position = float(self.parameters.get('max_position', 0.9))
         
         # Risk management
-        self.use_trailing_stop = self.parameters.get('use_trailing_stop', True)
-        self.trailing_stop_pct = self.parameters.get('trailing_stop_pct', 5.0)  # 5% trailing stop
+        self.use_trailing_stop = bool(self.parameters.get('use_trailing_stop', True))
+        self.trailing_stop_pct = float(self.parameters.get('trailing_stop_pct', 5.0))
         
         # Advanced parameters
-        self.use_acceleration = self.parameters.get('use_acceleration', True)
-        self.use_divergence = self.parameters.get('use_divergence', True)
-        self.adaptive_periods = self.parameters.get('adaptive_periods', True)
+        self.use_acceleration = bool(self.parameters.get('use_acceleration', True))
+        self.use_divergence = bool(self.parameters.get('use_divergence', True))
+        self.adaptive_periods = bool(self.parameters.get('adaptive_periods', True))
         
     def calculate_indicators(self, data: pd.DataFrame) -> pd.DataFrame:
         """Calculate enhanced indicators with multiple confirmations"""
@@ -252,3 +269,17 @@ class EnhancedMTFStrategy(BaseStrategy):
         if 'position_size' in data.columns:
             return data.iloc[index]['position_size']
         return self.base_position
+
+    @classmethod
+    def parameter_space(cls):
+        return {
+            'ltf_period': (2, 6),
+            'htf_period': (10, 25),
+            'mtf_period': (20, 50),
+            'min_strength': (0.2, 0.5),
+            'momentum_threshold': (0.2, 0.8),
+            'volume_multiplier': (0.6, 1.2),
+            'base_position': (0.3, 0.7),
+            'max_position': (0.6, 1.0),
+            'trailing_stop_pct': (2.0, 8.0),
+        }

@@ -1,0 +1,27 @@
+{
+  "generated_at": "optimizer_smoke",
+  "results": [
+    {
+      "strategy_name": "MovingAverageCrossover",
+      "timeframe": "5m",
+      "trials": 1,
+      "best_parameters": {
+        "short_period": 2,
+        "long_period": 2,
+        "ma_type": "ema",
+        "min_strength": 0
+      },
+      "score": {
+        "score": -25.0,
+        "total_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "total_trades": 0,
+        "trade_frequency_pm": 0.0
+      },
+      "buy_hold_return_pct": -41.2786,
+      "report_path": "data/optimizer_smoke/MovingAverageCrossover_5m.json"
+    }
+  ],
+  "report_root": "data/optimizer_smoke"
+}

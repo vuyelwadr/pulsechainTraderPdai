@@ -6,6 +6,7 @@ import time
 import logging
 from threading import Lock
 from typing import Dict, List, Optional
+from concurrent.futures import ThreadPoolExecutor
 from web3 import Web3
 from dataclasses import dataclass
 
@@ -22,6 +23,7 @@ class RPCEndpoint:
     response_times: List[float] = None
     failure_count: int = 0
     is_healthy: bool = True
+    cooldown_until: float = 0.0
     
     def __post_init__(self):
         if self.response_times is None:
@@ -48,6 +50,7 @@ class RPCEndpoint:
         
         if success:
             self.failure_count = max(0, self.failure_count - 1)
+            self.cooldown_until = 0.0
         else:
             self.failure_count += 1
         
@@ -70,30 +73,35 @@ class RPCLoadBalancer:
 
         logger.info(f"Setting up RPC load balancer with {len(rpc_urls)} endpoints")
         
-        for url in rpc_urls:
+        def init_endpoint(url: str):
             try:
-                w3 = Web3(Web3.HTTPProvider(
-                    url,
-                    request_kwargs={
-                        'headers': {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'User-Agent': 'Mozilla/5.0'
+                w3 = Web3(
+                    Web3.HTTPProvider(
+                        url,
+                        request_kwargs={
+                            'headers': {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'User-Agent': 'Mozilla/5.0'
+                            },
+                            'timeout': 30
                         },
-                        'timeout': 30  # 30s timeout
-                    }
-                ))
-                
-                # Test connection
+                    )
+                )
+
                 if w3.is_connected():
-                    endpoint = RPCEndpoint(url=url, w3=w3)
-                    self.endpoints.append(endpoint)
                     logger.info(f"✅ Connected to {url}")
-                else:
-                    logger.warning(f"❌ Failed to connect to {url}")
-                    
+                    return RPCEndpoint(url=url, w3=w3)
+                logger.warning(f"❌ Failed to connect to {url}")
             except Exception as e:
                 logger.warning(f"❌ Error setting up {url}: {e}")
+            return None
+
+        max_workers = max(1, min(8, len(rpc_urls)))
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            for endpoint in executor.map(init_endpoint, rpc_urls):
+                if endpoint:
+                    self.endpoints.append(endpoint)
         
         if not self.endpoints:
             raise ConnectionError("No RPC endpoints available!")
@@ -103,10 +111,15 @@ class RPCLoadBalancer:
     def get_best_endpoint(self) -> RPCEndpoint:
         """Get the best available endpoint using intelligent selection"""
         with self.lock:
+            now = time.time()
+            for ep in self.endpoints:
+                if ep.cooldown_until and ep.cooldown_until <= now and not ep.is_healthy:
+                    ep.failure_count = 0
+                    ep.is_healthy = True
             # Filter healthy, non-rate-limited endpoints
             healthy_endpoints = [
-                ep for ep in self.endpoints 
-                if ep.is_healthy and not ep.is_rate_limited
+                ep for ep in self.endpoints
+                if ep.is_healthy and not ep.is_rate_limited and ep.cooldown_until <= now
             ]
             
             if not healthy_endpoints:
@@ -125,8 +138,15 @@ class RPCLoadBalancer:
     def get_round_robin_endpoint(self) -> RPCEndpoint:
         """Simple round-robin selection for maximum distribution"""
         with self.lock:
-            # Only use healthy endpoints
-            healthy_endpoints = [ep for ep in self.endpoints if ep.is_healthy]
+            now = time.time()
+            for ep in self.endpoints:
+                if ep.cooldown_until and ep.cooldown_until <= now and not ep.is_healthy:
+                    ep.failure_count = 0
+                    ep.is_healthy = True
+            healthy_endpoints = [
+                ep for ep in self.endpoints
+                if ep.is_healthy and ep.cooldown_until <= now
+            ]
             
             if not healthy_endpoints:
                 healthy_endpoints = self.endpoints  # Use all if none healthy
@@ -159,9 +179,19 @@ class RPCLoadBalancer:
             except Exception as e:
                 response_time = time.time() - start_time
                 endpoint.record_response(response_time, success=False)
-                
+
+                msg = str(e).lower()
                 logger.debug(f"❌ Call failed on {endpoint.url}: {e}")
-                
+
+                if any(token in msg for token in ["429", "too many requests", "rate limit", "timeout"]):
+                    # Back off this endpoint briefly
+                    backoff = min(30, 5 * (endpoint.failure_count + 1))
+                    endpoint.cooldown_until = time.time() + backoff
+                    logger.warning(
+                        f"Rate limit detected on {endpoint.url}; cooling down for {backoff}s"
+                    )
+                    time.sleep(min(3, backoff / 2))
+
                 # Try next endpoint on failure
                 if attempt == max_retries - 1:
                     logger.error(f"All endpoints failed after {max_retries} attempts")
@@ -192,6 +222,49 @@ class RPCLoadBalancer:
             return router_contract.functions.getAmountsOut(amount_in, path).call(block_identifier=block_num)
         
         return self.execute_call(_call, amount_in, path, block_num)
+
+    def get_block_timestamps_batch(self, block_numbers: List[int]) -> Dict[int, Optional[int]]:
+        """Fetch block timestamps for a batch of block numbers using a single RPC call when supported."""
+
+        if not block_numbers:
+            return {}
+
+        def _call(w3, batch):
+            provider = getattr(w3, 'provider', None)
+            timestamps: Dict[int, Optional[int]] = {}
+
+            if provider and hasattr(provider, 'make_batch_request'):
+                payload = [
+                    ('eth_getBlockByNumber', [hex(block), False])
+                    for block in batch
+                ]
+                responses = provider.make_batch_request(payload)
+                if not isinstance(responses, list):
+                    raise ValueError("Invalid batch response for block timestamps")
+
+                for idx, block in enumerate(batch):
+                    ts = None
+                    try:
+                        entry = responses[idx]
+                        if isinstance(entry, dict):
+                            result = entry.get('result')
+                            if result and 'timestamp' in result:
+                                ts = int(result['timestamp'], 16)
+                    except Exception:
+                        ts = None
+                    timestamps[block] = ts
+                return timestamps
+
+            # Fallback to sequential fetch on this endpoint
+            for block in batch:
+                try:
+                    block_data = w3.eth.get_block(block)
+                    timestamps[block] = block_data['timestamp']
+                except Exception:
+                    timestamps[block] = None
+            return timestamps
+
+        return self.execute_call(_call, block_numbers)
     
     def get_latest_block_number(self) -> int:
         """Get latest block number using load balanced RPC calls"""

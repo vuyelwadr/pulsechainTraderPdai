@@ -18,8 +18,26 @@ class EnhancedRSIStrategy(BaseStrategy):
     """
     
     def __init__(self, name: str = "Enhanced RSI Strategy", parameters: Dict = None):
-        parameters = parameters or {}
-        super().__init__(name=name, parameters=parameters)
+        base_params = {
+            'rsi_period': 18,
+            'rsi_oversold': 28,
+            'rsi_overbought': 72,
+            'ma_period': 50,
+            'trend_strength': 0.02,
+            'min_signal_strength': 0.75,
+            'rsi_extreme_oversold': 20,
+            'rsi_extreme_overbought': 80,
+            'atr_period': 14,
+            'min_volatility': 0.01,
+            'max_volatility': 0.10,
+            'base_position_size': 0.3,
+            'max_position_size': 0.6,
+            'trade_cooldown': 10,
+        }
+        if parameters:
+            base_params.update(parameters)
+        super().__init__(name=name, parameters=base_params)
+        parameters = base_params
         
         # Optimized RSI parameters based on findings
         self.rsi_period = parameters.get('rsi_period', 18)  # Longer period for stability
@@ -238,4 +256,23 @@ class EnhancedRSIStrategy(BaseStrategy):
             'max_volatility': self.max_volatility,
             'base_position_size': self.base_position_size,
             'trade_cooldown': self.trade_cooldown
+        }
+
+    @classmethod
+    def parameter_space(cls):
+        return {
+            'rsi_period': (10, 30),
+            'rsi_oversold': (20, 35),
+            'rsi_overbought': (65, 80),
+            'ma_period': (30, 80),
+            'trend_strength': (0.01, 0.05),
+            'min_signal_strength': (0.6, 0.9),
+            'rsi_extreme_oversold': (15, 25),
+            'rsi_extreme_overbought': (75, 90),
+            'atr_period': (10, 25),
+            'min_volatility': (0.005, 0.02),
+            'max_volatility': (0.05, 0.15),
+            'base_position_size': (0.1, 0.5),
+            'max_position_size': (0.4, 0.9),
+            'trade_cooldown': (5, 20),
         }

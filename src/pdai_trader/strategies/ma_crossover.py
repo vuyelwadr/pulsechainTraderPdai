@@ -49,19 +49,14 @@ class MovingAverageCrossover(BaseStrategy):
         long_period = self.parameters['long_period']
         ma_type = self.parameters['ma_type']
         
-        # Ensure we have enough data
-        if len(df) < long_period:
-            logger.warning(f"Not enough data for long period MA ({long_period})")
-            return df
-        
-        # Calculate moving averages
+        # Calculate moving averages even on shorter clips; SMA uses min_periods to avoid NaNs
         if ma_type == 'ema':
-            df['ma_short'] = df['price'].ewm(span=short_period, adjust=False).mean()
-            df['ma_long'] = df['price'].ewm(span=long_period, adjust=False).mean()
+            df['ma_short'] = df['price'].ewm(span=max(1, short_period), adjust=False).mean()
+            df['ma_long'] = df['price'].ewm(span=max(1, long_period), adjust=False).mean()
         else:  # sma
-            df['ma_short'] = df['price'].rolling(window=short_period).mean()
-            df['ma_long'] = df['price'].rolling(window=long_period).mean()
-        
+            df['ma_short'] = df['price'].rolling(window=max(1, short_period), min_periods=1).mean()
+            df['ma_long'] = df['price'].rolling(window=max(1, long_period), min_periods=1).mean()
+
         # Calculate additional indicators
         df['ma_diff'] = df['ma_short'] - df['ma_long']
         df['ma_diff_pct'] = (df['ma_diff'] / df['ma_long']) * 100
@@ -79,9 +74,13 @@ class MovingAverageCrossover(BaseStrategy):
         """Generate buy/sell signals based on MA crossover"""
         df = data.copy()
         
-        if 'ma_short' not in df.columns or 'ma_long' not in df.columns:
-            logger.error("Moving averages not calculated")
-            return df
+        for col in ('ma_short', 'ma_long'):
+            if col not in df.columns:
+                logger.error("Moving averages not calculated")
+                return df
+
+        # Drop leading rows where long MA is still NaN to keep signals clean
+        df = df.dropna(subset=['ma_long']).reset_index(drop=True)
         
         # Initialize signal columns
         df['buy_signal'] = False

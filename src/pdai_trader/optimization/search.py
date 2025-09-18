@@ -55,7 +55,11 @@ class StrategyOptimizer:
         self.base_data = self.base_data.set_index("timestamp").sort_index()
         self.engine = BacktestEngine()
         self.rng = random.Random(random_seed or 0)
-        self.output_root = output_root or Path("reports") / f"optimizer_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}"
+        if output_root:
+            self.output_root = Path(output_root)
+        else:
+            self.output_root = Path("reports") / f"optimizer_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}"
+        self.output_root = self.output_root.resolve()
         self.output_root.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------
@@ -213,10 +217,11 @@ class StrategyOptimizer:
     @staticmethod
     def _normalise_timeframe(value: str) -> str:
         value = value.strip().lower()
-        if value.endswith("m"):
-            return value
         if value.endswith("min"):
             return value
+        if value.endswith("m"):
+            # pandas de-preferenced the bare "m" alias; normalise to minutes.
+            return f"{value[:-1]}min"
         if value.endswith("h"):
             return value
         if value.endswith("d"):

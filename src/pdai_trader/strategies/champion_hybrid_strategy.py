@@ -17,29 +17,46 @@ class ChampionHybridStrategy(BaseStrategy):
     """
     
     def __init__(self, parameters: dict = None):
-        super().__init__(parameters)
-        self.name = "ChampionHybrid"
+        base_params = {
+            'mtf_ltf_period': 5,
+            'mtf_htf_period': 20,
+            'mtf_weight': 0.5,
+            'macd_fast': 14,
+            'macd_slow': 32,
+            'macd_signal': 14,
+            'macd_weight': 0.3,
+            'rsi_period': 19,
+            'rsi_oversold': 23,
+            'rsi_overbought': 77,
+            'rsi_weight': 0.2,
+            'min_consensus': 0.5,
+            'confirmation_required': 2,
+        }
+        if parameters:
+            base_params.update(parameters)
+        super().__init__("ChampionHybrid", base_params)
+        self.parameters = base_params
         
         # MTF Momentum parameters (best performer)
-        self.mtf_ltf_period = self.parameters.get('mtf_ltf_period', 5)
-        self.mtf_htf_period = self.parameters.get('mtf_htf_period', 20)
-        self.mtf_weight = self.parameters.get('mtf_weight', 0.5)  # Highest weight
+        self.mtf_ltf_period = int(self.parameters.get('mtf_ltf_period', 5))
+        self.mtf_htf_period = int(self.parameters.get('mtf_htf_period', 20))
+        self.mtf_weight = float(self.parameters.get('mtf_weight', 0.5))
         
         # MACD parameters (second best)
-        self.macd_fast = self.parameters.get('macd_fast', 14)
-        self.macd_slow = self.parameters.get('macd_slow', 32)
-        self.macd_signal = self.parameters.get('macd_signal', 14)
-        self.macd_weight = self.parameters.get('macd_weight', 0.3)
+        self.macd_fast = int(self.parameters.get('macd_fast', 14))
+        self.macd_slow = int(self.parameters.get('macd_slow', 32))
+        self.macd_signal = int(self.parameters.get('macd_signal', 14))
+        self.macd_weight = float(self.parameters.get('macd_weight', 0.3))
         
         # RSI parameters (third best)
-        self.rsi_period = self.parameters.get('rsi_period', 19)
-        self.rsi_oversold = self.parameters.get('rsi_oversold', 23)
-        self.rsi_overbought = self.parameters.get('rsi_overbought', 77)
-        self.rsi_weight = self.parameters.get('rsi_weight', 0.2)
+        self.rsi_period = int(self.parameters.get('rsi_period', 19))
+        self.rsi_oversold = float(self.parameters.get('rsi_oversold', 23))
+        self.rsi_overbought = float(self.parameters.get('rsi_overbought', 77))
+        self.rsi_weight = float(self.parameters.get('rsi_weight', 0.2))
         
         # Hybrid parameters
-        self.min_consensus = self.parameters.get('min_consensus', 0.5)  # Minimum weighted score
-        self.confirmation_required = self.parameters.get('confirmation_required', 2)  # Min strategies agreeing
+        self.min_consensus = float(self.parameters.get('min_consensus', 0.5))
+        self.confirmation_required = int(self.parameters.get('confirmation_required', 2))
         
     def calculate_indicators(self, data: pd.DataFrame) -> pd.DataFrame:
         """Calculate all three strategy indicators"""
@@ -266,3 +283,21 @@ class ChampionHybridStrategy(BaseStrategy):
         position_size = base_size * vol_adjustment * strength_adjustment
         
         return np.clip(position_size, 0.1, 1.0)
+
+    @classmethod
+    def parameter_space(cls):
+        return {
+            'mtf_ltf_period': (3, 15),
+            'mtf_htf_period': (15, 60),
+            'mtf_weight': (0.2, 0.7),
+            'macd_fast': (8, 20),
+            'macd_slow': (20, 60),
+            'macd_signal': (6, 20),
+            'macd_weight': (0.1, 0.5),
+            'rsi_period': (10, 35),
+            'rsi_oversold': (15, 35),
+            'rsi_overbought': (65, 85),
+            'rsi_weight': (0.1, 0.4),
+            'min_consensus': (0.3, 0.8),
+            'confirmation_required': (1, 3),
+        }

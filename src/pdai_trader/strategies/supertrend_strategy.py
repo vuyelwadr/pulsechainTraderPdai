@@ -9,18 +9,26 @@ from strategies.base_strategy import BaseStrategy
 
 class SupertrendStrategy(BaseStrategy):
     def __init__(self, parameters=None):
-        super().__init__(name="Supertrend", parameters=parameters)
-        self.parameters = parameters or {}
+        base_params = {
+            'atr_period': 10,
+            'multiplier': 3.0,
+            'min_strength': 0.3,
+            'position_size_pct': 0.7,
+        }
+        if parameters:
+            base_params.update(parameters)
+        super().__init__(name="Supertrend", parameters=base_params)
+        self.parameters = base_params
         
         # Supertrend parameters
-        self.atr_period = self.parameters.get('atr_period', 10)
-        self.multiplier = self.parameters.get('multiplier', 3.0)
+        self.atr_period = int(self.parameters.get('atr_period', 10))
+        self.multiplier = float(self.parameters.get('multiplier', 3.0))
         
         # Signal strength threshold
-        self.min_strength = self.parameters.get('min_strength', 0.3)
+        self.min_strength = float(self.parameters.get('min_strength', 0.3))
         
         # Position sizing
-        self.position_size_pct = self.parameters.get('position_size_pct', 0.7)
+        self.position_size_pct = float(self.parameters.get('position_size_pct', 0.7))
         
     def calculate_atr(self, data, period):
         """Calculate Average True Range"""
@@ -182,3 +190,12 @@ class SupertrendStrategy(BaseStrategy):
         position_pct = min(position_pct, 0.9)
         
         return portfolio_value * position_pct
+
+    @classmethod
+    def parameter_space(cls):
+        return {
+            'atr_period': (5, 40),
+            'multiplier': (1.5, 5.0),
+            'min_strength': (0.1, 0.6),
+            'position_size_pct': (0.2, 1.0),
+        }

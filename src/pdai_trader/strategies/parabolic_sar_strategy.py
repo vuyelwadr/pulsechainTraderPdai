@@ -9,21 +9,32 @@ from strategies.base_strategy import BaseStrategy
 
 class ParabolicSARStrategy(BaseStrategy):
     def __init__(self, parameters=None):
-        super().__init__(name="ParabolicSAR", parameters=parameters)
-        self.parameters = parameters or {}
+        base_params = {
+            'initial_af': 0.02,
+            'max_af': 0.2,
+            'af_increment': 0.02,
+            'min_strength': 0.3,
+            'position_size_pct': 0.7,
+            'use_trend_filter': True,
+            'trend_period': 50,
+        }
+        if parameters:
+            base_params.update(parameters)
+        super().__init__(name="ParabolicSAR", parameters=base_params)
+        self.parameters = base_params
         
         # Parabolic SAR parameters
-        self.initial_af = self.parameters.get('initial_af', 0.02)
-        self.max_af = self.parameters.get('max_af', 0.2)
-        self.af_increment = self.parameters.get('af_increment', 0.02)
+        self.initial_af = float(self.parameters.get('initial_af', 0.02))
+        self.max_af = float(self.parameters.get('max_af', 0.2))
+        self.af_increment = float(self.parameters.get('af_increment', 0.02))
         
         # Signal parameters
-        self.min_strength = self.parameters.get('min_strength', 0.3)
-        self.position_size_pct = self.parameters.get('position_size_pct', 0.7)
+        self.min_strength = float(self.parameters.get('min_strength', 0.3))
+        self.position_size_pct = float(self.parameters.get('position_size_pct', 0.7))
         
         # Trend confirmation
-        self.use_trend_filter = self.parameters.get('use_trend_filter', True)
-        self.trend_period = self.parameters.get('trend_period', 50)
+        self.use_trend_filter = bool(self.parameters.get('use_trend_filter', True))
+        self.trend_period = int(self.parameters.get('trend_period', 50))
         
     def calculate_parabolic_sar(self, data):
         """Calculate Parabolic SAR indicator"""
@@ -211,3 +222,14 @@ class ParabolicSARStrategy(BaseStrategy):
         position_pct = min(position_pct, 0.9)
         
         return portfolio_value * position_pct
+
+    @classmethod
+    def parameter_space(cls):
+        return {
+            'initial_af': (0.01, 0.05),
+            'max_af': (0.1, 0.4),
+            'af_increment': (0.01, 0.05),
+            'min_strength': (0.1, 0.6),
+            'position_size_pct': (0.3, 1.0),
+            'trend_period': (20, 80),
+        }
