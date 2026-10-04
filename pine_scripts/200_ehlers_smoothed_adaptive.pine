@@ -1,0 +1,18 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+study("Ehlers Smoothed Adaptive Momentum [LazyBear]", shorttitle="ESAM_LB", overlay=false, precision=3)
+src=input(hl2, title="Source") 
+a=input(.07, title="Alpha")
+co=input(8.0, title="Cutoff")
+pi=4*atan(1.0), dtr=pi/180.0, rtd=1/dtr
+s = (src + 2*src[1] + 2*src[2] + src[3])/6.0
+c = nz(((1 - 0.5*a)*(1 - 0.5*a)*(s - 2*nz(s[1]) + nz(s[2])) + 2*(1-a)*nz(c[1]) - (1 - a)*(1-a)*nz(c[2])), (src - 2*src[1] + src[2])/4.0)
+q1 = (.0962*c + 0.5769*nz(c[2]) - 0.5769*nz(c[4]) - .0962*nz(c[6]))*(0.5+.08*nz(ip[1]))
+I1 = nz(c[3])
+dp_ = iff(q1 != 0 and q1[1] != 0, (I1/q1 - nz(I1[1])/nz(q1[1])) / (1 + I1*nz(I1[1])/(q1*nz(q1[1]))),0)
+dp = iff(dp_ < 0.1, 0.1, iff(dp_ > 1.1, 1.1, dp_))
+med(x,y,z) => (x+

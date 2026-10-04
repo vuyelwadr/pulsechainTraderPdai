@@ -1,0 +1,1672 @@
+[
+  {
+    "agent_id": 1,
+    "strategies": [
+      {
+        "id": 1,
+        "name": "SqueezeMomentum",
+        "type": "momentum",
+        "priority": 1
+      },
+      {
+        "id": 2,
+        "name": "WaveTrend",
+        "type": "oscillator",
+        "priority": 1
+      },
+      {
+        "id": 3,
+        "name": "CoralTrend",
+        "type": "trend",
+        "priority": 1
+      },
+      {
+        "id": 4,
+        "name": "SchaffTrendCycle",
+        "type": "hybrid",
+        "priority": 1
+      },
+      {
+        "id": 5,
+        "name": "MESAAdaptiveMA",
+        "type": "adaptive",
+        "priority": 1
+      },
+      {
+        "id": 6,
+        "name": "ElderImpulse",
+        "type": "momentum",
+        "priority": 2
+      },
+      {
+        "id": 7,
+        "name": "FRAMA",
+        "type": "adaptive",
+        "priority": 2
+      },
+      {
+        "id": 8,
+        "name": "ZeroLagEMA",
+        "type": "trend",
+        "priority": 2
+      },
+      {
+        "id": 9,
+        "name": "KaufmannAMA",
+        "type": "adaptive",
+        "priority": 2
+      },
+      {
+        "id": 10,
+        "name": "TradersDynamicIndex",
+        "type": "composite",
+        "priority": 2
+      },
+      {
+        "id": 11,
+        "name": "InsyncIndex",
+        "type": "consensus",
+        "priority": 3
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_01.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_01.pkl"
+  },
+  {
+    "agent_id": 2,
+    "strategies": [
+      {
+        "id": 12,
+        "name": "PremierStochastic",
+        "type": "oscillator",
+        "priority": 3
+      },
+      {
+        "id": 13,
+        "name": "MAC_Z",
+        "type": "momentum",
+        "priority": 3
+      },
+      {
+        "id": 14,
+        "name": "FireflyOscillator",
+        "type": "oscillator",
+        "priority": 3
+      },
+      {
+        "id": 15,
+        "name": "CompositeMomentumIndex",
+        "type": "momentum",
+        "priority": 3
+      },
+      {
+        "id": 16,
+        "name": "Strategy_16",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 17,
+        "name": "Strategy_17",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 18,
+        "name": "Strategy_18",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 19,
+        "name": "Strategy_19",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 20,
+        "name": "Strategy_20",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 21,
+        "name": "Strategy_21",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 22,
+        "name": "Strategy_22",
+        "type": "momentum",
+        "priority": 4
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_02.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_02.pkl"
+  },
+  {
+    "agent_id": 3,
+    "strategies": [
+      {
+        "id": 23,
+        "name": "Strategy_23",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 24,
+        "name": "Strategy_24",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 25,
+        "name": "Strategy_25",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 26,
+        "name": "Strategy_26",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 27,
+        "name": "Strategy_27",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 28,
+        "name": "Strategy_28",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 29,
+        "name": "Strategy_29",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 30,
+        "name": "Strategy_30",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 31,
+        "name": "Strategy_31",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 32,
+        "name": "Strategy_32",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 33,
+        "name": "Strategy_33",
+        "type": "hybrid",
+        "priority": 4
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_03.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_03.pkl"
+  },
+  {
+    "agent_id": 4,
+    "strategies": [
+      {
+        "id": 34,
+        "name": "Strategy_34",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 35,
+        "name": "Strategy_35",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 36,
+        "name": "Strategy_36",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 37,
+        "name": "Strategy_37",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 38,
+        "name": "Strategy_38",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 39,
+        "name": "Strategy_39",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 40,
+        "name": "Strategy_40",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 41,
+        "name": "Strategy_41",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 42,
+        "name": "Strategy_42",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 43,
+        "name": "Strategy_43",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 44,
+        "name": "Strategy_44",
+        "type": "volatility",
+        "priority": 4
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_04.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_04.pkl"
+  },
+  {
+    "agent_id": 5,
+    "strategies": [
+      {
+        "id": 45,
+        "name": "Strategy_45",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 46,
+        "name": "Strategy_46",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 47,
+        "name": "Strategy_47",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 48,
+        "name": "Strategy_48",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 49,
+        "name": "Strategy_49",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 50,
+        "name": "Strategy_50",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 51,
+        "name": "Strategy_51",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 52,
+        "name": "Strategy_52",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 53,
+        "name": "Strategy_53",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 54,
+        "name": "Strategy_54",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 55,
+        "name": "Strategy_55",
+        "type": "volume",
+        "priority": 4
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_05.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_05.pkl"
+  },
+  {
+    "agent_id": 6,
+    "strategies": [
+      {
+        "id": 56,
+        "name": "Strategy_56",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 57,
+        "name": "Strategy_57",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 58,
+        "name": "Strategy_58",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 59,
+        "name": "Strategy_59",
+        "type": "trend",
+        "priority": 4
+      },
+      {
+        "id": 60,
+        "name": "Strategy_60",
+        "type": "oscillator",
+        "priority": 4
+      },
+      {
+        "id": 61,
+        "name": "Strategy_61",
+        "type": "volume",
+        "priority": 4
+      },
+      {
+        "id": 62,
+        "name": "Strategy_62",
+        "type": "volatility",
+        "priority": 4
+      },
+      {
+        "id": 63,
+        "name": "Strategy_63",
+        "type": "hybrid",
+        "priority": 4
+      },
+      {
+        "id": 64,
+        "name": "Strategy_64",
+        "type": "momentum",
+        "priority": 4
+      },
+      {
+        "id": 65,
+        "name": "Strategy_65",
+        "type": "trend",
+        "priority": 4
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_06.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_06.pkl"
+  },
+  {
+    "agent_id": 7,
+    "strategies": [
+      {
+        "id": 66,
+        "name": "Strategy_66",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 67,
+        "name": "Strategy_67",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 68,
+        "name": "Strategy_68",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 69,
+        "name": "Strategy_69",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 70,
+        "name": "Strategy_70",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 71,
+        "name": "Strategy_71",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 72,
+        "name": "Strategy_72",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 73,
+        "name": "Strategy_73",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 74,
+        "name": "Strategy_74",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 75,
+        "name": "Strategy_75",
+        "type": "hybrid",
+        "priority": 5
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_07.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_07.pkl"
+  },
+  {
+    "agent_id": 8,
+    "strategies": [
+      {
+        "id": 76,
+        "name": "Strategy_76",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 77,
+        "name": "Strategy_77",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 78,
+        "name": "Strategy_78",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 79,
+        "name": "Strategy_79",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 80,
+        "name": "Strategy_80",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 81,
+        "name": "Strategy_81",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 82,
+        "name": "Strategy_82",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 83,
+        "name": "Strategy_83",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 84,
+        "name": "Strategy_84",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 85,
+        "name": "Strategy_85",
+        "type": "volume",
+        "priority": 5
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_08.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_08.pkl"
+  },
+  {
+    "agent_id": 9,
+    "strategies": [
+      {
+        "id": 86,
+        "name": "Strategy_86",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 87,
+        "name": "Strategy_87",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 88,
+        "name": "Strategy_88",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 89,
+        "name": "Strategy_89",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 90,
+        "name": "Strategy_90",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 91,
+        "name": "Strategy_91",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 92,
+        "name": "Strategy_92",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 93,
+        "name": "Strategy_93",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 94,
+        "name": "Strategy_94",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 95,
+        "name": "Strategy_95",
+        "type": "trend",
+        "priority": 5
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_09.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_09.pkl"
+  },
+  {
+    "agent_id": 10,
+    "strategies": [
+      {
+        "id": 96,
+        "name": "Strategy_96",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 97,
+        "name": "Strategy_97",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 98,
+        "name": "Strategy_98",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 99,
+        "name": "Strategy_99",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 100,
+        "name": "Strategy_100",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 101,
+        "name": "Strategy_101",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 102,
+        "name": "Strategy_102",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 103,
+        "name": "Strategy_103",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 104,
+        "name": "Strategy_104",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 105,
+        "name": "Strategy_105",
+        "type": "hybrid",
+        "priority": 5
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_10.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_10.pkl"
+  },
+  {
+    "agent_id": 11,
+    "strategies": [
+      {
+        "id": 106,
+        "name": "Strategy_106",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 107,
+        "name": "Strategy_107",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 108,
+        "name": "Strategy_108",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 109,
+        "name": "Strategy_109",
+        "type": "volume",
+        "priority": 5
+      },
+      {
+        "id": 110,
+        "name": "Strategy_110",
+        "type": "volatility",
+        "priority": 5
+      },
+      {
+        "id": 111,
+        "name": "Strategy_111",
+        "type": "hybrid",
+        "priority": 5
+      },
+      {
+        "id": 112,
+        "name": "Strategy_112",
+        "type": "momentum",
+        "priority": 5
+      },
+      {
+        "id": 113,
+        "name": "Strategy_113",
+        "type": "trend",
+        "priority": 5
+      },
+      {
+        "id": 114,
+        "name": "Strategy_114",
+        "type": "oscillator",
+        "priority": 5
+      },
+      {
+        "id": 115,
+        "name": "Strategy_115",
+        "type": "volume",
+        "priority": 5
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_11.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_11.pkl"
+  },
+  {
+    "agent_id": 12,
+    "strategies": [
+      {
+        "id": 116,
+        "name": "Strategy_116",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 117,
+        "name": "Strategy_117",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 118,
+        "name": "Strategy_118",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 119,
+        "name": "Strategy_119",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 120,
+        "name": "Strategy_120",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 121,
+        "name": "Strategy_121",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 122,
+        "name": "Strategy_122",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 123,
+        "name": "Strategy_123",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 124,
+        "name": "Strategy_124",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 125,
+        "name": "Strategy_125",
+        "type": "trend",
+        "priority": 6
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_12.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_12.pkl"
+  },
+  {
+    "agent_id": 13,
+    "strategies": [
+      {
+        "id": 126,
+        "name": "Strategy_126",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 127,
+        "name": "Strategy_127",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 128,
+        "name": "Strategy_128",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 129,
+        "name": "Strategy_129",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 130,
+        "name": "Strategy_130",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 131,
+        "name": "Strategy_131",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 132,
+        "name": "Strategy_132",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 133,
+        "name": "Strategy_133",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 134,
+        "name": "Strategy_134",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 135,
+        "name": "Strategy_135",
+        "type": "hybrid",
+        "priority": 6
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_13.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_13.pkl"
+  },
+  {
+    "agent_id": 14,
+    "strategies": [
+      {
+        "id": 136,
+        "name": "Strategy_136",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 137,
+        "name": "Strategy_137",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 138,
+        "name": "Strategy_138",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 139,
+        "name": "Strategy_139",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 140,
+        "name": "Strategy_140",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 141,
+        "name": "Strategy_141",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 142,
+        "name": "Strategy_142",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 143,
+        "name": "Strategy_143",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 144,
+        "name": "Strategy_144",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 145,
+        "name": "Strategy_145",
+        "type": "volume",
+        "priority": 6
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_14.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_14.pkl"
+  },
+  {
+    "agent_id": 15,
+    "strategies": [
+      {
+        "id": 146,
+        "name": "Strategy_146",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 147,
+        "name": "Strategy_147",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 148,
+        "name": "Strategy_148",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 149,
+        "name": "Strategy_149",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 150,
+        "name": "Strategy_150",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 151,
+        "name": "Strategy_151",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 152,
+        "name": "Strategy_152",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 153,
+        "name": "Strategy_153",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 154,
+        "name": "Strategy_154",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 155,
+        "name": "Strategy_155",
+        "type": "trend",
+        "priority": 6
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_15.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_15.pkl"
+  },
+  {
+    "agent_id": 16,
+    "strategies": [
+      {
+        "id": 156,
+        "name": "Strategy_156",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 157,
+        "name": "Strategy_157",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 158,
+        "name": "Strategy_158",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 159,
+        "name": "Strategy_159",
+        "type": "hybrid",
+        "priority": 6
+      },
+      {
+        "id": 160,
+        "name": "Strategy_160",
+        "type": "momentum",
+        "priority": 6
+      },
+      {
+        "id": 161,
+        "name": "Strategy_161",
+        "type": "trend",
+        "priority": 6
+      },
+      {
+        "id": 162,
+        "name": "Strategy_162",
+        "type": "oscillator",
+        "priority": 6
+      },
+      {
+        "id": 163,
+        "name": "Strategy_163",
+        "type": "volume",
+        "priority": 6
+      },
+      {
+        "id": 164,
+        "name": "Strategy_164",
+        "type": "volatility",
+        "priority": 6
+      },
+      {
+        "id": 165,
+        "name": "Strategy_165",
+        "type": "hybrid",
+        "priority": 6
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_16.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_16.pkl"
+  },
+  {
+    "agent_id": 17,
+    "strategies": [
+      {
+        "id": 166,
+        "name": "Strategy_166",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 167,
+        "name": "Strategy_167",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 168,
+        "name": "Strategy_168",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 169,
+        "name": "Strategy_169",
+        "type": "volume",
+        "priority": 7
+      },
+      {
+        "id": 170,
+        "name": "Strategy_170",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 171,
+        "name": "Strategy_171",
+        "type": "hybrid",
+        "priority": 7
+      },
+      {
+        "id": 172,
+        "name": "Strategy_172",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 173,
+        "name": "Strategy_173",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 174,
+        "name": "Strategy_174",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 175,
+        "name": "Strategy_175",
+        "type": "volume",
+        "priority": 7
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_17.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_17.pkl"
+  },
+  {
+    "agent_id": 18,
+    "strategies": [
+      {
+        "id": 176,
+        "name": "Strategy_176",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 177,
+        "name": "Strategy_177",
+        "type": "hybrid",
+        "priority": 7
+      },
+      {
+        "id": 178,
+        "name": "Strategy_178",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 179,
+        "name": "Strategy_179",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 180,
+        "name": "Strategy_180",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 181,
+        "name": "Strategy_181",
+        "type": "volume",
+        "priority": 7
+      },
+      {
+        "id": 182,
+        "name": "Strategy_182",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 183,
+        "name": "Strategy_183",
+        "type": "hybrid",
+        "priority": 7
+      },
+      {
+        "id": 184,
+        "name": "Strategy_184",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 185,
+        "name": "Strategy_185",
+        "type": "trend",
+        "priority": 7
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_18.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_18.pkl"
+  },
+  {
+    "agent_id": 19,
+    "strategies": [
+      {
+        "id": 186,
+        "name": "Strategy_186",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 187,
+        "name": "Strategy_187",
+        "type": "volume",
+        "priority": 7
+      },
+      {
+        "id": 188,
+        "name": "Strategy_188",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 189,
+        "name": "Strategy_189",
+        "type": "hybrid",
+        "priority": 7
+      },
+      {
+        "id": 190,
+        "name": "Strategy_190",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 191,
+        "name": "Strategy_191",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 192,
+        "name": "Strategy_192",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 193,
+        "name": "Strategy_193",
+        "type": "volume",
+        "priority": 7
+      },
+      {
+        "id": 194,
+        "name": "Strategy_194",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 195,
+        "name": "Strategy_195",
+        "type": "hybrid",
+        "priority": 7
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_19.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_19.pkl"
+  },
+  {
+    "agent_id": 20,
+    "strategies": [
+      {
+        "id": 196,
+        "name": "Strategy_196",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 197,
+        "name": "Strategy_197",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 198,
+        "name": "Strategy_198",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 199,
+        "name": "Strategy_199",
+        "type": "volume",
+        "priority": 7
+      },
+      {
+        "id": 200,
+        "name": "Strategy_200",
+        "type": "volatility",
+        "priority": 7
+      },
+      {
+        "id": 201,
+        "name": "Strategy_201",
+        "type": "hybrid",
+        "priority": 7
+      },
+      {
+        "id": 202,
+        "name": "Strategy_202",
+        "type": "momentum",
+        "priority": 7
+      },
+      {
+        "id": 203,
+        "name": "Strategy_203",
+        "type": "trend",
+        "priority": 7
+      },
+      {
+        "id": 204,
+        "name": "Strategy_204",
+        "type": "oscillator",
+        "priority": 7
+      },
+      {
+        "id": 205,
+        "name": "Strategy_205",
+        "type": "volume",
+        "priority": 7
+      }
+    ],
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "data_file": "data/pdai_price_3months.csv",
+    "stage": 1,
+    "cpu_cores": 0.6,
+    "memory_limit": "1.5GB",
+    "output_file": "task/subagent_results/stage1_agent_20.json",
+    "checkpoint_file": "task/subagent_results/checkpoint_agent_20.pkl"
+  }
+]

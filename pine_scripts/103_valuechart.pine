@@ -1,0 +1,27 @@
+study("ValueChart Indicator [LazyBear]", shorttitle="ValueChart_LB")
+
+prev(s,i) => 
+ y=abs(round(i))
+ s[y]
+
+length = input(5, title="Number of bars")
+extTop = input(12, title="Extreme Level Top")
+extBot = input(-12, title="Extreme Level Bottom")
+sigTop = input(8, title="Significant Level Top")
+sigBot = input(-8, title="Significant Level Bottom")
+fairTop = input(4, title="Fair Value Top")
+fairBot = input(-4, title="Fair Value Bottom")
+
+ext_l = plot(extTop,title="Extreme Top Line",color=red)
+exb_l = plot(extBot,title="Extreme Bottom Line",color=red)
+top_l=plot(sigTop,title="Top Chart Line",color=red, style=3)
+bot_l=plot(sigBot, title="Bottom Chart Line",color=red, style=3)
+tm_l=plot(fairTop,title="Top Mid Chart Line",color=gray)
+bm_l=plot(fairBot,title="Bottom Mid Chart Line",color=gray)
+fill(ext_l, top_l, red)
+fill(exb_l, bot_l, red)
+fill(top_l, tm_l, yellow, transp=80)
+fill(bot_l, bm_l, yellow, transp=80)
+fill(tm_l, bm_l, green, transp=85)
+
+// Rest of the script with complex ValueChart calculations

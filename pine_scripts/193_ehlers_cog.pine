@@ -1,0 +1,7 @@
+study("Ehlers Center of Gravity Oscillator [LazyBear]", shorttitle="ECGO_LB", overlay=false, precision=3)
+src=input(hl2, title="Source")
+length=input(10, title="Length", minval=1, maxval=100)
+fr=input(true, title="Fill Osc/Trigger region")
+nm0=0, dm0=0
+nm1=1<=length ? (nm0+(1 + 0) * src[0]) : nm0, dm1=1<=length ? dm0+src[0] : dm0
+nm2=2<=length ? (nm1+(1 + 1) * src[1]) : nm1, dm2=2<=length ? dm1+src[1] : dm1

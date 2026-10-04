@@ -1,0 +1,24 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+
+study("Belkhayate Timing [LazyBear]", shorttitle="BT_LB", overlay=false)
+showHLC=input(true, title="Smooth Osc?"), showHisto=input(false, title="Show Histogram?")
+Range1=input(4), Range2=input(8), ebc=input(false, title="Enable Barcolors")
+middle = (((high + low) / 2) + ((high[1] + low[1]) / 2) + ((high[2] + low[2]) / 2) + ((high[3] + low[3]) / 2) + ((high[4] + low[4]) / 2)) / 5
+scale = (((high - low) + (high[1] - low[1]) + (high[2] - low[2]) + (high[3] - low[3]) + (high[4] - low[4])) / 5) * 0.2
+h = (high - middle) / scale
+l = (low - middle) / scale 
+o = (open - middle) / scale
+c = (close - middle) / scale
+ht=showHLC?avg(h, l, c):c
+plot(0, title="ZeroLine", color=gray)
+l1=plot(Range1, title="SellLine1", color=gray)
+l2=plot(Range2, title="SellLine2", color=gray)
+l3=plot(-Range1, title="BuyLine1", color=gray)
+l4=plot(-Range2, title="BuyLine2", color=gray)
+fill(l1,l2,red, title="OBZone"), fill(l3,l4, lime, title="OSZone")
+plot(showHisto?ht:na, style=histogram, title="BT Histogram")

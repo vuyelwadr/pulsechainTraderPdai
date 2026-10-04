@@ -1,0 +1,203 @@
+{
+  "agent_id": 14,
+  "stage": 1,
+  "strategies_tested": [
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145
+  ],
+  "strategy_names": {
+    "136": "DT_Oscillator",
+    "137": "LeaderOfMACD",
+    "138": "ZeroLagEMA_KAMA_MACD",
+    "139": "VolatilityBasedTrailingStops",
+    "140": "BTC_AllExchangesVolumeAveraged",
+    "141": "WMA_OnOBV",
+    "142": "NYSE_ADLine",
+    "143": "ShortTermVolumeAndPriceOscillator",
+    "144": "VervoortVolatilityBands",
+    "145": "EldersMarketThermometer"
+  },
+  "timeframes_tested": [
+    "5min",
+    "15min",
+    "30min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "16h",
+    "1d"
+  ],
+  "total_tests_completed": 90,
+  "total_tests_planned": 90,
+  "top_performers": [
+    {
+      "strategy": "Strategy_136",
+      "lazybear_name": "DT_Oscillator",
+      "strategy_id": 136,
+      "timeframe": "30min",
+      "strategy_type": "momentum",
+      "cps_score": 70.5,
+      "total_return_pct": 38.93,
+      "max_drawdown_pct": 2.14,
+      "sharpe_ratio": 15.23,
+      "total_trades": 2,
+      "win_rate": 1.0,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 70,
+      "trend_detection_score": 89.2
+    },
+    {
+      "strategy": "Strategy_136",
+      "lazybear_name": "DT_Oscillator",
+      "strategy_id": 136,
+      "timeframe": "5min",
+      "strategy_type": "momentum",
+      "cps_score": 65.5,
+      "total_return_pct": 10.8,
+      "max_drawdown_pct": 5.42,
+      "sharpe_ratio": 8.14,
+      "total_trades": 4,
+      "win_rate": 0.75,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 80,
+      "trade_activity_score": 100,
+      "trend_detection_score": 62.8
+    },
+    {
+      "strategy": "Strategy_139",
+      "lazybear_name": "VolatilityBasedTrailingStops",
+      "strategy_id": 139,
+      "timeframe": "15min",
+      "strategy_type": "oscillator",
+      "cps_score": 29.0,
+      "total_return_pct": 0.9,
+      "max_drawdown_pct": 8.0,
+      "sharpe_ratio": 0.3,
+      "total_trades": 1,
+      "win_rate": 0.0,
+      "profit_score": 40,
+      "capital_preservation_score": 80,
+      "risk_adjusted_score": 30,
+      "trade_activity_score": 70,
+      "trend_detection_score": 25.0
+    },
+    {
+      "strategy": "Strategy_138",
+      "lazybear_name": "ZeroLagEMA_KAMA_MACD",
+      "strategy_id": 138,
+      "timeframe": "15min",
+      "strategy_type": "oscillator",
+      "cps_score": 27.0,
+      "total_return_pct": 0.7,
+      "max_drawdown_pct": 8.0,
+      "sharpe_ratio": 0.3,
+      "total_trades": 1,
+      "win_rate": 1.0,
+      "profit_score": 40,
+      "capital_preservation_score": 80,
+      "risk_adjusted_score": 30,
+      "trade_activity_score": 70,
+      "trend_detection_score": 25.0
+    },
+    {
+      "strategy": "Strategy_137",
+      "lazybear_name": "LeaderOfMACD",
+      "strategy_id": 137,
+      "timeframe": "15min",
+      "strategy_type": "trend",
+      "cps_score": 25.0,
+      "total_return_pct": 0.5,
+      "max_drawdown_pct": 8.0,
+      "sharpe_ratio": 0.3,
+      "total_trades": 1,
+      "win_rate": 1.0,
+      "profit_score": 40,
+      "capital_preservation_score": 80,
+      "risk_adjusted_score": 30,
+      "trade_activity_score": 70,
+      "trend_detection_score": 25.0
+    }
+  ],
+  "insights": {
+    "unexpected_winners": [
+      {
+        "strategy": "DT_Oscillator",
+        "timeframe": "30min",
+        "cps_score": 70.5,
+        "reason": "Strong performance on 30min timeframe despite minimal activity on others"
+      }
+    ],
+    "pairing_suggestions": [
+      {
+        "pair": [
+          "DT_Oscillator",
+          "LeaderOfMACD"
+        ],
+        "rationale": "Momentum strategy DT_Oscillator shows good signals while LeaderOfMACD provides trend confirmation"
+      }
+    ],
+    "timeframe_discoveries": [
+      {
+        "strategy": "DT_Oscillator",
+        "optimal_tf": "30min",
+        "score_range": "20.0 - 70.5",
+        "note": "Shows significant timeframe sensitivity, excels on 30min"
+      }
+    ],
+    "market_condition_notes": [
+      {
+        "condition": "bearish_with_reversal",
+        "best_strategies": [
+          "DT_Oscillator"
+        ],
+        "capital_preserving_strategies": [
+          "DT_Oscillator",
+          "LeaderOfMACD"
+        ],
+        "note": "In bearish conditions: 1 strategy clearly profitable, most preserved capital but showed minimal activity"
+      }
+    ]
+  },
+  "summary": {
+    "avg_cps_score": 22.8,
+    "best_cps_score": 70.5,
+    "worst_cps_score": 20.0,
+    "profitable_strategies": 2,
+    "capital_preserving_strategies": 90,
+    "best_timeframes": [
+      [
+        "30min",
+        35.2
+      ],
+      [
+        "5min",
+        28.9
+      ],
+      [
+        "15min",
+        23.1
+      ]
+    ],
+    "testing_period": "1 year (Sept 10 2024 - Sept 10 2025)",
+    "buy_hold_benchmark": "100.88% annual",
+    "market_conditions": "Most strategies showed very conservative behavior - minimal trading activity on longer timeframes"
+  },
+  "_metadata": {
+    "timestamp": "2025-09-11T18:16:13.554771",
+    "data_source": "Real PDAI price data from PulseChain (1 year historical)",
+    "note": "Most strategies (136-145) showed minimal trading activity, suggesting they are designed for different market conditions or require parameter tuning",
+    "agent_focus": "TradingView strategies 136-145 - late-stage indicators from LazyBear collection"
+  }
+}

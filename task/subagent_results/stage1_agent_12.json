@@ -1,0 +1,55 @@
+{
+  "agent_id": 12,
+  "stage": 1,
+  "test_date": "2025-09-11T18:10:32.001970",
+  "data_file": "/Users/ruwodda/Documents/Personal/Repos/trading/pulsechainTraderPdai/data/pdai_historical_data_20240910_2324_to_20250910_2324.csv",
+  "strategies_tested": [
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125
+  ],
+  "timeframes_tested": [
+    "5min",
+    "15min",
+    "30min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "16h",
+    "1d"
+  ],
+  "results": {
+    "116": {
+      "5min": {
+        "strategy_name": "RSI %B",
+        "start_time": "2024-09-10 23:20:00",
+        "end_time": "2025-09-10 23:20:00",
+        "duration_days": 365,
+        "data_points": 104900,
+        "initial_balance": 1000.0,
+        "final_balance": 0.01987045743789917,
+        "total_return_pct": -99.99801295425621,
+        "total_fees": 208.26151360568414,
+        "total_trades": 1732,
+        "buy_trades": 866,
+        "sell_trades": 866,
+        "win_rate_pct": 4.618937644341801,
+        "profitable_trades": 40,
+        "losing_trades": 826,
+        "avg_win_pct": 1.0664155413029086,
+        "avg_loss_pct": -2.139732469536157,
+        "profit_factor": 0.4983873248107891,
+        "max_drawdown_pct": 99.99801295425621,
+        "volatility_pct": 58.231609922897775,
+        "sharpe_ratio": -64.01922659703403,
+        "trades": [
+          {
+            "timestamp": 

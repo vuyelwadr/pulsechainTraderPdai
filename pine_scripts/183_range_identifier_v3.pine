@@ -1,0 +1,35 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+// v2 - Made midline connected based on connectRanges option
+// v3 - Filter ranges, Additional Non-Overlay mode. 
+//
+study("Range Identifier v3 [LazyBear]", shorttitle="RIDV3_LB", overlay=true)
+ovm=input(true, title="Overlay Mode")
+connectRanges=input(false, title="Connect Ranges")
+showMidLine=input(false, title="Show MidLine")
+lengthEMA=input(34, title="EMA Length")
+showEMA=input(true, title="Show EMA")
+hc=input(true, title="Highlight Consolidation")
+hcf=input(false, title="Mark only filtered ranges")
+fb=input(5, title="Filter bars")
+e=ema(close,lengthEMA)
+inr=close<nz(up[1]) and close>down[1]
+up =  inr ? nz(up[1]) : high
+down = inr ? nz(down[1]) : low
+count=inr?nz(count[1])+1:0
+mid = ovm?avg(up,down):na
+ul=plot(ovm?connectRanges?up:up==nz(up[1])?up:na:na, color=gray, linewidth=2, style=linebr, title="Up")
+ll=plot(ovm?connectRanges?down:down==nz(down[1])?down:na:na, color=gray, linewidth=2, style=linebr, title="Down")
+dummy=plot(ovm and hc and (not hcf)?close>e?down:up:na, color=gray, style=circles, linewidth=0, title="DummyHC")
+dummyHCF=plot(ovm and hc and hcf?(count>=fb?down:up):na, color=gray, style=circles, linewidth=0, title="DummyHCF")
+fill(ul,dummy, color=lime, title="CloseAboveEMAFill")
+fill(dummy,ll, color=red, title="CloseBelowEMAFill")
+fill(dummyHCF,ul, color=fuchsia, title="RangeHasMoreBarsFill")
+fill(dummyHCF,ll, color=gray, title="RangeHasNotEnoughBarsFill")
+plot(ovm and showMidLine?connectRanges?mid:((mid==nz(mid[1]))?mid:na):na, color=gray, linewidth=1, title="Mid", style=linebr)
+plot(ovm and showEMA?e:na, title="EMA", color=black, linewidth=2)
+plot(not ovm?count:na, style=columns, title="RangeBarCount", color=count==fb?fuchsia:count>fb?(close>e?green:red):gray)

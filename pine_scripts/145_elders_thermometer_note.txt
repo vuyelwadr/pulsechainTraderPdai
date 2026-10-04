@@ -1,0 +1,9 @@
+NOTE: Elder's Market Thermometer Pine Script was not available from the TradingView URL.
+The webpage contained only the description but not the actual Pine Script source code.
+To obtain this script, you would need to:
+1. Open the script directly on TradingView
+2. Access the Pine Editor
+3. Copy the source code from there
+
+URL: https://www.tradingview.com/v/HqvTuEMW/
+Author: LazyBear

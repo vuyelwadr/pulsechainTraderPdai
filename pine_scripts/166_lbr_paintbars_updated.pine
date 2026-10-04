@@ -1,0 +1,47 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("LBR PaintBars [LazyBear]", overlay=true, shorttitle="LBRBARS_LB")
+lbperiod = input (16, title="HL Length")
+atrperiod = input(9, title="ATR Length")
+mult = input (2.5, minval=0, title="ATR Multiplier")
+bcf = input(true, title="Color LBR Bars?")
+mnlb=input(false, title="Color non LBR Bars?" )
+svb=input(false, title="Show Volatility Bands?")
+mkb=input(true, title="Mark LBR bars above/below KC?")
+lengthKC = input(20, minval=1, title="KC Length")
+multKC = input(1.5, title="KC Multiplier")
+useTR = input(true, title="Use TR for KC")
+skb=input(false, title="Show KC?")
+
+calc_kc(source, useTR, length, mult) =>
+    ma = ema(source, length)
+    range = useTR ? tr : high - low
+    rangema = ema(range, length)
+    upper = ma + rangema * mult
+    lower = ma - rangema * mult
+    [upper, ma, lower]
+
+[u,b,l] = calc_kc(close, useTR, lengthKC, multKC)
+uk=plot(skb?u:na, color=gray, linewidth=1, title="KC Upper"), lk=plot(skb?l:na, color=gray, linewidth=1, title="KC Lower")
+fill(uk,lk,gray), plot(skb?b:na, style=circles, color=orange, linewidth=1)
+
+hl = high-low
+hlma = sma(hl, lbperiod)
+atr_1=sma(tr,atrperiod)
+up_b = b + (mult * atr_1)
+dn_b = b - (mult * atr_1)
+isv = iff(hl > hlma, 1, 0)
+isc = iff(close > nz(close[1], close), 1, 0)
+ishighvol = iff(volume > nz(volume[1], volume), 1, 0)
+
+bc = iff(bcf and isv, iff(isc, iff(low > b, iff(mkb and high > u, teal, green), iff(high < b, iff(mkb and low < l, orange, red), iff(mkb and (high > u or low < l), yellow, blue))), iff(low > b, iff(mkb and high > u, fuchsia, maroon), iff(high < b, iff(mkb and low < l, black, navy), iff(mkb and (high > u or low < l), gray, aqua)))), na)
+barcolor(bc)
+b_colors=iff(not bcf,na,iff(not isv, iff(mnlb, iff(isc, white, silver), na), na))
+barcolor(b_colors)
+
+upplot=plot(svb?up_b:na, color=teal, linewidth=2, title="Up")
+dnplot=plot(svb?dn_b:na, color=red, linewidth=2, title="Dn")
+fill(upplot, dnplot, silver, transp=92)

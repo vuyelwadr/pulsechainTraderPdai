@@ -1,0 +1,50 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Custom MA MACD [LazyBear]", shorttitle="CMMACD_LB")
+useZeroLagEMA=input(true, type=bool)
+useKAMA=input(false, type=bool)
+
+src=close
+calc_zlema(src, length) =>
+    ema1=ema(src, length)
+    ema2=ema(ema1, length)
+    d=ema1-ema2
+    ema1+d
+
+fastend=input(0.666)
+slowend=input(0.0645)
+
+calc_kama(src, amaLength, fastend, slowend) =>
+    diff = abs(src-src[1])
+    noise = sum(diff, amaLength)
+    signal = mom(src, amaLength)
+    efratio=(noise!=0) ? (signal/noise) : 1
+    smooth=pow(efratio*(fastend-slowend)+slowend,2)
+    k=nz(k[1], src)+smooth*(src-nz(k[1], src))
+    k
+
+ma(src, length) =>
+    useZeroLagEMA ? calc_zlema(src, length) : useKAMA ? calc_kama(src, length, fastend, slowend) : 0
+
+calc_leader(src, shortLength, longLength) =>
+    sema = ma( src, shortLength )
+    lema = ma( src, longLength )
+    i1 = sema + ma( src - sema, shortLength )
+    i2 = lema + ma( src - lema, longLength )
+    i1 - i2
+
+fastLength = input(12, minval=1), slowLength=input(26,minval=1)
+signalLength=input(9,minval=1)
+
+fastMA = ma(src, fastLength)
+slowMA = ma(src, slowLength)
+macd = fastMA - slowMA
+sig = sma(macd, signalLength)
+hist = macd - sig
+
+plot(hist, color=red, style=histogram)
+plot(macd, color=blue)
+plot(sig, color=orange)

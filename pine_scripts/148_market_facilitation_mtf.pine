@@ -1,0 +1,25 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+// v2 - MTF support
+// v1 - initial release
+//
+study("Market Facilitation Index v2 [LazyBear]", shorttitle="MFIndex_MTF_LB", overlay=true)
+plot_offs=input(0.005, title="Indicator offset % (below low)")
+
+useCustomTimeframe=input(false)
+customTimeframe=input("D", type=resolution)
+
+h=useCustomTimeframe ? security(tickerid, customTimeframe, high) : high
+l=useCustomTimeframe ? security(tickerid, customTimeframe, low) : low
+v = useCustomTimeframe ? security(tickerid, customTimeframe, volume) : volume
+
+r_hl=roc((h-l)/v,1)
+r_v=roc(v,1)
+green_f= (r_hl > 0) and (r_v > 0)
+fade_f=(r_hl < 0) and (r_v < 0)
+fake_f=(r_hl > 0) and (r_v < 0)
+squat_f=(r_hl < 0) and (r_v > 0)
+b_color = green_f ? green : fade_f ? blue : fake_f ? gray : squat_f ? red : na
+plot(l - (l*plot_offs), color=b_color, style=circles, linewidth=4)

@@ -1,0 +1,14 @@
+// @author LazyBear
+// Ulcer Index 
+// @credits http://www.tangotools.com/ui/ui.htm
+
+study(title = "Ulcer Index [LazyBear]", shorttitle="UlcerIndex_LB")
+length=input(10)
+cutoff=input(5)
+hcl=highest(close,length)
+r=100.0*((close-hcl)/hcl)
+ui=sqrt(sum(pow(r,2), length)/length)
+sl=plot(ui, color=ui>cutoff ? red : aqua)
+hline(cutoff, color=red)
+bl=plot(cutoff)
+fill(sl,bl,color=silver)

@@ -1,0 +1,20 @@
+[
+  "GridTradingStrategy",
+  "DCAStrategy",
+  "AdaptiveGridTrendStrategy",
+  "VolatilityTargetedDCAStrategy",
+  "AdaptiveRegimeHybridStrategy",
+  "VolatilityBreakoutKAMAStrategy",
+  "VWAPMomentumPullbackStrategy",
+  "ConstanceBrownCompositeIndex",
+  "TimeAndMoneyChartChannel",
+  "TrendTriggerFactorPB",
+  "AdaptiveGridKAMAStrategy",
+  "RSIBandsBreakoutStrategy",
+  "TMCCCBCIHybridStrategy",
+  "PriceZoneVMAHybridStrategy",
+  "RSIBandsPZIGatedStrategy",
+  "SuperCompositeStrategy",
+  "RegimeRouterStrategy",
+  "MetaEnsembleStrategy"
+]

@@ -1,0 +1,33 @@
+// @author LazyBear
+// @credits Formula taken from http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels
+//
+study(title="Keltner Channel [LazyBear]", overlay=true)
+offset = 1
+lengthMiddle = input(20, title="MiddleEMA")
+channelATR = input(10, title="Channel wall ATR")
+channelWidth = input(2, title = "Channel Width")
+showBarColor = input(true, title="Highlight Bear/Bull reversals?", type=bool)
+
+emaVal = ema(close,lengthMiddle)
+upperVal = emaVal + channelWidth * atr(channelATR)
+lowerVal = emaVal - channelWidth * atr(channelATR)
+
+middle_line = plot(emaVal, style=circles, linewidth=2)
+upper_line = plot(upperVal)
+lower_line = plot(lowerVal)
+fill(upper_line, lower_line, color=green, transp=80)
+
+bearish_reversal = high > upperVal 
+bear_point = bearish_reversal ? (high+offset) : na
+bear_color = bearish_reversal ? red : na
+
+bullish_reversal = low < lowerVal
+bull_point = bullish_reversal ? (low-offset) : na
+bull_color = bullish_reversal ? green : na
+
+bar_color = bearish_reversal ? bear_color : (bullish_reversal ? bull_color : na)
+
+plot(bear_point, color = bear_color, style=cross, linewidth=2)
+plot(bull_point, color = bull_color, style=cross, linewidth=2)
+
+bgcolor(showBarColor ? bar_color : na)

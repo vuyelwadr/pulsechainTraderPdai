@@ -1,0 +1,12 @@
+//
+// @author LazyBear
+// 
+study(title = "Bears/Bulls [LazyBear]", shorttitle="BearsBulls_LB")
+length=input(13)
+src=close
+
+s_ma = sma(src, length)
+s_bulls = high - s_ma
+s_bears = low - s_ma
+plot(s_bulls, style=area, color=green, transp=50)
+plot(s_bears, style=area, color=red, transp=50)

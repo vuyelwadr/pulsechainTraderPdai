@@ -1,0 +1,48 @@
+//
+// @author LazyBear
+//
+// If you use this code in its original/modified form, do drop me a note. 
+//
+study(title = "Better Volume Indicator [LazyBear]", shorttitle="BVI_LB")
+
+//
+// Configurable params
+//
+length=input(8, title="Lookback")
+enableBarColors=input(false, type=bool)
+use2Bars=input(true, type=bool)
+lowVol=input(true, type=bool)
+climaxUp=input(true, type=bool)
+climaxDown=input(true, type=bool)
+churn=input(true, type=bool)
+climaxChurn=input(true, type=bool)
+
+//
+// Tweak the colors
+//
+lowVolColor = yellow
+climaxUpColor = red
+climaxDownColor = white
+churnColor = green
+climaxChurnColor = #8B008B
+defColor = #00FFFF	 
+
+//
+// Don't change anything below this
+//
+range=tr
+v=volume
+v1 = close >= open ? (v * ((range) / ((2+(range*range)/10) * range + (open - close)))) : (v * (((range + close - open)) / (2+(range*range)/10) * range + (close - open)))
+v2 = v - v1
+v3 = v1 + v2
+v4 = v1 * range
+v5 = (v1 - v2) * range
+v6 = v2 * range
+v7 = (v2 - v1) * range
+v8 = (range != 0 ? v1 / range : 1)
+v9 = (range != 0 ? (v1 - v2) / range : 1)
+v10 = (range != 0 ? v2 / range : 1)
+v11 = (range != 0 ? (v2 - v1) / range : 1)
+v12 = (range != 0 ? v3 / range : 1)
+
+// Note: Script appears to be cut off in the original source - this is all that was available from the URL

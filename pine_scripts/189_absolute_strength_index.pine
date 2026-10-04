@@ -1,0 +1,18 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+study("Absolute Strength Index [LazyBear]", shorttitle="ABSSI_LB")
+lma=input(21, title="EMA Length")
+ld=input(34, title="Signal Length")
+osl=10 
+calc_abssio( ) =>
+    A=iff(close>close[1], nz(A[1])+(close/close[1])-1,nz(A[1]))
+    M=iff(close==close[1], nz(M[1])+1.0/osl,nz(M[1]))
+    D=iff(close<close[1], nz(D[1])+(close[1]/close)-1,nz(D[1]))
+    iff (D+M/2==0, 100, 100-100/(1+(A+M/2)/(D+M/2)))
+
+abssi=(calc_abssio()  )
+plot(abssi, color=blue, linewidth=2, title="ABSSI")

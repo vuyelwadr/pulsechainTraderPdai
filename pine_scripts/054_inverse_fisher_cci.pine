@@ -1,0 +1,10 @@
+// SOURCE NOT AVAILABLE FROM WEBPAGE
+// @author LazyBear
+//
+// If you use this code in its original/modified form, do drop me a note.
+//
+study("Inverse Fisher CCI [LazyBear]", shorttitle="InvFisherCCI_LB")
+
+// NOTE: The script source was not visible in the webpage content
+// Please visit https://www.tradingview.com/v/oyfd86j2/ directly to get the complete script
+// This script includes three indicators: Chande's R2, Z-score, and Inverse Fisher Transform on CCI

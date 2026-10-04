@@ -1,0 +1,10 @@
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+
+study(title="WMA on OBV [LazyBear[", shorttitle="WMAOBV_LB")
+src = close, len = input(13, minval=1, title="Length")
+out = cum(change(src) > 0 ? volume : change(src) < 0 ? -volume : 0*volume)
+out2 = wma(out, len)
+plot(out, color=blue, title="OBV")
+plot(out2, title="EMA", color=red)

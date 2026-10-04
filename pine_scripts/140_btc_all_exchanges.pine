@@ -1,0 +1,18 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("BTCVolume_AllExchgs_Avgd [LazyBear]")
+v1 = security("BTCE:BTCUSD", period, volume)
+v2 = security("BITSTAMP:BTCUSD", period, volume)
+v3 = security("BITFINEX:BTCUSD", period, volume)
+v4 = security("HUOBI:BTCCNY", period, volume)
+v5 = security("BTCCHINA:BTCCNY", period, volume)
+includeOkCoin=input(false)
+v6 = security("OKCOIN:BTCUSD", period, volume)
+v = includeOkCoin ? avg(v1, v2, v3, v4, v5, v6) : avg(v1, v2, v3, v4, v5)
+
+b_color=(close>open ? green : red)
+
+plot(v, style=histogram, color=b_color , linewidth=4)

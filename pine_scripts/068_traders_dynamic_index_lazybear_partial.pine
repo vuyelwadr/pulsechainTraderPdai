@@ -1,0 +1,16 @@
+//
+// @author LazyBear
+// If you use this code in its orignal/modified form, do drop me a note. 
+// 
+study("Traders Dynamic Index [LazyBear]", shorttitle="TDI_LB")
+lengthrsi=input(13)
+src=close
+lengthband=input(34)
+lengthrsipl=input(2)
+lengthtradesl=input(7)
+
+r=rsi(src, lengthrsi)
+ma=sma(r,lengthband)
+
+// Note: This script is incomplete - the original source was truncated
+// The full script was not available from the TradingView URL

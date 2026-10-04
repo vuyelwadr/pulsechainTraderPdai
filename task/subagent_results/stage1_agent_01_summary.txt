@@ -1,0 +1,88 @@
+Stage 1 Agent 01 - TradingView Strategy Testing Results
+=======================================================
+Test Date: 2025-09-11T18:01:00.522004
+Data Period: 3 months (bearish market conditions)
+Strategies Tested: 11
+Total Valid Tests: 75
+Average CPS Score: 27.9
+
+KEY INSIGHTS FOR BEARISH MARKET CONDITIONS:
+---------------------------------------------
+• Top 5 strategies for bearish/reversal conditions: InsyncIndex, SchaffTrendCycle, ZeroLagEMA, CoralTrend, TradersDynamicIndex
+• Capital preservation leaders (<10% drawdown): 5 found, best is InsyncIndex (16h) with 6.91% drawdown, CPS=78.99
+• Strategies beating Buy & Hold in bearish period: 9/75 (12.0%)
+• Profitable strategies in bearish period: 27/75, best: InsyncIndex (16h) with 29.25% return
+• Best timeframes for bearish conditions: 16h(71.6), 1d(62.6), 8h(55.7)
+
+TOP 10 PERFORMERS (by CPS Score):
+-----------------------------------
+ 1. InsyncIndex (16h)
+    CPS Score: 78.99
+    Return: 29.25% (vs B&H: 24.16%)
+    Max Drawdown: 6.91%
+    Trades: 4
+    Component Scores: P=88.4, CP=80.0, R=100.0, A=70.0, T=19.6
+
+ 2. SchaffTrendCycle (16h)
+    CPS Score: 77.29
+    Return: 12.07% (vs B&H: 24.16%)
+    Max Drawdown: 4.74%
+    Trades: 2
+    Component Scores: P=65.0, CP=100.0, R=100.0, A=70.0, T=22.9
+
+ 3. ZeroLagEMA (16h)
+    CPS Score: 76.65
+    Return: 43.33% (vs B&H: 24.16%)
+    Max Drawdown: 12.35%
+    Trades: 8
+    Component Scores: P=100.0, CP=60.0, R=100.0, A=70.0, T=11.5
+
+ 4. CoralTrend (1d)
+    CPS Score: 72.64
+    Return: 12.09% (vs B&H: 22.11%)
+    Max Drawdown: 5.21%
+    Trades: 2
+    Component Scores: P=66.4, CP=80.0, R=100.0, A=70.0, T=22.2
+
+ 5. TradersDynamicIndex (30min)
+    CPS Score: 71.38
+    Return: 49.22% (vs B&H: 21.89%)
+    Max Drawdown: 27.24%
+    Trades: 12
+    Component Scores: P=100.0, CP=25.5, R=100.0, A=100.0, T=0.0
+
+ 6. KaufmannAMA (16h)
+    CPS Score: 71.27
+    Return: 28.05% (vs B&H: 24.16%)
+    Max Drawdown: 17.73%
+    Trades: 18
+    Component Scores: P=86.4, CP=40.0, R=100.0, A=100.0, T=3.4
+
+ 7. ElderImpulse (1d)
+    CPS Score: 70.84
+    Return: 33.77% (vs B&H: 22.11%)
+    Max Drawdown: 17.74%
+    Trades: 6
+    Component Scores: P=100.0, CP=40.0, R=100.0, A=70.0, T=3.4
+
+ 8. FRAMA (16h)
+    CPS Score: 68.58
+    Return: 24.28% (vs B&H: 24.16%)
+    Max Drawdown: 20.95%
+    Trades: 12
+    Component Scores: P=80.2, CP=38.1, R=100.0, A=100.0, T=0.0
+
+ 9. ZeroLagEMA (1d)
+    CPS Score: 67.23
+    Return: 1.82% (vs B&H: 22.11%)
+    Max Drawdown: 10.05%
+    Trades: 10
+    Component Scores: P=52.5, CP=60.0, R=100.0, A=100.0, T=14.9
+
+10. InsyncIndex (1d)
+    CPS Score: 66.74
+    Return: 29.89% (vs B&H: 22.11%)
+    Max Drawdown: 23.95%
+    Trades: 4
+    Component Scores: P=94.1, CP=32.1, R=100.0, A=70.0, T=0.0
+

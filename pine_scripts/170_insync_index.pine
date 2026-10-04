@@ -1,0 +1,29 @@
+//@version=4
+study(title = "Insync Index [LazyBear]", shorttitle="II_LB")
+src=close
+div = input(10000, title="EMO Divisor", minval=1)
+emoLength = input(14, minval=1, title="EMO length")
+fastLength = input(12, minval=1, title="MACD Fast EMA Length")
+slowLength=input(26,minval=1, title="MACD Slow EMA Length")
+signalLength=input(9,minval=1, title="MACD Signal Length")
+mfiLength = input(20, minval=1, title="MFI Length")
+
+calc_emo() => sma(div * change(hl2) * (high - low) / volume, emoLength)
+calc_macd(source) =>
+ fastMA = ema(source, fastLength)
+ slowMA = ema(source, slowLength)
+ fastMA - slowMA
+
+calc_mfi(length) => 
+ src = hlc3
+ upper = sum(volume * (change(src) <= 0 ? 0 : src), length)
+ lower = sum(volume * (change(src) >= 0 ? 0 : src), length)
+ mf = rsi(upper, lower)
+ mf
+
+calc_dpo(period_) => 
+ isCentered = false
+ barsback = period_/2 + 1
+ ma = sma(close, period_)
+ dpo = isCentered ? close[barsback] - ma : close - ma[barsback]
+ dpo

@@ -1,0 +1,12 @@
+//
+// @author LazyBear
+// @credits http://freethinkscript.blogspot.com/2009/05/only-scalpers-channel-that-you-will.html
+//
+study(title = "Scalper's Channel [LazyBear]", shorttitle="weak_volume_dependency [LB]", overlay=true)
+length = input(20)
+factor = input(15)
+pi = atan(1)*4
+Average(x,y) => (sum(x,y) / y)
+scalper_line= plot(Average(close, factor) - log(pi * (atr(factor))), color=blue, linewidth=3)
+hi = plot (highest(length), color=fuchsia)
+lo = plot (lowest(length), color=fuchsia)

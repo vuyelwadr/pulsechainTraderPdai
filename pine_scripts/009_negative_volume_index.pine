@@ -1,0 +1,18 @@
+//
+// @author LazyBear
+// @credits http://www.investopedia.com/terms/n/nvi.asp
+// Calculation of the NVI depends on how current volume compares with the previous 
+// day's trading volume. If current volume is lower than the previous day's volume, 
+// NVI = Previous NVI + {[(Today's Closing Price-Yesterday's Closing Price)/Yesterday's Closing Price)] 
+// x 
+// Previous NVI}. If current volume is higher than the previous day's volume, NVI is unchanged.
+// 
+study(title = "Negative Volume Index [LazyBear]", shorttitle="NVI_LB")
+
+length=input(365)
+showEMA=input(true, title="Show EMA?", type=bool)
+START_VALUE=100
+nvi=(volume < volume[1]) ? nz(nvi[1]) + ((close - close[1])/close[1]) * (na(nvi[1]) ? nvi[1] : START_VALUE) : nz(nvi[1])
+hline(0)
+plot(nvi)
+plot(showEMA ? ema(nvi, length) : na, color=orange, linewidth=2)

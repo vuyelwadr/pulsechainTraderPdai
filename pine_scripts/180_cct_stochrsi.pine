@@ -1,0 +1,25 @@
+//@version=4
+study("CCT StochRSI [LazyBear]", shorttitle="CCTSTOCHRSI_LB")
+ull = input(90.0, title="Top Warning Line")
+lll = input(10.0, title="Bottom Warning Line")
+src = input(close)
+u1=hline( 100, color=gray, title="Top Line")
+l1=hline( 0, color=gray, title="Bottom Line")
+u=hline( ull, color=gray, title="Top Warning Line")
+l=hline( lll, color=gray, title="Bottom Warning Line")
+fill(u1,u, red, title="Top Fill")
+fill(l1,l, green, title="Bottom Fill")
+hline(50, title="MidLine")
+type=input(defval=1, title="Type (0=>Custom, 1 - 6 => Alerts levels 1 to 6)", maxval=6, minval=0)
+r21=type==0?na:rsi(src, 21)
+r14=type==0?na:rsi(src, 14)
+r5 =type==0?na:rsi(src, 5)
+r13=type==0?na:rsi(src, 13)
+smoothed=input(false, title="[Custom] Smooth CCTStochRSI?")
+lr=input(8, title="[Custom] RSI Length")
+le=input(3, title="[Custom] EMA Length")
+ls=input(9, title="[Custom] Signal Length")
+// Alert levels
+al1=type==1?(r21-lowest(r21,8))/(highest(r21,13) - lowest(r21,13))*100:na
+al2=type==2?(r21-lowest(r21,21))/(highest(r21,21) - lowest(r21,21))*100:na
+al3=type==3?(r14-lowest(r14,14))/(highest(r14,14) - lowest(r14,14))*100:na

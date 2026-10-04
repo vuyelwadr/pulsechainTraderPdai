@@ -1,0 +1,26 @@
+// 
+// @author LazyBear
+//
+// If you use modify / use this code, appreciate if you could drop me a note. 
+//
+study(title = "STARC Bands [LazyBear]", shorttitle="StarcBands_LB", overlay=true)
+src = close
+length=input(15)
+tr_custom() => 
+ x1=high-low
+ x2=abs(high-close[1])
+ x3=abs(low-close[1])
+ max(x1, max(x2,x3))
+ 
+atr_custom(x,y) => 
+ sma(x,y)
+ 
+tr_v = tr_custom()
+basis=sma(src, 6)
+acustom=(2*atr_custom(tr_v, length))
+ul=basis+acustom
+ll=basis-acustom
+m=plot(basis, linewidth=2, color=navy, style=circles, linewidth=2, title="Median")
+l=plot(ul, color=red, linewidth=2, title="Starc+")
+t=plot(ll, color=green, linewidth=2, title="Star-")
+fill(t,l, silver, title="Region fill")

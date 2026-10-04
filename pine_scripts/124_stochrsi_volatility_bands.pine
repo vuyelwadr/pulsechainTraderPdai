@@ -1,0 +1,27 @@
+//
+// @author LazyBear
+// List of all my indicators: https://www.tradingview.com/v/4IneGo8h/
+//
+study(title="Stochastic RSI with Volatility Bands [LazyBear]", shorttitle="StochRSIBB_LB")
+source = close
+lengthRSI = input(14, minval=1), lengthStoch = input(14, minval=1)
+smoothK = input(3, minval=1), smoothD = input(3, minval=1)
+rsi1 = rsi(source, lengthRSI)
+k = sma(stoch(rsi1, rsi1, rsi1, lengthStoch), smoothK)
+d = sma(k, smoothD)
+plot(k, color=blue)
+plot(d, color=orange)
+h0 = hline(80)
+h1 = hline(20)
+fill(h0, h1, color=purple, transp=80)
+
+// Calc volatility bands
+length=input(20, title="BB Length"), mult=input(2.0, title="BB stdev multiplier")
+x=k
+srcx=x
+basisx=sma(srcx, length)
+devx = (mult * stdev(srcx, length))
+ulx = (basisx + devx)
+llx = (basisx - devx)
+plot(x>=ulx? x : na, color=blue, style=cross, linewidth=3 )
+plot(x<=llx? x : na, color=blue, style=cross, linewidth=3 )

@@ -1,0 +1,32 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("DT Oscillator [LazyBear]", shorttitle="DTOsc_LB")
+rsiLength = input(13, title="RSI period")
+stochLength=input(8, title="Stoch period")
+maType = input(1, title="MA type: 1=>SMA, 2=>EMA")
+kPeriod = input(5, title="K period")
+dPeriod = input(3, title="D period")
+upper = input(70, title="Upper band")
+lower = input(30, title="Lower band")
+src=close
+
+WiMA(src, length) =>
+    ms=(src + nz(ms[1] * (length-1)))/length
+    ms
+
+ma(ma, s, l) =>
+    ma == 1? sma(s,l) : ema(s,l)
+
+stoRSI = 100*((WiMA(src, rsiLength) - lowest(WiMA(src, rsiLength), stochLength)) / ((highest(WiMA(src, rsiLength), stochLength)) - lowest(WiMA(src, rsiLength), stochLength)))
+sk=ma(maType, stoRSI,kPeriod)
+sd=ma(maType, sk, dPeriod)
+
+plot(sk, color=blue, title="DTOscK")
+plot(sd, color=gray, title="DTOscD")
+plot(50)
+ul = plot(upper, color=red)
+ll = plot(lower, color=green)
+fill(ul, ll)

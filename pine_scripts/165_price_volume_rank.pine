@@ -1,0 +1,17 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+// 
+study("Price Volume Rank [LazyBear]", shorttitle="PVR_LB", overlay=false)
+showMA=input(true, title="Show MA Crossovers")
+ma1=input(5, title="Fast MA Length", defval=5),ma2=input(10, title="Slow MA Length", defval=10)
+dblSmoothing=input(false, title="Double Smoothing")
+pvr=iff(close>close[1] and volume>volume[1],1,
+    iff(close>close[1] and volume<=volume[1],2,
+    iff(close<=close[1] and volume<=volume[1],3,4)))
+ux=pvr>3.0?pvr:na,lx=pvr<2.0?pvr:na
+u=plot(showMA?na:na(volume)?na:2.0, color=green, title="BullLine")
+l=plot(showMA?na:na(volume)?na:3.0, color=red, title="BearLine")
+fill(u,l,gray)
+mal=plot(showMA?na(volume)?na:2.5:na, color=gray, title="MACutoff")

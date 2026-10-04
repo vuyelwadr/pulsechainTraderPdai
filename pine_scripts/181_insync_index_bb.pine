@@ -1,0 +1,117 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+//
+study(title = "Insync Index With BB [LazyBear]", shorttitle="IIBB_LB")
+src=close
+div = input(10000, title="EMO Divisor", minval=1)
+emoLength = input(14, minval=1, title="EMO length")
+fastLength = input(12, minval=1, title="MACD Fast EMA Length")
+slowLength=input(26,minval=1, title="MACD Slow EMA Length")
+signalLength=input(9,minval=1, title="MACD Signal Length")
+mfiLength = input(20, minval=1, title="MFI Length")
+
+calc_emo() => sma(div * change(hl2) * (high - low) / volume, emoLength)
+calc_macd(source) =>
+    fastMA = ema(source, fastLength)
+    slowMA = ema(source, slowLength)
+    fastMA - slowMA
+
+calc_mfi(length) => 
+    src = hlc3
+    upper = sum(volume * (change(src) <= 0 ? 0 : src), length)
+    lower = sum(volume * (change(src) >= 0 ? 0 : src), length)
+    mf = rsi(upper, lower)
+    mf
+
+calc_dpo(period_) =>  
+    isCentered = false
+    barsback = period_/2 + 1
+    ma = sma(close, period_)
+    dpo = isCentered ? close[barsback] - ma : close - ma[barsback]
+    dpo
+
+calc_roc(source, length) =>
+    roc = 100 * (source - source[length])/source[length]
+    roc
+
+calc_stochD(length, smoothD, smoothK) =>
+    k = sma(stoch(close, high, low, length), smoothK)
+    d = sma(k, smoothD)
+    d
+
+calc_stochK(length, smoothD, smoothK) =>
+    k = sma(stoch(close, high, low, length), smoothK)
+    //d = sma(k, smoothD)
+    k
+
+lengthBB=input(20, title="BB Length"), multBB=input(2.0, title="BB Multiplier")    
+lengthCCI=input(14, title="CCI Length")
+dpoLength=input(18, title="DPO Length")
+lengthROC=input(10, title="ROC Length")
+lengthRSI=input(14, title="RSI Length")
+lengthStoch=input(14, title="Stoch Length"),lengthD=input(3, title="Stoch D Length"), lengthK=input(1, title="Stoch K Length")
+lengthSMA=input(10, title="MA Length")
+
+bolinslb=sma( src,lengthBB ) - multBB * ( stdev( src,lengthBB ) )
+bolinsub=sma( src,lengthBB ) + multBB * ( stdev( src,lengthBB ) )
+bolins2= (src- bolinslb ) / ( bolinsub - bolinslb )
+bolinsll=( bolins2 < 0.05 ? -5 : ( bolins2 > 0.95 ? 5 : 0 ) )
+cciins= ( cci(src, lengthCCI) > 100 ? 5 :  ( cci(src, lengthCCI ) < -100 ? -5 : 0 ) )
+emvins2= calc_emo() - sma( calc_emo(),lengthSMA)
+emvinsb= ( emvins2 < 0 ? ( sma( calc_emo() ,lengthSMA ) < 0 ? -5 : 0 ) : 0 )
+emvinss= ( emvins2 > 0 ? ( sma( calc_emo() ,lengthSMA ) > 0 ? 5  : 0 ) : 0 )
+macdins2= calc_macd( src) - sma( calc_macd( src) ,lengthSMA )
+macdinsb= ( macdins2 < 0 ? ( sma( calc_macd( src),lengthSMA ) < 0 ? -5 : 0 ) : 0 )
+macdinss=( macdins2 > 0 ? ( sma( calc_macd( src),lengthSMA) > 0 ? 5 : 0 ) : 0 )
+mfiins=( calc_mfi( mfiLength ) > 80 ? 5 : ( calc_mfi( mfiLength ) < 20 ? -5 : 0 ) )
+pdoins2=calc_dpo( dpoLength ) - sma( calc_dpo( dpoLength ),lengthSMA )
+pdoinsb=( pdoins2 < 0 ? ( sma( calc_dpo( dpoLength ),lengthSMA) < 0 ? -5 : 0 ) :0 )
+pdoinss=( pdoins2 > 0 ? ( sma( calc_dpo( dpoLength ),lengthSMA) > 0 ? 5 : 0 ) :0 )
+rocins2=calc_roc( src,lengthROC  ) - sma( calc_roc( src,lengthROC ),lengthSMA  )
+rocinsb=( rocins2 < 0 ? ( sma( calc_roc( src,lengthROC ),lengthSMA  ) < 0 ? -5 : 0 ) : 0 )
+rocinss = ( rocins2 > 0 ? ( sma( calc_roc( src,lengthROC ),lengthSMA ) > 0 ? 5 : 0 ) : 0 )
+rsiins= ( rsi(src, lengthRSI ) > 70 ? 5  : ( rsi(src, lengthRSI )  < 30 ? -5 : 0 ) )
+
+stopdins=( calc_stochD(lengthStoch,lengthD,lengthK ) > 80 ? 5 : ( calc_stochD(lengthStoch,lengthD, lengthK ) < 20 ? -5 : 0 ) )
+stopkins=( calc_stochK(lengthStoch,lengthD,lengthK) > 80 ? 5 : ( calc_stochK(lengthStoch,lengthD, lengthK ) < 20 ? -5 : 0 ) )
+
+iidx = 50 + cciins + bolinsll + rsiins + stopkins + stopdins + mfiins + emvinsb + emvinss + rocinss + rocinsb + nz(pdoinss[10]) + nz(pdoinsb [10]) + macdinss + macdinsb
+ml=plot(50, color=gray, title="Line50")
+ll=plot(5, color= green, title="Line5")
+ul=plot(95, color = red, title="Line95")
+
+plot(25, color= green, style=3, title="Line25")
+plot(75, color = red, style=3, title="Line75")
+
+fill(ml, ll, color=red)
+fill(ml, ul, color=green)
+
+il=plot(iidx, color=maroon, linewidth=2, title="InsyncIndex")
+fill(ml,il,black)
+
+bc = iidx >= 50 ? (iidx >= 95 ? #336600 : iidx >= 75 ? #33CC00 : #00FF00) : 
+    (iidx <= 5 ? #990000 : iidx <= 25? #CC3300 :  #CC9900)
+
+ebc = input(false, title="Enable Barcolors")
+barcolor(ebc?bc:na)
+
+ShowEnclosingBB=input(false)
+// Draw BB on indices
+lengthBB1=input(20, title="Encosing BB Length"), multBB1=input(2.0, title="Encosing BB Multiplier")
+bb_s = iidx
+basis = ShowEnclosingBB?sma(bb_s, lengthBB1):na
+dev = ShowEnclosingBB?multBB1 * stdev(bb_s, lengthBB1):na
+upper = ShowEnclosingBB?basis + dev:na
+lower = ShowEnclosingBB?basis - dev:na
+plot(basis, color=#0066CC, title="Enclosing BB Mid")
+p1 = plot(ShowEnclosingBB?upper:na, color=blue, title="Enclosing BB Upper")
+p2 = plot(ShowEnclosingBB?lower:na, color=blue, title="Enclosing BB lOWER")
+fill(p1,p2, gray, title="Enclosing BB Fill")
+
+HighlightBreaches=input(false)
+b_color = (bb_s > upper) ? red : (bb_s < lower) ? green : na
+bgcolor(HighlightBreaches ? b_color : na)

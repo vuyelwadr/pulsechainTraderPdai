@@ -1,0 +1,8 @@
+//
+// @author LazyBear
+// 
+study(title = "Forecast Oscillator [LazyBear]", shorttitle="ForecastOsc_LB")
+pf=100*((close[0]-close[1])/close[0])
+//plot(pf, color=green)
+plot(sma(pf,3), color=orange)
+hline(0)

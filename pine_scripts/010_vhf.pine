@@ -1,0 +1,19 @@
+//
+// @author LazyBear
+// VHF determines whether prices are in trneding or congestion phase. 
+//
+study(title = "Vertical Horizontal Filter [LazyBear]", shorttitle="VHF_LB")
+src=close
+length=input(28, title="VHF Period")
+showEma=input(false, title="Show EMA?", type=bool)
+
+hcp=highest(src, length)
+lcp=lowest(src, length)
+cdiff=abs(close-close[1])
+
+N=abs(hcp-lcp)
+D=sum(cdiff, length)
+vhf=N/D
+
+plot(vhf)
+plot(showEma ? ema(vhf, length) : na, color=orange, linewidth=2)

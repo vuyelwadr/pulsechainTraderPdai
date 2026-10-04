@@ -1,0 +1,12 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Just Another Pivot [LazyBear]", shorttitle="JAP_LB", overlay=true)
+useCustomTF=input(false), res=input("240", type=resolution)
+tf=useCustomTF?res:"240"
+
+src=hlc3
+p=security(tickerid, tf, src)
+plot(p, style=circles, linewidth=4, color=blue)

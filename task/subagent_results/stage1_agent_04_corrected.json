@@ -1,0 +1,1326 @@
+{
+  "1": {
+    "strategy_id": 1,
+    "strategy_name": "Color coded UO",
+    "strategy_type": "oscillator",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "4": {
+    "strategy_id": 4,
+    "strategy_name": "Scalpers Channel",
+    "strategy_type": "trend",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "6": {
+    "strategy_id": 6,
+    "strategy_name": "EMA Envelope",
+    "strategy_type": "trend",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "7": {
+    "strategy_id": 7,
+    "strategy_name": "Volume ROC",
+    "strategy_type": "volume",
+    "timeframes": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "5min",
+        "data_points": 104900,
+        "cps_score": 44.0
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "15min",
+        "data_points": 35038,
+        "cps_score": 44.0
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "30min",
+        "data_points": 17521,
+        "cps_score": 44.0
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1h",
+        "data_points": 8761,
+        "cps_score": 44.0
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "2h",
+        "data_points": 4381,
+        "cps_score": 44.0
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "4h",
+        "data_points": 2191,
+        "cps_score": 44.0
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "8h",
+        "data_points": 1096,
+        "cps_score": 44.0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "8": {
+    "strategy_id": 8,
+    "strategy_name": "Positive Volume Index",
+    "strategy_type": "volume",
+    "timeframes": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "5min",
+        "data_points": 104900,
+        "cps_score": 44.0
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "15min",
+        "data_points": 35038,
+        "cps_score": 44.0
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "30min",
+        "data_points": 17521,
+        "cps_score": 44.0
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1h",
+        "data_points": 8761,
+        "cps_score": 44.0
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "2h",
+        "data_points": 4381,
+        "cps_score": 44.0
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "4h",
+        "data_points": 2191,
+        "cps_score": 44.0
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "8h",
+        "data_points": 1096,
+        "cps_score": 44.0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "34": {
+    "strategy_id": 34,
+    "strategy_name": "CCI coded OBV",
+    "strategy_type": "momentum",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "35": {
+    "strategy_id": 35,
+    "strategy_name": "STARC Bands",
+    "strategy_type": "trend",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "36": {
+    "strategy_id": 36,
+    "strategy_name": "Pretty Good Oscillator",
+    "strategy_type": "oscillator",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "37": {
+    "strategy_id": 37,
+    "strategy_name": "RAVI Indicator",
+    "strategy_type": "volume",
+    "timeframes": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "5min",
+        "data_points": 104900,
+        "cps_score": 44.0
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "15min",
+        "data_points": 35038,
+        "cps_score": 44.0
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "30min",
+        "data_points": 17521,
+        "cps_score": 44.0
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1h",
+        "data_points": 8761,
+        "cps_score": 44.0
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "2h",
+        "data_points": 4381,
+        "cps_score": 44.0
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "4h",
+        "data_points": 2191,
+        "cps_score": 44.0
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "8h",
+        "data_points": 1096,
+        "cps_score": 44.0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "38": {
+    "strategy_id": 38,
+    "strategy_name": "Trade Intensity Indicator",
+    "strategy_type": "volatility",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "39": {
+    "strategy_id": 39,
+    "strategy_name": "Inverse Fisher on RSI",
+    "strategy_type": "hybrid",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "40": {
+    "strategy_id": 40,
+    "strategy_name": "Inverse Fisher on MFI",
+    "strategy_type": "momentum",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "41": {
+    "strategy_id": 41,
+    "strategy_name": "Inverse Fisher on CyberCycle",
+    "strategy_type": "trend",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "42": {
+    "strategy_id": 42,
+    "strategy_name": "Bear COG channel",
+    "strategy_type": "oscillator",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "43": {
+    "strategy_id": 43,
+    "strategy_name": "Twiggs Money Flow",
+    "strategy_type": "volume",
+    "timeframes": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "5min",
+        "data_points": 104900,
+        "cps_score": 44.0
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "15min",
+        "data_points": 35038,
+        "cps_score": 44.0
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "30min",
+        "data_points": 17521,
+        "cps_score": 44.0
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1h",
+        "data_points": 8761,
+        "cps_score": 44.0
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "2h",
+        "data_points": 4381,
+        "cps_score": 44.0
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "4h",
+        "data_points": 2191,
+        "cps_score": 44.0
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "8h",
+        "data_points": 1096,
+        "cps_score": 44.0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "44": {
+    "strategy_id": 44,
+    "strategy_name": "Wilders MA",
+    "strategy_type": "volatility",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "45": {
+    "strategy_id": 45,
+    "strategy_name": "Bear COG Fib Channel",
+    "strategy_type": "hybrid",
+    "timeframes": {
+      "5min": {
+        "timeframe": "5min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "15min": {
+        "timeframe": "15min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "30min": {
+        "timeframe": "30min",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1h": {
+        "timeframe": "1h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "2h": {
+        "timeframe": "2h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "4h": {
+        "timeframe": "4h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "8h": {
+        "timeframe": "8h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "16h": {
+        "timeframe": "16h",
+        "error": "'price'",
+        "cps_score": 0
+      },
+      "1d": {
+        "timeframe": "1d",
+        "error": "'price'",
+        "cps_score": 0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "46": {
+    "strategy_id": 46,
+    "strategy_name": "Market Facilitation Index",
+    "strategy_type": "volume",
+    "timeframes": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "5min",
+        "data_points": 104900,
+        "cps_score": 44.0
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "15min",
+        "data_points": 35038,
+        "cps_score": 44.0
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "30min",
+        "data_points": 17521,
+        "cps_score": 44.0
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1h",
+        "data_points": 8761,
+        "cps_score": 44.0
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "2h",
+        "data_points": 4381,
+        "cps_score": 44.0
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "4h",
+        "data_points": 2191,
+        "cps_score": 44.0
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "8h",
+        "data_points": 1096,
+        "cps_score": 44.0
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "16h",
+        "data_points": 548,
+        "cps_score": 44.0
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed",
+        "timeframe": "1d",
+        "data_points": 366,
+        "cps_score": 44.0
+      }
+    },
+    "avg_cps_score": 0,
+    "max_cps_score": 0,
+    "best_timeframe": null
+  },
+  "_insights": {
+    "top_strategies": [
+      [
+        1,
+        0,
+        "Color coded UO"
+      ],
+      [
+        4,
+        0,
+        "Scalpers Channel"
+      ],
+      [
+        6,
+        0,
+        "EMA Envelope"
+      ],
+      [
+        7,
+        0,
+        "Volume ROC"
+      ],
+      [
+        8,
+        0,
+        "Positive Volume Index"
+      ]
+    ],
+    "top_performances": [
+      [
+        7,
+        "Volume ROC",
+        "5min",
+        44.0,
+        0
+      ],
+      [
+        7,
+        "Volume ROC",
+        "15min",
+        44.0,
+        0
+      ],
+      [
+        7,
+        "Volume ROC",
+        "30min",
+        44.0,
+        0
+      ],
+      [
+        7,
+        "Volume ROC",
+        "1h",
+        44.0,
+        0
+      ],
+      [
+        7,
+        "Volume ROC",
+        "2h",
+        44.0,
+        0
+      ]
+    ],
+    "capital_preservation": [],
+    "total_tested": 18,
+    "successful_tests": 18,
+    "testing_period": "1 month bearish (Sept 10 2024 - Sept 10 2025)",
+    "buy_hold_benchmark": "1.05%"
+  },
+  "_metadata": {
+    "agent_id": 4,
+    "stage": 1,
+    "timestamp": "2025-09-11T18:07:20.713030",
+    "data_file": "/Users/ruwodda/Documents/Personal/Repos/trading/pulsechainTraderPdai/data/pdai_historical_data_20240910_2324_to_20250910_2324.csv",
+    "timeframes": [
+      "5min",
+      "15min",
+      "30min",
+      "1h",
+      "2h",
+      "4h",
+      "8h",
+      "16h",
+      "1d"
+    ],
+    "buy_hold_benchmark": 0.0105
+  }
+}

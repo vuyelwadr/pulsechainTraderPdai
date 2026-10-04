@@ -1,0 +1,32 @@
+//
+// @author LazyBear
+// If you use this code in its original or modified form, do drop me a PM. Thanks.
+//
+study(title="RSI++ [LazyBear]")
+lengthRSI=input(25)
+lengthROC=input(25)
+src=close
+overbought=input(0)
+oversold=input(0)
+
+fastMACDLength=input(10)
+slowMACDLength=input(21)
+lengthCCI = input(50)
+
+lengthStoch=input(14)
+smoothK=input(3)
+
+macd(source, fastLength, slowLength) =>
+    fastMA = ema(source, fastLength)
+    slowMA = ema(source, slowLength)
+    fastMA - slowMA
+
+acc=(rsi(src , lengthRSI) +
+    roc(src , lengthROC) +
+    macd(src, fastMACDLength, slowMACDLength) +
+    cci(src, lengthCCI) +
+    sma(stoch(close, high, low, lengthStoch), smoothK)) / 5.0
+
+acc_ob=acc>overbought
+acc_os=acc<oversold
+plot(acc , color=acc_ob?red : acc_os?green : white , linewidth=1)

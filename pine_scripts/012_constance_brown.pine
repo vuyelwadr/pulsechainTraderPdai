@@ -1,0 +1,14 @@
+//
+// @author LazyBear
+// @credits Constance Brown
+// 
+study(title = "Derivative Oscillator [LazyBear]", shorttitle="DO_LB")
+length=input(14, title="RSI Length")
+p=input(9,title="SMA length")
+ema1=input(5,title="EMA1 length")
+ema2=input(3,title="EMA2 length")
+
+s1=ema(ema(rsi(close, length), ema1),ema2)
+s2=s1 - sma(s1,p)
+c_color=s2 < 0 ? (s2 < s2[1] ? red : lime) : (s2 >= 0 ? (s2 > s2[1] ? lime : red) : na)
+plot(s2 , style=histogram, color=c_color)

@@ -1,0 +1,43 @@
+//
+// @author LazyBear 
+// List of all my indicators: https://www.tradingview.com/v/4IneGo8h/
+//
+study("MAC-Z VWAP Indicator [LazyBear]", shorttitle="MACZVWAP_LB")
+fastLength = input(12, minval=1, title="MACD Fast MA Length"), slowLength=input(25,minval=1, title="MACD Slow MA Length")
+signalLength=input(9, title="MACD Signal Length")
+lengthz = input(20, title="Z-VWAP Length")
+lengthStdev=input(25, title="Stdev Length")
+A=input(1.0, minval=-2.0, maxval=2.0, title="MACZ constant A")
+B=input(1.0, minval=-2.0, maxval=2.0, title="MACZ constant B")
+useLag=input(false, type=bool, title="Apply Laguerre Smoothing")
+gamma = input(0.02, title="Laguerre Gamma")
+source = close
+
+calc_laguerre(s,g) =>
+ l0 = (1 - g)*s+g*nz(l0[1])
+ l1 = -g*l0+nz(l0[1])+g*nz(l1[1])
+ l2 = -g*l1+nz(l1[1])+g*nz(l2[1])
+ l3 = -g*l2+nz(l2[1])+g*nz(l3[1])
+ (l0 + 2*l1 + 2*l2 + l3)/6
+
+calc_zvwap(pds) =>
+	mean = sum(volume*close,pds)/sum(volume,pds)
+	vwapsd = sqrt(sma(pow(close-mean, 2), pds))
+	(close-mean)/vwapsd
+
+calc_macd(src, fastLength, slowLength) => 
+    fastMA = ema(src, fastLength)
+    slowMA = ema(src, slowLength)
+    fastMA - slowMA
+
+macd_val = calc_macd(source, fastLength, slowLength)
+signal = ema(macd_val, signalLength)
+zvwap = calc_zvwap(lengthz)
+
+macz = A*macd_val + B*zvwap
+
+laguerreMACD = useLag ? calc_laguerre(macz, gamma) : macz
+
+plot(laguerreMACD, title="MACZ", color=blue, linewidth=2)
+plot(ema(laguerreMACD, signalLength), title="Signal", color=red)
+hline(0)

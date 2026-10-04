@@ -1,0 +1,8 @@
+study("NRx Identifier [LazyBear]", overlay=true)
+showNR7=input(true, type=bool)
+showNR4=input(true, type=bool)
+range=(high-low)
+nr7=(range < range[1]) and (range < range[2]) and (range < range[3]) and (range < range[4]) and (range < range[5]) and (range < range[6])
+nr4=(range < range[1]) and (range < range[2]) and (range < range[3])
+plotchar(showNR7?nr7:na, char="7", location=location.abovebar, color=blue)
+plotchar(showNR4?nr4:na, char="4", location=location.belowbar, color=blue)

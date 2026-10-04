@@ -1,0 +1,11 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("NYSE A/D Line [LazyBear]")
+src=close
+length=input(14)
+nshf=security("INDEX:NSHF", period, src)
+plot(nshf, color=green)
+plot(wma(nshf, length), color=orange)

@@ -1,0 +1,107 @@
+# Stage 2 Thematic Analysis Agent 15 - Oscillator Strategy Analysis
+
+## 🎯 CRITICAL MISSION: THEMATIC PATTERN ANALYSIS
+**You will analyze Level 1 individual analysis documents to identify oscillator strategy patterns.**
+
+## 📊 Your Assigned Strategies (Oscillator Focus)
+- Constance_Brown_Composite (Agent 6, 8h, CPS 70.0)
+- RSI_Plus_Avgs (Agent 6, 1h, CPS 70.0)
+- TironeLevels (Agent 2, multi, CPS 65.0)
+
+## 📁 Data Location
+**Input Files**: 
+- /task/stage2_analysis/level1_Constance_Brown_Composite_analysis.md
+- /task/stage2_analysis/level1_RSI_Plus_Avgs_analysis.md
+- /task/stage2_analysis/level1_TironeLevels_analysis.md
+
+These files contain individual strategy analyses from Level 1 agents.
+
+## 🔍 Your Thematic Analysis Tasks
+
+### 1. Cross-Strategy Pattern Recognition
+- **Question**: What patterns emerge across these oscillator strategies?
+- **Focus**: Common optimal parameters, similar market preferences, shared risk characteristics
+- **Output**: Oscillator strategy pattern summary
+
+### 2. Parameter Convergence Analysis
+- **Question**: Do these strategies converge on similar optimal parameters?
+- **Focus**: Period lengths, thresholds, multipliers that work across multiple strategies
+- **Output**: Universal parameter recommendations for oscillator strategies
+
+### 3. Market Condition Specialization
+- **Question**: How do oscillator strategies perform across different market regimes?
+- **Focus**: Bull vs bear vs sideways vs volatile market performance
+- **Output**: Market condition deployment guide for oscillator strategies
+
+### 4. Performance Driver Analysis
+- **Question**: What makes oscillator strategies successful?
+- **Focus**: Common performance drivers, shared risk management traits
+- **Output**: Core success factors for oscillator approach
+
+### 5. Ensemble Synergy Assessment
+- **Question**: How do these oscillator strategies work together?
+- **Focus**: Internal correlations, complementary timeframes, diversification benefits
+- **Output**: Within-theme ensemble recommendations
+
+### 6. Cross-Theme Complement Identification
+- **Question**: What other strategy types would complement oscillator strategies?
+- **Focus**: Correlation with other themes, market condition coverage gaps
+- **Output**: Cross-theme ensemble opportunities
+
+## 📝 Report Structure
+
+```markdown
+# Oscillator Strategy Thematic Analysis
+
+## Executive Summary
+- Key thematic patterns (3-4 insights)
+- Oscillator strategy ranking within theme
+- Cross-theme synergy opportunities
+
+## Parameter Pattern Analysis
+- Common optimal parameter ranges
+- Strategy-specific parameter sensitivities  
+- Universal oscillator parameter recommendations
+
+## Market Regime Specialization
+- Optimal market conditions for oscillator strategies
+- Performance consistency across regimes
+- Regime-specific deployment recommendations
+
+## Performance Driver Deep Dive
+- Core oscillator success factors
+- Risk management characteristics
+- What makes oscillator strategies unique
+
+## Ensemble Architecture Recommendations
+- Within-theme combinations (2-3 oscillator strategies)
+- Cross-theme partnerships (what themes to combine with)
+- Deployment timing and market condition switching
+
+## Strategic Insights
+- oscillator strategy evolution opportunities
+- Implementation challenges and solutions
+- Stage 3 deep optimization priorities
+```
+
+## ⚠️ Critical Requirements
+
+1. **SYNTHESIZE** across all 3 assigned strategies - find commonalities and differences
+2. **THEME-FOCUSED** - maintain laser focus on oscillator strategy characteristics
+3. **PATTERN RECOGNITION** - identify systematic patterns, not just individual results
+4. **ENSEMBLE THINKING** - always consider how strategies work together
+5. **MARKET CONDITION AWARE** - crypto markets have unique characteristics
+
+## 🎯 Success Criteria
+
+Your thematic analysis succeeds if:
+- ✅ You've identified 3+ consistent oscillator strategy patterns
+- ✅ You've provided universal parameter guidelines for oscillator approaches
+- ✅ You've mapped oscillator strategies to optimal market conditions
+- ✅ You've recommended 2+ within-theme ensemble combinations
+- ✅ You've suggested cross-theme partnerships
+
+## 📊 Output File
+Save your analysis as: `/task/stage2_analysis/level2_oscillator_thematic_analysis_15.md`
+
+**Remember: You are the expert on oscillator strategy patterns - synthesize deep insights across multiple strategies!**

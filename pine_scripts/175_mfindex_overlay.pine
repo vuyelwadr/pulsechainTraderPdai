@@ -1,0 +1,24 @@
+//
+// @author LazyBear
+//
+// List of my public indicators: http://bit.ly/1LQaPK8
+// List of my app-store indicators: http://blog.tradingview.com/?p=970
+//
+study("Market Facilitation Index Overlay [LazyBear]", shorttitle="MFIndexOverlay_MTF_LB", overlay=true)
+plot_offs=input(0.005, title="Indicator offset % (below low)")
+useCustomTimeframe=input(false)
+customTimeframe=input("D", title="Custom Timeframe")
+sh=input(false, title="Show Histo"), chf=input(100, title="Histo cap factor")
+ebc=input(true, title="Enable barcolors")
+h=useCustomTimeframe ? security(tickerid, customTimeframe, high) : high
+l=useCustomTimeframe ? security(tickerid, customTimeframe, low) : low
+v = useCustomTimeframe ? security(tickerid, customTimeframe, volume) : volume
+r_hl=roc((h-l)/v,1)
+r_v=roc(v,1)
+green_f= (r_hl > 0) and (r_v > 0)
+fade_f=(r_hl < 0) and (r_v < 0)
+fake_f=(r_hl > 0) and (r_v < 0)
+squat_f=(r_hl < 0) and (r_v > 0)
+b_color = green_f ? green : fade_f ? blue : fake_f ? gray : squat_f ? red : na
+plot(sh?r_hl % chf:na, style=columns, color=b_color, title="Histo")
+barcolor(ebc?b_color:na)

@@ -1,0 +1,19 @@
+Agent 06 Stage 1 Testing Summary
+================================
+
+Test Period: 2025-08-11 23:24:33.244561+00:00 to 2025-09-10 23:24:33.244561+00:00
+Buy & Hold Return: 1.05%
+Total Tests: 53
+
+Top 10 Performers:
+--------------------------------------------------
+ 1. Strategy 57 (   4h): CPS=98.25, Return=  3.67%, DD= 4.01%
+ 2. Strategy 59 (   4h): CPS=97.00, Return=  5.54%, DD= 4.33%
+ 3. Strategy 61 (   8h): CPS=97.00, Return=  6.98%, DD= 3.39%
+ 4. Strategy 56 (   4h): CPS=92.50, Return=  2.59%, DD= 1.91%
+ 5. Strategy 59 (   8h): CPS=92.50, Return=  4.09%, DD= 1.57%
+ 6. Strategy 62 (   1h): CPS=92.50, Return=  6.28%, DD= 4.70%
+ 7. Strategy 64 (15min): CPS=88.17, Return=  2.50%, DD=10.19%
+ 8. Strategy 62 (   4h): CPS=87.50, Return=  5.13%, DD= 7.64%
+ 9. Strategy 61 (   4h): CPS=84.38, Return=  0.80%, DD= 7.61%
+10. Strategy 58 (   2h): CPS=81.05, Return=  0.44%, DD= 6.10%

@@ -1,0 +1,11 @@
+//
+// @author LazyBear 
+// List of all my indicators: https://www.tradingview.com/v/4IneGo8h/
+//
+study("Earnings S/R Levels [LazyBear]", shorttitle="ELVLS_LB", overlay=true)
+mode=input(1, "S/R mode", minval=1, maxval=2)
+earnings = security("ESD:"+ticker+"_EARNINGS", "D", close, true)
+ehl2_mode1=(nz(earnings[1]) ? avg(low[2],high) : nz(ehl2_mode1[1])) // AVG2(low of 1 day pri, high of 1 day after)
+ehl2_mode2=(nz(earnings[1]) ? (hl2[2]+hl2+close[1])/3 : nz(ehl2_mode2[1])) // AVG3(HL2 of 1 day pri, HL2 of 1 day after, close of earnings day)
+ehl2=mode==1?ehl2_mode1:mode==2?ehl2_mode2:ehl2_mode1 // default: mode1
+plot(ehl2, linewidth=2, style=circles)

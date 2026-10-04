@@ -1,0 +1,520 @@
+{
+  "agent_id": 20,
+  "stage": 1,
+  "test_date": "2025-09-11T18:33:35.759990",
+  "strategies_tested": [
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205
+  ],
+  "timeframes_tested": [
+    "5min",
+    "15min",
+    "30min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "16h",
+    "1d"
+  ],
+  "buy_hold_return": 1.0087734456210118,
+  "data_period": "bearish_1month",
+  "results": {
+    "Strategy_196": {
+      "15min": {
+        "strategy_id": 196,
+        "strategy_name": "Strategy_196",
+        "strategy_type": "momentum",
+        "timeframe": "15min",
+        "cps_score": 63.6,
+        "metrics": {
+          "total_return": 0.011372606474036616,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 0.9218713507579049,
+          "trades_per_month": 2,
+          "win_rate": 0.0,
+          "total_trades": 2,
+          "winning_trades": 0,
+          "final_balance": 1011.3726064740366,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": 0.011372606474036616,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 0.9218713507579049,
+          "total_trades": 2,
+          "win_rate": 0.0,
+          "final_balance": 1011.3726064740366
+        }
+      },
+      "1h": {
+        "strategy_id": 196,
+        "strategy_name": "Strategy_196",
+        "strategy_type": "momentum",
+        "timeframe": "1h",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "4h": {
+        "strategy_id": 196,
+        "strategy_name": "Strategy_196",
+        "strategy_type": "momentum",
+        "timeframe": "4h",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "1d": {
+        "strategy_id": 196,
+        "strategy_name": "Strategy_196",
+        "strategy_type": "momentum",
+        "timeframe": "1d",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      }
+    },
+    "Strategy_200": {
+      "15min": {
+        "strategy_id": 200,
+        "strategy_name": "Strategy_200",
+        "strategy_type": "volatility",
+        "timeframe": "15min",
+        "cps_score": 44.4,
+        "metrics": {
+          "total_return": -0.9989897557689011,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -58.87173517674738,
+          "trades_per_month": 1654,
+          "win_rate": 0.0,
+          "total_trades": 1654,
+          "winning_trades": 0,
+          "final_balance": 1.0102442310988773,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": -0.9989897557689011,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -58.87173517674738,
+          "total_trades": 1654,
+          "win_rate": 0.0,
+          "final_balance": 1.0102442310988773
+        }
+      },
+      "1h": {
+        "strategy_id": 200,
+        "strategy_name": "Strategy_200",
+        "strategy_type": "volatility",
+        "timeframe": "1h",
+        "cps_score": 44.47,
+        "metrics": {
+          "total_return": -0.8777750617240839,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -34.69148232754087,
+          "trades_per_month": 444,
+          "win_rate": 0.0,
+          "total_trades": 444,
+          "winning_trades": 0,
+          "final_balance": 122.22493827591607,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": -0.8777750617240839,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -34.69148232754087,
+          "total_trades": 444,
+          "win_rate": 0.0,
+          "final_balance": 122.22493827591607
+        }
+      },
+      "4h": {
+        "strategy_id": 200,
+        "strategy_name": "Strategy_200",
+        "strategy_type": "volatility",
+        "timeframe": "4h",
+        "cps_score": 44.82,
+        "metrics": {
+          "total_return": -0.30586711903769165,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -13.350396271685936,
+          "trades_per_month": 94,
+          "win_rate": 0.0,
+          "total_trades": 94,
+          "winning_trades": 0,
+          "final_balance": 694.1328809623084,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": -0.30586711903769165,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": -13.350396271685936,
+          "total_trades": 94,
+          "win_rate": 0.0,
+          "final_balance": 694.1328809623084
+        }
+      },
+      "1d": {
+        "strategy_id": 200,
+        "strategy_name": "Strategy_200",
+        "strategy_type": "volatility",
+        "timeframe": "1d",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      }
+    },
+    "Strategy_202": {
+      "15min": {
+        "strategy_id": 202,
+        "strategy_name": "Strategy_202",
+        "strategy_type": "momentum",
+        "timeframe": "15min",
+        "cps_score": 65.15,
+        "metrics": {
+          "total_return": 0.016819163642109516,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 0.8859464002198881,
+          "trades_per_month": 32,
+          "win_rate": 0.0,
+          "total_trades": 32,
+          "winning_trades": 0,
+          "final_balance": 1016.8191636421095,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": 0.016819163642109516,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 0.8859464002198881,
+          "total_trades": 32,
+          "win_rate": 0.0,
+          "final_balance": 1016.8191636421095
+        }
+      },
+      "1h": {
+        "strategy_id": 202,
+        "strategy_name": "Strategy_202",
+        "strategy_type": "momentum",
+        "timeframe": "1h",
+        "cps_score": 83.53,
+        "metrics": {
+          "total_return": 0.3955975498302853,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 6.166615627370635,
+          "trades_per_month": 12,
+          "win_rate": 0.0,
+          "total_trades": 12,
+          "winning_trades": 0,
+          "final_balance": 1395.5975498302853,
+          "trend_consistency": 0.5
+        },
+        "backtest_summary": {
+          "total_return": 0.3955975498302853,
+          "max_drawdown": 0.0,
+          "sharpe_ratio": 6.166615627370635,
+          "total_trades": 12,
+          "win_rate": 0.0,
+          "final_balance": 1395.5975498302853
+        }
+      },
+      "4h": {
+        "strategy_id": 202,
+        "strategy_name": "Strategy_202",
+        "strategy_type": "momentum",
+        "timeframe": "4h",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "1d": {
+        "strategy_id": 202,
+        "strategy_name": "Strategy_202",
+        "strategy_type": "momentum",
+        "timeframe": "1d",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      }
+    },
+    "Strategy_205": {
+      "15min": {
+        "strategy_id": 205,
+        "strategy_name": "Strategy_205",
+        "strategy_type": "volume",
+        "timeframe": "15min",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "1h": {
+        "strategy_id": 205,
+        "strategy_name": "Strategy_205",
+        "strategy_type": "volume",
+        "timeframe": "1h",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "4h": {
+        "strategy_id": 205,
+        "strategy_name": "Strategy_205",
+        "strategy_type": "volume",
+        "timeframe": "4h",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      },
+      "1d": {
+        "strategy_id": 205,
+        "strategy_name": "Strategy_205",
+        "strategy_type": "volume",
+        "timeframe": "1d",
+        "cps_score": 0.0,
+        "metrics": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "trades_per_month": 0,
+          "win_rate": 0.0,
+          "total_trades": 0,
+          "winning_trades": 0,
+          "final_balance": 1000.0,
+          "error": "No trades were executed"
+        },
+        "backtest_summary": {
+          "total_return": -1.0,
+          "max_drawdown": -1.0,
+          "sharpe_ratio": 0.0,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "final_balance": 1000.0
+        }
+      }
+    }
+  },
+  "summary": {
+    "total_tests_run": 6,
+    "top_5_performers": [
+      {
+        "strategy": "Strategy_202",
+        "timeframe": "1h",
+        "cps_score": 83.53,
+        "return": 0.3955975498302853
+      },
+      {
+        "strategy": "Strategy_202",
+        "timeframe": "15min",
+        "cps_score": 65.15,
+        "return": 0.016819163642109516
+      },
+      {
+        "strategy": "Strategy_196",
+        "timeframe": "15min",
+        "cps_score": 63.6,
+        "return": 0.011372606474036616
+      },
+      {
+        "strategy": "Strategy_200",
+        "timeframe": "4h",
+        "cps_score": 44.82,
+        "return": -0.30586711903769165
+      },
+      {
+        "strategy": "Strategy_200",
+        "timeframe": "1h",
+        "cps_score": 44.47,
+        "return": -0.8777750617240839
+      }
+    ],
+    "avg_cps_by_type": {
+      "momentum": 70.76,
+      "volatility": 44.56333333333333
+    },
+    "insights": [
+      "3 strategies were profitable (50.0%)",
+      "6 strategies maintained drawdown below 10%",
+      "Best performing timeframe: 1h (avg CPS: 64.00)"
+    ],
+    "capital_preservation_champions": [
+      {
+        "strategy": "Strategy_196",
+        "timeframe": "15min",
+        "max_drawdown": 0.0,
+        "cps_score": 63.6
+      },
+      {
+        "strategy": "Strategy_200",
+        "timeframe": "15min",
+        "max_drawdown": 0.0,
+        "cps_score": 44.4
+      },
+      {
+        "strategy": "Strategy_200",
+        "timeframe": "1h",
+        "max_drawdown": 0.0,
+        "cps_score": 44.47
+      }
+    ]
+  }
+}

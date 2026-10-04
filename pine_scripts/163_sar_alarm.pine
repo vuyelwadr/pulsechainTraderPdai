@@ -1,0 +1,10 @@
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+
+study("SAR Alarm")
+start=input(0.02), increment=input(0.02), maximum=input(0.2)
+s=sar(start, increment, maximum)
+d=s-low
+plot(0, title="ZeroLine")
+plot(cross(d,0) ? d : 0, style=histogram, color=d>0?red:green, title="SAR_PLOT", linewidth=2)

@@ -1,0 +1,27 @@
+//@author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+
+study(title="JMA RSX Clone [LazyBear]", shorttitle="RSXC_LB", overlay=false)
+src=input(close)
+length=input(14)
+lvlob = input(70, title="OB Level")
+lvlos = input(30, title="OS Level")
+mid = input(50, title="Mid Level")
+clampmax = 100
+clampmin = 0
+f90_ = (nz(f90_[1]) == 0.0) ? 1.0 : (nz(f88[1]) <= nz(f90_[1])) ? nz(f88[1])+1 : nz(f90_[1])+1
+f88 = (nz(f90_[1]) == 0.0) and (length-1 >= 5) ? length-1.0 : 5.0 
+f8 = 100.0*(src) 
+f18 = 3.0 / (length + 2.0) 
+f20 = 1.0 - f18 
+f10 = nz(f8[1])
+v8 = f8 - f10 
+f28 = f20 * nz(f28[1]) + f18 * v8 
+f30 = f18 * f28 + f20 * nz(f30[1])
+vC = f28 * 1.5 - f30 * 0.5 
+f38 = f20 * nz(f38[1]) + f18 * vC 
+f40 = f18 * f38 + f20 * nz(f40[1])
+v10 = f38 * 1.5 - f40 * 0.5

@@ -1,0 +1,107 @@
+//
+// @author LazyBear
+// Generic 11x EMA plotter. Marks all EMA crossings, if configured to true. 
+//
+// Notes: I actually added an option to disable a specific MA line by specifying ZERO for it. 
+//        This broke the Pinescript Engine. So, for now, please specify all MA values, though I have support
+//        for disabling a line in the code. 
+//
+study(title="11x MA [LazyBear]", shorttitle="11xMA_LB", overlay=true)
+src = close
+ma1_color = #00ffff
+ma2_color = #ff9800
+ma3_color = #cc4125
+ma4_color = #00ff00
+ma5_color = #000080
+ma6_color = #008080
+ma7_color = #ff3366
+ma8_color = #00cc66
+ma9_color = #0000ff
+ma10_color = #00cc00
+ma11_color = #ff0066
+
+use_ema=input(false, "Use EMA (default: SMA)?", type=bool)
+draw_cross=input(false, "Draw Cross points?", type=bool)
+
+ma1_p=input(25, title="MA1 Length", type=integer)
+ma2_p=input(30, title="MA2 Length", type=integer)
+ma3_p=input(35, title="MA3 Length", type=integer)
+ma4_p=input(40, title="MA4 Length", type=integer)
+ma5_p=input(45, title="MA5 Length", type=integer)
+ma6_p=input(50, title="MA6 Length", type=integer)
+ma7_p=input(55, title="MA7 Length", type=integer)
+ma8_p=input(60, title="MA8 Length", type=integer)
+ma9_p=input(65, title="MA9 Length", type=integer)
+ma10_p=input(70, title="MA10 Length", type=integer)
+ma11_p=input(75, title="MA11 Length", type=integer)
+
+ma1_valid = ma1_p>0 ? true : false
+ma2_valid = ma2_p>0 ? true : false
+ma3_valid = ma3_p>0 ? true : false
+ma4_valid = ma4_p>0 ? true : false
+ma5_valid = ma5_p>0 ? true : false
+ma6_valid = ma6_p>0 ? true : false
+ma7_valid = ma7_p>0 ? true : false
+ma8_valid = ma8_p>0 ? true : false
+ma9_valid = ma9_p>0 ? true : false
+ma10_valid = ma10_p>0 ? true : false
+ma11_valid = ma11_p>0 ? true : false
+
+ma(x,y) => use_ema ? ema(x,y) : sma(x,y)
+
+ma1 = ma1_valid ? ma(src, ma1_p) : na
+ma2 = ma2_valid ? ma(src, ma2_p) : na
+ma3 = ma3_valid ? ma(src, ma3_p) : na
+ma4 = ma4_valid ? ma(src, ma4_p) : na
+ma5 = ma5_valid ? ma(src, ma5_p) : na
+ma6 = ma6_valid ? ma(src, ma6_p) : na
+ma7 = ma7_valid ? ma(src, ma7_p) : na
+ma8 = ma8_valid ? ma(src, ma8_p) : na
+ma9 = ma9_valid ? ma(src, ma9_p) : na
+ma10 = ma10_valid ? ma(src, ma10_p) : na
+ma11 = ma11_valid ? ma(src, ma11_p) : na
+
+m1=plot(ma1, color=ma1_color, style=line, linewidth=1)
+m2=plot(ma2, color=ma2_color, style=line, linewidth=1)
+m3=plot(ma3, color=ma3_color, style=line, linewidth=1)
+m4=plot(ma4, color=ma4_color, style=line, linewidth=1)
+m5=plot(ma5, color=ma5_color, style=line, linewidth=1)
+m6=plot(ma6, color=ma6_color, style=line, linewidth=1)
+m7=plot(ma7, color=ma7_color, style=line, linewidth=1)
+m8=plot(ma8, color=ma8_color, style=line, linewidth=1)
+m9=plot(ma9, color=ma9_color, style=line, linewidth=1)
+m10=plot(ma10, color=ma10_color, style=line, linewidth=1)
+m11=plot(ma11, color=ma11_color, style=line, linewidth=1)
+
+fill(m1, m2, red)
+fill(m2, m3, orange)
+fill(m3, m4, yellow)
+fill(m4, m5, lime)
+fill(m5, m6, green)
+fill(m6, m7, teal)
+fill(m7, m8, blue)
+fill(m8, m9, purple)
+fill(m9, m10, black)
+fill(m10, m11, white)
+
+mac1 = na(ma1[1]) or na(ma2[1]) ? false : (ma1[1] > ma2[1] and ma1 < ma2) or (ma1[1] < ma2[1] and ma1 > ma2)
+mac2 = na(ma2[1]) or na(ma3[1]) ? false : (ma2[1] > ma3[1] and ma2 < ma3) or (ma2[1] < ma3[1] and ma2 > ma3)
+mac3 = na(ma3[1]) or na(ma4[1]) ? false : (ma3[1] > ma4[1] and ma3 < ma4) or (ma3[1] < ma4[1] and ma3 > ma4)
+mac4 = na(ma4[1]) or na(ma5[1]) ? false : (ma4[1] > ma5[1] and ma4 < ma5) or (ma4[1] < ma5[1] and ma4 > ma5)
+mac5 = na(ma5[1]) or na(ma6[1]) ? false : (ma5[1] > ma6[1] and ma5 < ma6) or (ma5[1] < ma6[1] and ma5 > ma6)
+mac6 = na(ma6[1]) or na(ma7[1]) ? false : (ma6[1] > ma7[1] and ma6 < ma7) or (ma6[1] < ma7[1] and ma6 > ma7)
+mac7 = na(ma7[1]) or na(ma8[1]) ? false : (ma7[1] > ma8[1] and ma7 < ma8) or (ma7[1] < ma8[1] and ma7 > ma8)
+mac8 = na(ma8[1]) or na(ma9[1]) ? false : (ma8[1] > ma9[1] and ma8 < ma9) or (ma8[1] < ma9[1] and ma8 > ma9)
+mac9 = na(ma9[1]) or na(ma10[1]) ? false : (ma9[1] > ma10[1] and ma9 < ma10) or (ma9[1] < ma10[1] and ma9 > ma10)
+mac10 = na(ma10[1]) or na(ma11[1]) ? false : (ma10[1] > ma11[1] and ma10 < ma11) or (ma10[1] < ma11[1] and ma10 > ma11)
+
+plotshape(draw_cross and mac1, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac2, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac3, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac4, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac5, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac6, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac7, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac8, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac9, style=shape.cross, location=location.absolute, color=silver)
+plotshape(draw_cross and mac10, style=shape.cross, location=location.absolute, color=silver)

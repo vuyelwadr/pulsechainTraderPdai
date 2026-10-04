@@ -1,0 +1,21 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Vervoort Volatility Bands [LazyBear]", shorttitle="VVB_LB", overlay=true)
+src = hlc3
+al = input(8, title="Average Length")
+vl = input(13, title="Volatility Length")
+df = input(3.55, "Deviation Multiplier")
+lba = input(0.9, "Lower Band Adjustment Multiplier")
+
+typical = src >= src[1] ? src - low[1] : src[1] - low
+deviation = df * sma(typical, vl)
+devHigh = ema(deviation, al)
+devLow = lba * devHigh
+medianAvg = ema(src, al)
+
+MidLine = plot (sma(medianAvg, al), color=gray, title="MidLine")
+UpperBand = plot (ema(medianAvg, al) + devHigh, color=red, linewidth=2, title="UpperBand")
+LowerBand = plot (ema(medianAvg, al) - devLow, color=green, linewidth=2, title="LowerBand")

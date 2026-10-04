@@ -1,0 +1,22 @@
+//@version=2
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+study(title="Zweig Market Breadth Thrust Indicator [LazyBear]", shorttitle="ZMBTI_LB")
+t=input(defval=2, maxval=2, minval=1, title="MA Type (1=>SMA, 2=>EMA)")
+lma=input(defval=10, minval=1, title="MA Length")
+mkt = input (defval=1, minval=0, maxval=4, title="Market (0=>AMEX/NASD/NYSE Combined, 1=NYSE, 2=NASDAQ, 3=AMEX, 4=CUSTOM)")
+aic=input(defval="ADVS", title="CUSTOM: Advancing Stocks Symbol", type=symbol)
+dic=input(defval="DECS", title="CUSTOM: Declining Stocks Symbol", type=symbol)
+me=input(false, title="Color OB/OS")
+ma(s,l) => t==1?sma(s,l):ema(s,l)	
+res = "D"
+advn="ADVN", decn="DECN" // NYSE
+advnq="ADVQ", decnq="DECQ" // NASDAQ
+advna="ADVA", decna="DECA" // AMEX
+advc="(ADVN+ADVQ+ADVA)/3.0", decc="(DECN+DECQ+DECA)/3.0"
+adv= security(mkt==0? advc:mkt == 1? advn:mkt == 2? advnq:mkt == 3? advna:aic, res, close)
+dec= security(mkt==0? decc:mkt == 1? decn:mkt == 2? decnq:mkt == 3? decna:dic, res, close)

@@ -1,0 +1,25 @@
+//@version=5
+indicator("Ehlers Adaptive Cyber Cycle Indicator [LazyBear]", overlay=false)
+
+length = input(20, "Cycle Length")
+highlightCrossovers = input(true, "Highlight Crossovers?")
+smoothingLength = input(9, "Smoothing Length")
+
+// Adaptive Cyber Cycle calculation
+alpha = 2 / (length + 1)
+cybercycle = 0.0
+cybercycle := alpha * (close - nz(cybercycle[1], close)) + nz(cybercycle[1], close)
+
+// Smoothed version
+smoothed = ta.sma(cybercycle, smoothingLength)
+
+// Plot
+plot(cybercycle, color=color.blue, title="Cyber Cycle")
+plot(smoothed, color=color.red, title="Smoothed")
+
+// Crossover signals
+crossoverBuy = ta.crossover(cybercycle, smoothed)
+crossoverSell = ta.crossunder(cybercycle, smoothed)
+
+plotshape(highlightCrossovers and crossoverBuy, title="Buy Signal", location=location.bottom, style=shape.triangleup, size=size.small, color=color.green)
+plotshape(highlightCrossovers and crossoverSell, title="Sell Signal", location=location.top, style=shape.triangledown, size=size.small, color=color.red)

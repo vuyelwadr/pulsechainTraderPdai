@@ -1,0 +1,20 @@
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+
+study("VWAP Bands", overlay=true)
+l1=input(1.0, title="VWAP 1 Multiplier")
+l2=input(2.0, title="VWAP 1 Multiplier")
+src=close
+b=vwap(src)
+length=input(34)
+plot(b, color=gray, linewidth=2)
+plot(b+l1*stdev(src, length), linewidth=2, color=red, style=linebr)
+plot(b+l2*stdev(src, length), linewidth=2, color=red, style=linebr)
+plot(b-l1*stdev(src, length), linewidth=2, color=green, style=linebr)
+plot(b-l2*stdev(src, length), linewidth=2, color=green, style=linebr)
+
+// Uncomment the lines below if you need 3rd VWAP band
+//l3=input(2.5, title="VWAP 3 Multiplier")
+//plot(b+l3*stdev(src, length))
+//plot(b-l3*stdev(src, length))

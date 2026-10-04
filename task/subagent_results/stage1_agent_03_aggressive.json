@@ -1,0 +1,569 @@
+{
+  "agent_id": 3,
+  "timestamp": "2025-09-11T18:02:48.242851",
+  "strategies_tested": [
+    29,
+    30,
+    31,
+    32,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "timeframes_tested": [
+    "5min",
+    "15min",
+    "30min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "16h",
+    "1d"
+  ],
+  "total_tests_completed": 0,
+  "top_performers": [],
+  "full_results": {
+    "29": {
+      "5min": {
+        "strategy_id": 29,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 29,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 29,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 29,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 29,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 29,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 29,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 29,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 29,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "30": {
+      "5min": {
+        "strategy_id": 30,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 30,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 30,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 30,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 30,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 30,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 30,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 30,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 30,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "31": {
+      "5min": {
+        "strategy_id": 31,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "15min": {
+        "strategy_id": 31,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 31,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 31,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "2h": {
+        "strategy_id": 31,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 31,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 31,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 31,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "1d": {
+        "strategy_id": 31,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "32": {
+      "5min": {
+        "strategy_id": 32,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 32,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 32,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 32,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 32,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 32,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 32,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 32,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 32,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "34": {
+      "5min": {
+        "strategy_id": 34,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "15min": {
+        "strategy_id": 34,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "30min": {
+        "strategy_id": 34,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 34,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "2h": {
+        "strategy_id": 34,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 34,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 34,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 34,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "1d": {
+        "strategy_id": 34,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "35": {
+      "5min": {
+        "strategy_id": 35,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 35,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 35,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 35,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 35,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 35,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 35,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 35,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 35,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "36": {
+      "5min": {
+        "strategy_id": 36,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 36,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 36,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 36,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 36,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 36,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 36,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 36,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 36,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      }
+    },
+    "37": {
+      "5min": {
+        "strategy_id": 37,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 37,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 37,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 37,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 37,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 37,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 37,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 37,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 37,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "38": {
+      "5min": {
+        "strategy_id": 38,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "15min": {
+        "strategy_id": 38,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "30min": {
+        "strategy_id": 38,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "1h": {
+        "strategy_id": 38,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "2h": {
+        "strategy_id": 38,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "4h": {
+        "strategy_id": 38,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "8h": {
+        "strategy_id": 38,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 38,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for /: 'decimal.Decimal' and 'float'"
+      },
+      "1d": {
+        "strategy_id": 38,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "39": {
+      "5min": {
+        "strategy_id": 39,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 39,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 39,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 39,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 39,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 39,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 39,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 39,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 39,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    },
+    "40": {
+      "5min": {
+        "strategy_id": 40,
+        "timeframe": "5min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "15min": {
+        "strategy_id": 40,
+        "timeframe": "15min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "30min": {
+        "strategy_id": 40,
+        "timeframe": "30min",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1h": {
+        "strategy_id": 40,
+        "timeframe": "1h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "2h": {
+        "strategy_id": 40,
+        "timeframe": "2h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "4h": {
+        "strategy_id": 40,
+        "timeframe": "4h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "8h": {
+        "strategy_id": 40,
+        "timeframe": "8h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "16h": {
+        "strategy_id": 40,
+        "timeframe": "16h",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      },
+      "1d": {
+        "strategy_id": 40,
+        "timeframe": "1d",
+        "error": "unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+      }
+    }
+  },
+  "insights": {
+    "unexpected_winners": [],
+    "pairing_suggestions": [],
+    "timeframe_discoveries": [],
+    "market_condition_notes": [
+      {
+        "condition": "bearish_with_reversal",
+        "best_strategies": [],
+        "worst_strategies": [],
+        "note": "Bearish month with reversal: 0 strategies profitable, 0 limited losses"
+      }
+    ]
+  },
+  "summary": {
+    "best_strategy": null,
+    "avg_cps_score": 0,
+    "strategies_with_positive_return": 0,
+    "strategies_preserving_capital": 0,
+    "best_timeframes": []
+  }
+}

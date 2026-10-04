@@ -1,0 +1,22 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("McClellan Summation Index [LazyBear]", shorttitle="MSI_LB")
+advissues=input(defval="ADVN", title="Advancing Stocks Symbol", type=symbol)
+decissues=input(defval="DECN", title="Declining Stocks Symbol", type=symbol)
+isRA=input(true, title="Stockcharts version (Ratio Adjusted)?")
+rm=input(defval=1000, title="RANA ratio multiplier")
+
+useCTF=input(false, title="Use Custom Timeframe?"), 
+tf=useCTF?input("D", type=resolution, title="Custom Timeframe"):period
+ai=security(advissues, tf, close), di=security(decissues, tf, close)
+rana=rm * (ai-di)/(ai+di)
+e1=isRA?ema(rana, 19):ema(ai-di, 19),e2=isRA?ema(rana, 39):ema(ai-di, 39)
+mo=e1-e2,msi=nz(msi[1])+mo
+
+hline(0, title="ZeroLine")
+plot(msi<0?msi:0, style=area, color=red, title="MSI_Negative")
+plot(msi>=0?msi:0, style=area, color=green, title="MSI_Positive")
+plot(msi, style=line, color=black, title="MSI", linewidth=2)

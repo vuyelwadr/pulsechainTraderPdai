@@ -1,0 +1,16 @@
+//@author LazyBear 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970
+
+//@version=4
+study("Premier RSI Oscillator [LazyBear]", shorttitle="PRSI")
+length = input(14, minval=1, title="RSI Length")
+smoothK = input(3, "K", minval=1)
+smoothD = input(3, "D", minval=1)
+k = sma(stoch(rsi(close, length), rsi(close, length), rsi(close, length), length), smoothK)
+d = sma(k, smoothD)
+plot(k, color=color.blue)
+plot(d, color=color.orange)
+h0 = hline(0)
+h1 = hline(1)
+fill(h0, h1, color=color.purple, transp=90)

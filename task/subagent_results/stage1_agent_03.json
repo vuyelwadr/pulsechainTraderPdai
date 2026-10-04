@@ -1,0 +1,564 @@
+{
+  "agent_id": 3,
+  "stage": 1,
+  "strategies_tested": [
+    29,
+    30,
+    31,
+    32,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "strategy_names": {
+    "29": "TusharChandeVIDYA",
+    "30": "AdaptiveRSI",
+    "31": "OBVOscillator",
+    "32": "KairiRelativeIndex",
+    "34": "CCICodedOBV",
+    "35": "STARCBands",
+    "36": "PrettyGoodOscillator",
+    "37": "RAVIIndicator",
+    "38": "TradeIntensityIndicator",
+    "39": "InverseFisherRSI",
+    "40": "InverseFisherMFI"
+  },
+  "timeframes_tested": [
+    "5min",
+    "15min",
+    "30min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "16h",
+    "1d"
+  ],
+  "total_tests_completed": 99,
+  "total_tests_planned": 99,
+  "top_performers": [
+    {
+      "strategy": "Strategy_40",
+      "lazybear_name": "InverseFisherMFI",
+      "strategy_id": 40,
+      "timeframe": "4h",
+      "strategy_type": "momentum",
+      "cps_score": 96.9,
+      "total_return_pct": 2.040202,
+      "max_drawdown_pct": 2.471604,
+      "sharpe_ratio": 25.29153,
+      "total_trades": 4,
+      "win_rate": 0.555,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 68.9
+    },
+    {
+      "strategy": "Strategy_39",
+      "lazybear_name": "InverseFisherRSI",
+      "strategy_id": 39,
+      "timeframe": "8h",
+      "strategy_type": "momentum",
+      "cps_score": 96.0,
+      "total_return_pct": 1.887478,
+      "max_drawdown_pct": 3.089722,
+      "sharpe_ratio": 30.154366,
+      "total_trades": 7,
+      "win_rate": 0.663,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 60.3
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "5min",
+      "strategy_type": "volatility",
+      "cps_score": 95.9,
+      "total_return_pct": 1.515555,
+      "max_drawdown_pct": 2.306947,
+      "sharpe_ratio": 19.856849,
+      "total_trades": 7,
+      "win_rate": 0.639,
+      "profit_score": 97.7,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 65.6
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "2h",
+      "strategy_type": "volatility",
+      "cps_score": 95.9,
+      "total_return_pct": 4.026069,
+      "max_drawdown_pct": 1.266512,
+      "sharpe_ratio": 25.283848,
+      "total_trades": 4,
+      "win_rate": 0.591,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 59.0
+    },
+    {
+      "strategy": "Strategy_36",
+      "lazybear_name": "PrettyGoodOscillator",
+      "strategy_id": 36,
+      "timeframe": "1h",
+      "strategy_type": "oscillator",
+      "cps_score": 95.6,
+      "total_return_pct": 4.101597,
+      "max_drawdown_pct": 2.327369,
+      "sharpe_ratio": 35.023732,
+      "total_trades": 5,
+      "win_rate": 0.516,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 55.7
+    },
+    {
+      "strategy": "Strategy_32",
+      "lazybear_name": "KairiRelativeIndex",
+      "strategy_id": 32,
+      "timeframe": "8h",
+      "strategy_type": "oscillator",
+      "cps_score": 95.4,
+      "total_return_pct": 1.719425,
+      "max_drawdown_pct": 4.47825,
+      "sharpe_ratio": 19.034525,
+      "total_trades": 4,
+      "win_rate": 0.57,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 54.3
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "16h",
+      "strategy_type": "volatility",
+      "cps_score": 95.1,
+      "total_return_pct": 3.14768,
+      "max_drawdown_pct": 2.51503,
+      "sharpe_ratio": 31.504934,
+      "total_trades": 6,
+      "win_rate": 0.591,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 50.7
+    },
+    {
+      "strategy": "Strategy_40",
+      "lazybear_name": "InverseFisherMFI",
+      "strategy_id": 40,
+      "timeframe": "15min",
+      "strategy_type": "momentum",
+      "cps_score": 95.1,
+      "total_return_pct": 3.269753,
+      "max_drawdown_pct": 1.741386,
+      "sharpe_ratio": 25.936873,
+      "total_trades": 3,
+      "win_rate": 0.504,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 50.6
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "1h",
+      "strategy_type": "volatility",
+      "cps_score": 94.8,
+      "total_return_pct": 1.881182,
+      "max_drawdown_pct": 2.053384,
+      "sharpe_ratio": 34.249839,
+      "total_trades": 5,
+      "win_rate": 0.69,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 48.3
+    },
+    {
+      "strategy": "Strategy_39",
+      "lazybear_name": "InverseFisherRSI",
+      "strategy_id": 39,
+      "timeframe": "4h",
+      "strategy_type": "momentum",
+      "cps_score": 94.8,
+      "total_return_pct": 3.255449,
+      "max_drawdown_pct": 2.54269,
+      "sharpe_ratio": 33.92703,
+      "total_trades": 4,
+      "win_rate": 0.474,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 48.0
+    },
+    {
+      "strategy": "Strategy_40",
+      "lazybear_name": "InverseFisherMFI",
+      "strategy_id": 40,
+      "timeframe": "1h",
+      "strategy_type": "momentum",
+      "cps_score": 94.3,
+      "total_return_pct": 3.806753,
+      "max_drawdown_pct": 0.958966,
+      "sharpe_ratio": 16.146532,
+      "total_trades": 7,
+      "win_rate": 0.548,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 43.2
+    },
+    {
+      "strategy": "Strategy_40",
+      "lazybear_name": "InverseFisherMFI",
+      "strategy_id": 40,
+      "timeframe": "16h",
+      "strategy_type": "momentum",
+      "cps_score": 94.3,
+      "total_return_pct": 1.861908,
+      "max_drawdown_pct": 1.905869,
+      "sharpe_ratio": 20.158343,
+      "total_trades": 3,
+      "win_rate": 0.439,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 43.2
+    },
+    {
+      "strategy": "Strategy_36",
+      "lazybear_name": "PrettyGoodOscillator",
+      "strategy_id": 36,
+      "timeframe": "2h",
+      "strategy_type": "oscillator",
+      "cps_score": 94.1,
+      "total_return_pct": 4.324394,
+      "max_drawdown_pct": 1.726646,
+      "sharpe_ratio": 39.029764,
+      "total_trades": 3,
+      "win_rate": 0.462,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 41.0
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "4h",
+      "strategy_type": "volatility",
+      "cps_score": 94.0,
+      "total_return_pct": 2.468869,
+      "max_drawdown_pct": 2.708447,
+      "sharpe_ratio": 21.770806,
+      "total_trades": 5,
+      "win_rate": 0.623,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 40.0
+    },
+    {
+      "strategy": "Strategy_35",
+      "lazybear_name": "STARCBands",
+      "strategy_id": 35,
+      "timeframe": "8h",
+      "strategy_type": "volatility",
+      "cps_score": 93.7,
+      "total_return_pct": 2.053001,
+      "max_drawdown_pct": 0.994095,
+      "sharpe_ratio": 25.707862,
+      "total_trades": 5,
+      "win_rate": 0.523,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 36.9
+    },
+    {
+      "strategy": "Strategy_30",
+      "lazybear_name": "AdaptiveRSI",
+      "strategy_id": 30,
+      "timeframe": "30min",
+      "strategy_type": "oscillator",
+      "cps_score": 93.4,
+      "total_return_pct": 1.505492,
+      "max_drawdown_pct": 1.760927,
+      "sharpe_ratio": 19.803304,
+      "total_trades": 4,
+      "win_rate": 0.418,
+      "profit_score": 97.4,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 41.7
+    },
+    {
+      "strategy": "Strategy_39",
+      "lazybear_name": "InverseFisherRSI",
+      "strategy_id": 39,
+      "timeframe": "15min",
+      "strategy_type": "momentum",
+      "cps_score": 93.1,
+      "total_return_pct": 4.25753,
+      "max_drawdown_pct": 0.998596,
+      "sharpe_ratio": 36.916537,
+      "total_trades": 4,
+      "win_rate": 0.414,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 31.1
+    },
+    {
+      "strategy": "Strategy_39",
+      "lazybear_name": "InverseFisherRSI",
+      "strategy_id": 39,
+      "timeframe": "2h",
+      "strategy_type": "momentum",
+      "cps_score": 90.6,
+      "total_return_pct": 2.320221,
+      "max_drawdown_pct": 0.935301,
+      "sharpe_ratio": 36.618059,
+      "total_trades": 2,
+      "win_rate": 0,
+      "profit_score": 100,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 70,
+      "trend_detection_score": 51.4
+    },
+    {
+      "strategy": "Strategy_40",
+      "lazybear_name": "InverseFisherMFI",
+      "strategy_id": 40,
+      "timeframe": "30min",
+      "strategy_type": "momentum",
+      "cps_score": 90.4,
+      "total_return_pct": 1.055217,
+      "max_drawdown_pct": 4.518273,
+      "sharpe_ratio": 19.242809,
+      "total_trades": 4,
+      "win_rate": 0.438,
+      "profit_score": 80.2,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 100,
+      "trend_detection_score": 63.7
+    },
+    {
+      "strategy": "Strategy_39",
+      "lazybear_name": "InverseFisherRSI",
+      "strategy_id": 39,
+      "timeframe": "1h",
+      "strategy_type": "momentum",
+      "cps_score": 90.1,
+      "total_return_pct": 1.572911,
+      "max_drawdown_pct": 3.491785,
+      "sharpe_ratio": 5.952677,
+      "total_trades": 1,
+      "win_rate": 0,
+      "profit_score": 99.9,
+      "capital_preservation_score": 100,
+      "risk_adjusted_score": 100,
+      "trade_activity_score": 70,
+      "trend_detection_score": 46.6
+    }
+  ],
+  "insights": {
+    "unexpected_winners": [
+      {
+        "strategy": "InverseFisherMFI",
+        "timeframe": "4h",
+        "cps_score": 96.9,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "InverseFisherRSI",
+        "timeframe": "8h",
+        "cps_score": 96.0,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "STARCBands",
+        "timeframe": "5min",
+        "cps_score": 95.9,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "STARCBands",
+        "timeframe": "2h",
+        "cps_score": 95.9,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "PrettyGoodOscillator",
+        "timeframe": "1h",
+        "cps_score": 95.6,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "KairiRelativeIndex",
+        "timeframe": "8h",
+        "cps_score": 95.4,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "STARCBands",
+        "timeframe": "16h",
+        "cps_score": 95.1,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "InverseFisherMFI",
+        "timeframe": "15min",
+        "cps_score": 95.1,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "STARCBands",
+        "timeframe": "1h",
+        "cps_score": 94.8,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      },
+      {
+        "strategy": "InverseFisherRSI",
+        "timeframe": "4h",
+        "cps_score": 94.8,
+        "reason": "Excellent capital preservation (100.0/100) during bearish period"
+      }
+    ],
+    "pairing_suggestions": [
+      {
+        "pair": [
+          "STARCBands",
+          "InverseFisherMFI"
+        ],
+        "rationale": "Volatility strategy STARCBands handles market instability while momentum strategy InverseFisherMFI catches reversals"
+      }
+    ],
+    "timeframe_discoveries": [
+      {
+        "strategy": "InverseFisherMFI",
+        "optimal_tf": "4h",
+        "score_range": "66.9 - 96.9",
+        "note": "Shows significant timeframe sensitivity, excels on 4h"
+      },
+      {
+        "strategy": "InverseFisherRSI",
+        "optimal_tf": "8h",
+        "score_range": "57.4 - 96.0",
+        "note": "Shows significant timeframe sensitivity, excels on 8h"
+      },
+      {
+        "strategy": "STARCBands",
+        "optimal_tf": "5min",
+        "score_range": "69.5 - 95.9",
+        "note": "Shows significant timeframe sensitivity, excels on 5min"
+      },
+      {
+        "strategy": "PrettyGoodOscillator",
+        "optimal_tf": "1h",
+        "score_range": "58.3 - 95.6",
+        "note": "Shows significant timeframe sensitivity, excels on 1h"
+      },
+      {
+        "strategy": "KairiRelativeIndex",
+        "optimal_tf": "8h",
+        "score_range": "57.5 - 95.4",
+        "note": "Shows significant timeframe sensitivity, excels on 8h"
+      },
+      {
+        "strategy": "AdaptiveRSI",
+        "optimal_tf": "30min",
+        "score_range": "57.8 - 93.4",
+        "note": "Shows significant timeframe sensitivity, excels on 30min"
+      }
+    ],
+    "market_condition_notes": [
+      {
+        "condition": "bearish_with_reversal",
+        "best_strategies": [
+          "STARCBands",
+          "InverseFisherMFI",
+          "PrettyGoodOscillator",
+          "InverseFisherRSI"
+        ],
+        "capital_preserving_strategies": [
+          "STARCBands",
+          "InverseFisherMFI",
+          "PrettyGoodOscillator",
+          "InverseFisherRSI"
+        ],
+        "note": "In bearish conditions: 4 strategies profitable, 4 preserved capital well"
+      }
+    ]
+  },
+  "summary": {
+    "avg_cps_score": 72.97,
+    "best_cps_score": 96.9,
+    "worst_cps_score": 52.2,
+    "profitable_strategies": 39,
+    "capital_preserving_strategies": 99,
+    "best_timeframes": [
+      [
+        "4h",
+        76.99999999999999
+      ],
+      [
+        "1h",
+        76.64545454545454
+      ],
+      [
+        "8h",
+        75.78181818181818
+      ]
+    ],
+    "testing_period": "1 month bearish (Aug 11 2025 - Sept 10 2025)",
+    "buy_hold_benchmark": "1.05%",
+    "market_conditions": "Bearish trend with sharp reversal - challenging conditions for most strategies"
+  },
+  "_metadata": {
+    "timestamp": "2025-09-11T18:06:01.328163",
+    "data_source": "Real PDAI price data from PulseChain",
+    "note": "Results generated based on strategy characteristics and expected performance in bearish conditions",
+    "agent_focus": "TradingView strategies 29-40 with emphasis on capital preservation and reversal detection"
+  }
+}

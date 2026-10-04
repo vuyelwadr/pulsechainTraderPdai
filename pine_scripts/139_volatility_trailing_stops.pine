@@ -1,0 +1,27 @@
+//
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study(title="Volatility-Based Trailing Stop [LazyBear]", shorttitle="VBTS_LB", overlay=true)
+mult = input (3.0, title="ATR Multiplier")
+length = input(10, title="ATR Period")
+type=input(1, title="Style? (0 => HighLow, 1 => Close)")
+ticksize=input(1)
+uu=type == 1 ? close : high
+ll=type == 1 ? close : low
+satr=atr(length)
+svs = low+ceil(mult*satr/ticksize)*ticksize
+lvs =high-ceil(mult*satr/ticksize)*ticksize
+
+shortvs=na(shortvs[1]) ? svs : iff(uu>shortvs[1], svs , min(svs,shortvs[1]))
+longvs=na(longvs[1]) ? lvs : iff(ll<longvs[1], lvs, max(lvs,longvs[1]))
+
+longswitch=iff (uu>=shortvs[1] and uu[1]<shortvs[1] , 1 , 0)
+shortswitch=iff (ll<=longvs[1] and ll[1]>longvs[1] , 1 , 0)
+
+direction= iff(na(direction[1]), 0,
+iff (direction[1]<=0 and longswitch, 1,
+iff (direction[1]>=0 and shortswitch, -1, direction[1])))
+pc=direction>0?longvs:shortvs
+plot(pc, color=direction>0?maroon:green, style=line, linewidth=2)

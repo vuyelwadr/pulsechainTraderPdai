@@ -1,0 +1,40 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Waddah Attar Explosion [LazyBear]", shorttitle="WAE_LB")
+sensitivity = input(150, title="Sensitivity")
+fastLength=input(20, title="FastEMA Length")
+slowLength=input(40, title="SlowEMA Length")
+channelLength=input(20, title="BB Channel Length")
+mult=input(2.0, title="BB Stdev Multiplier")
+deadZone=input(20, title="No trade zone threshold")
+
+calc_macd(source, fastLength, slowLength) =>
+    fastMA = ema(source, fastLength)
+    slowMA = ema(source, slowLength)
+    fastMA - slowMA
+
+calc_BBUpper(source, length, mult) => 
+    basis = sma(source, length)
+    dev = mult * stdev(source, length)
+    basis + dev
+
+calc_BBLower(source, length, mult) => 
+    basis = sma(source, length)
+    dev = mult * stdev(source, length)
+    basis - dev
+
+t1 = (calc_macd(close, fastLength, slowLength) - calc_macd(close[1], fastLength, slowLength))*sensitivity
+t2 = (calc_macd(close[2], fastLength, slowLength) - calc_macd(close[3], fastLength, slowLength))*sensitivity
+
+e1 = (calc_BBUpper(close, channelLength, mult) - calc_BBLower(close, channelLength, mult))
+
+trendUp = (t1 >= 0) ? t1 : 0
+trendDown = (t1 < 0) ? (-1*t1) : 0
+
+plot(trendUp, style=columns, color=green, linewidth=1, title="UpTrend")  
+plot(trendDown, style=columns, color=red, linewidth=1, title="DownTrend")
+plot(e1, color=white, linewidth=2, title="ExplosionLine")
+plot(deadZone, color=gray, linewidth=1, title="DeadZone")

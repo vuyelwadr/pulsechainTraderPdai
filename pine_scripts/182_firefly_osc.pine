@@ -1,0 +1,34 @@
+//@version=4
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+// Original idea from a public Amibroker indicator published by @Yasu
+//
+study(title = "Firefly Oscillator [LazyBear]", shorttitle="FIREFLY_LB")
+m=input(10,title= "Lookback Length", minval= 5, maxval=20)
+n1=input(3, title="Signal Smoothing", minval=3, maxval=10)
+as=input(false, title="Double smooth Osc")
+bt=input(false, title="Use ZLEMA")
+seb=input(false, title="Show Enclosing BB")
+lbb=input(20, title="Enclosing BB Length")
+mbb1=input(2.0, title="Enclosing BB Multiplier")
+hbr=input(false, title="Highlight Breaches")
+ebc=input(false, title="Enable bar colors")
+calc_zlema(src, length) =>
+    tema1=ema(src, length)
+    tema2=ema(tema1, length)
+    d=tema1-tema2
+    tema1+d
+ma(s,l) => bt==false?ema(s,l):calc_zlema(s,l)
+v2=(high+low+close*2)/4
+v3=ma(v2,m)
+v4=stdev(v2,m)
+v5=(v2-v3)*100/iff(v4==0,1,v4)
+v6=ma(v5,n1)
+v7=as?ma(v6,n1):v6
+ww=(ma(v7,m)+100)/2-4 
+mm=highest(ww,n1) 
+plot(ww!=50 and mm!=50?ww:na, style=histogram, color=blue, linewidth=2, title="Firefly")

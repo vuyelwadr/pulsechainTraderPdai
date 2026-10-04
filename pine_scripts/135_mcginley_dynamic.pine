@@ -1,0 +1,20 @@
+// @author LazyBear
+// List of all my indicators:
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+
+study(title="McGinley Dynamic Convergence/Divergence", shorttitle="MDCD_LB")
+source = close
+calc_mg(source, length) =>
+    mg = na(mg[1]) ? ema(source, length) : mg[1] + (source - mg[1]) / (length * pow(source/mg[1], 4))
+    mg
+
+fastLength = input(12, minval=1), slowLength=input(26,minval=1)
+signalLength=input(9,minval=1)
+fastMA = calc_mg(source, fastLength)
+slowMA = calc_mg(source, slowLength)
+macd = fastMA - slowMA
+signal = sma(macd, signalLength)
+hist = macd - signal
+plot(hist, color=red, style=histogram)
+plot(macd, color=blue)
+plot(signal, color=orange)

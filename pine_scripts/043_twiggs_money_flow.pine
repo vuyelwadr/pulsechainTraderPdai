@@ -1,0 +1,22 @@
+//
+// @author LazyBear
+// @credits http://www.incrediblecharts.com/indicators/twiggs_money_flow.php
+// 
+// If you use this code in its original/modified form, do drop me a note. 
+//
+study("Twiggs Money Flow [LazyBear]", shorttitle="TMF_LB")
+length = input( 21, "Period")
+WiMA(src, length) => 
+ MA_s=(src + nz(MA_s[1] * (length-1)))/length
+ MA_s
+ 
+hline(0)
+tr_h=max(close[1],high)
+tr_l=min(close[1],low)
+tr_c=tr_h-tr_l
+adv=volume*((close-tr_l)-(tr_h-close))/ iff(tr_c==0,9999999,tr_c)
+wv=volume+(volume[1]*0)
+wmV= WiMA(wv,length)
+wmA= WiMA(adv,length)
+tmf= iff(wmV==0,0,wmA/wmV)
+plot(tmf, style=area)

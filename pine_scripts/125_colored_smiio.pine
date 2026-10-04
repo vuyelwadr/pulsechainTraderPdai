@@ -1,0 +1,15 @@
+study(title="Color Coded SMIIO [LazyBear]", shorttitle="SMIIOColors_LB")
+shortlen = input(10, minval=1, title="Short Period")
+longlen = input(4, minval=1, title="Long Period")
+siglen = input(10, minval=1, title="Signal Line Period)")
+sigInsteadOfOsc=input(false, type=bool)
+
+src=close
+erg = tsi(src, shortlen, longlen)
+sig = ema(erg, siglen)
+osc = erg - sig
+
+plot(sigInsteadOfOsc ? sig : na, color=(sig > 0) ? ((sig > sig[1]) ? green : orange) : ((sig < sig[1]) ? red : orange), style=histogram, title="SignalHist", linewidth=2)
+plot(not sigInsteadOfOsc ? osc : na, color=(osc > 0) ? ((osc > osc[1]) ? green : orange) : ((osc < osc[1]) ? red : orange), style=histogram, title="OscHist", linewidth=2)
+plot(sig, color=orange, title="Signal")
+plot(erg, color=aqua, title="Indicator")

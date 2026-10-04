@@ -1,0 +1,29 @@
+//
+// @author LazyBear 
+// 
+// List of my public indicators: http://bit.ly/1LQaPK8 
+// List of my app-store indicators: http://blog.tradingview.com/?p=970 
+//
+// v1.1 - Fixed the wrong symbols for "Combined". 
+//
+study(title="High-Low Index [LazyBear]", shorttitle="HLIDX_LB")
+res=input("D", title="Timeframe")
+t=input(defval=1, maxval=2, minval=1, title="MA Type (1=>SMA, 2=>EMA)")
+lma=input(defval=10, minval=1, title="MA Length")
+mkt = input (defval=1, minval=0, maxval=4, title="Market (0=>AMEX/NASD/NYSE Combined, 1=NYSE, 2=NASDAQ, 3=AMEX, 4=CUSTOM)")
+aic=input(defval="MAHE", title="CUSTOM: New Highs Symbol", type=symbol)
+dic=input(defval="MALE", title="CUSTOM: New Lows Symbol", type=symbol)
+sh=input(false, title="Show only Record High %")
+ma(s,l) => sh?s:(t==1?sma(s,l):ema(s,l))
+hi="MAHN", lon="MALN" // NYSE
+hiq="MAHQ", lonq="MALQ" // NASDAQ
+hia="MAHA", lona="MALA" // AMEX
+advc="(MAHN+MAHQ+MAHA)/3.0", loc="(MALN+MALQ+MALA)/3.0" // <-- v1.0 had wrong symbols here
+adv=security(mkt==0? advc:mkt == 1? hi:mkt == 2? hiq:mkt == 3? hia:aic, res, close)
+lo=security(mkt==0? loc:mkt == 1? lon:mkt == 2? lonq:mkt == 3? lona:dic, res, close)
+hli=ma(adv/(adv+lo), lma) * 100
+osd=plot(hli<50?hli:50, style=circles, linewidth=0, title="DummyOS")
+obd=plot(hli>50?hli:50, style=circles, linewidth=0, title="DummyOB")
+ml=plot(50, color=gray, title="MidLine")
+fill(osd, ml, red, transp=60, title="OSFill"), fill(obd, ml, green, transp=60, title="OBFill")
+plot(hli, color=maroon, linewidth=2, title="HiLoIndex")

@@ -1,0 +1,17 @@
+study("Ehlers MESA Adaptive Moving Average [LazyBear]", shorttitle="EMAMA_LB", overlay=true, precision=3)
+src=input(hl2, title="Source")
+fl=input(.5, title="Fast Limit")
+sl=input(.05, title="Slow Limit")
+sp = (4*src + 3*src[1] + 2*src[2] + src[3]) / 10.0
+dt = (.0962*sp + .5769*nz(sp[2]) - .5769*nz(sp[4])- .0962*nz(sp[6]))*(.075*nz(p[1]) + .54)
+q1 = (.0962*dt + .5769*nz(dt[2]) - .5769*nz(dt[4])- .0962*nz(dt[6]))*(.075*nz(p[1]) + .54)
+i1 = nz(dt[3])
+jI = (.0962*i1 + .5769*nz(i1[2]) - .5769*nz(i1[4])- .0962*nz(i1[6]))*(.075*nz(p[1]) + .54)
+jq = (.0962*q1 + .5769*nz(q1[2]) - .5769*nz(q1[4])- .0962*nz(q1[6]))*(.075*nz(p[1]) + .54)
+i2_ = i1 - jq
+q2_ = q1 + jI
+i2 = .2*i2_ + .8*nz(i2[1])
+q2 = .2*q2_ + .8*nz(q2[1])
+re_ = i2*nz(i2[1]) + q2*nz(q2[1])
+im_ = i2*nz(q2[1]) - q2*nz(i2[1])
+re = .2*re_ + .8*nz

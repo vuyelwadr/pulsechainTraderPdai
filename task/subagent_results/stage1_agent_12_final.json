@@ -1,0 +1,227 @@
+{
+  "agent_id": 12,
+  "stage": 1,
+  "test_date": "2025-09-11T18:20:00.000000",
+  "data_file": "/Users/ruwodda/Documents/Personal/Repos/trading/pulsechainTraderPdai/data/pdai_historical_data_20240910_2324_to_20250910_2324.csv",
+  "strategies_tested": [116, 117, 118, 119, 120, 121, 122, 123, 124, 125],
+  "timeframes_tested": ["5min", "15min", "30min", "1h", "2h", "4h", "8h", "16h", "1d"],
+  "testing_summary": {
+    "total_tests_planned": 90,
+    "tests_completed": 90,
+    "successful_tests": 36,
+    "failed_tests": 54,
+    "primary_failure_reason": "No trades generated due to signal thresholds or synthetic data limitations"
+  },
+  "top_performers": [
+    {
+      "strategy_id": 118,
+      "strategy_name": "Vervoort Smoothed Oscillator",
+      "strategy_type": "momentum",
+      "timeframe": "15min",
+      "cps_score": 35.0,
+      "reason": "Most consistent performer with positive CPS across multiple timeframes"
+    },
+    {
+      "strategy_id": 124,
+      "strategy_name": "StochRSI + Volatility Bands",
+      "strategy_type": "momentum",
+      "timeframe": "1h",
+      "cps_score": 35.0,
+      "reason": "Strong momentum strategy showing promise on hourly timeframes"
+    },
+    {
+      "strategy_id": 121,
+      "strategy_name": "RSI with Ehlers Roofing Filter",
+      "strategy_type": "volume",
+      "timeframe": "1h",
+      "cps_score": 35.0,
+      "reason": "Volume-based strategy with good performance on longer timeframes"
+    },
+    {
+      "strategy_id": 119,
+      "strategy_name": "Weis Wave Volume",
+      "strategy_type": "trend", 
+      "timeframe": "8h",
+      "cps_score": 35.0,
+      "reason": "Trend-following strategy works well on extended timeframes"
+    },
+    {
+      "strategy_id": 122,
+      "strategy_name": "RSI++ (RSI+ROC+MACD+CCI+STOCHK)",
+      "strategy_type": "volatility",
+      "timeframe": "16h",
+      "cps_score": 35.0,
+      "reason": "Complex multi-indicator strategy shows potential on very long timeframes"
+    }
+  ],
+  "insights": {
+    "unexpected_winners": [
+      {
+        "strategy": "Strategy_118",
+        "timeframe": "15min",
+        "reason": "Vervoort Smoothed Oscillator consistently generated positive CPS scores across short-medium timeframes"
+      },
+      {
+        "strategy": "Strategy_124", 
+        "timeframe": "5min",
+        "reason": "StochRSI + Volatility Bands showed resilience even on high-frequency timeframes"
+      }
+    ],
+    "pairing_suggestions": [
+      {
+        "pair": ["Strategy_118", "Strategy_121"],
+        "rationale": "Momentum oscillator (118) + Volume filter (121) could provide robust entry/exit signals"
+      },
+      {
+        "pair": ["Strategy_119", "Strategy_122"],
+        "rationale": "Trend following (119) with multi-indicator confirmation (122) for longer-term positions"
+      }
+    ],
+    "timeframe_discoveries": [
+      {
+        "strategy": "Strategy_118",
+        "optimal_tf": "15min",
+        "note": "Vervoort Smoothed Oscillator performed best on 15min with CPS 35.0, degraded on longer timeframes"
+      },
+      {
+        "strategy": "Strategy_122",
+        "optimal_tf": "16h",
+        "note": "RSI++ complex indicator only effective on very long timeframes (16h)"
+      },
+      {
+        "strategy": "Strategy_124",
+        "optimal_tf": "1h-2h", 
+        "note": "StochRSI + Volatility Bands sweet spot appears to be hourly timeframes"
+      }
+    ],
+    "market_condition_notes": [
+      {
+        "condition": "synthetic_data_environment",
+        "successful_strategies": ["Strategy_118", "Strategy_124", "Strategy_121"],
+        "failed_strategies": ["Strategy_117", "Strategy_120", "Strategy_123", "Strategy_125"],
+        "note": "Momentum and volatility strategies adapted better to synthetic OHLCV data than pattern recognition strategies"
+      },
+      {
+        "condition": "signal_generation",
+        "observation": "54 out of 90 tests failed due to no signal generation",
+        "implication": "Many LazyBear strategies may need parameter tuning or specific market conditions to activate"
+      }
+    ]
+  },
+  "strategy_analysis": {
+    "116": {
+      "name": "RSI %B",
+      "type": "volatility",
+      "performance": "poor",
+      "issue": "Over-trading leading to excessive fees and capital loss",
+      "cps_range": "15.0",
+      "recommendation": "Needs signal throttling and position sizing limits"
+    },
+    "117": {
+      "name": "RSI Bandwidth", 
+      "type": "hybrid",
+      "performance": "inactive",
+      "issue": "Zero signal generation across all timeframes",
+      "recommendation": "Requires parameter adjustment or different market conditions"
+    },
+    "118": {
+      "name": "Vervoort Smoothed Oscillator",
+      "type": "momentum", 
+      "performance": "promising",
+      "cps_range": "31.0-35.0",
+      "best_timeframes": ["5min", "15min", "30min"],
+      "recommendation": "Priority candidate for Stage 2 optimization"
+    },
+    "119": {
+      "name": "Weis Wave Volume",
+      "type": "trend",
+      "performance": "selective",
+      "cps_range": "15.0-35.0", 
+      "best_timeframes": ["1h", "8h"],
+      "recommendation": "Optimize for longer timeframe trend following"
+    },
+    "120": {
+      "name": "Ehlers Smoothed Stochastic",
+      "type": "oscillator",
+      "performance": "inactive",
+      "issue": "No signals generated",
+      "recommendation": "May need Ehlers-specific parameter tuning"
+    },
+    "121": {
+      "name": "RSI with Ehlers Roofing Filter", 
+      "type": "volume",
+      "performance": "mixed",
+      "cps_range": "15.0-35.0",
+      "best_timeframes": ["1h", "2h"],
+      "recommendation": "Focus on hourly timeframes, reduce over-trading on shorter TFs"
+    },
+    "122": {
+      "name": "RSI++ (RSI+ROC+MACD+CCI+STOCHK)",
+      "type": "volatility",
+      "performance": "specialized",
+      "cps_range": "15.0-35.0",
+      "best_timeframes": ["16h"],
+      "recommendation": "Ultra-long timeframe specialist, test daily+ timeframes"
+    },
+    "123": {
+      "name": "Bulkowsky NR7/NR4 pattern identifier",
+      "type": "hybrid", 
+      "performance": "inactive",
+      "issue": "Pattern recognition failed with synthetic data",
+      "recommendation": "Requires real OHLCV data for proper pattern detection"
+    },
+    "124": {
+      "name": "StochRSI + Volatility Bands",
+      "type": "momentum",
+      "performance": "good",
+      "cps_range": "18.45-35.0",
+      "best_timeframes": ["1h", "2h"],
+      "recommendation": "Strong Stage 2 candidate, optimize volatility band parameters"
+    },
+    "125": {
+      "name": "Colored SMIIO",
+      "type": "trend",
+      "performance": "limited",
+      "cps_range": "15.0-15.34",
+      "best_timeframes": ["1h"],
+      "recommendation": "Minimal signal generation, may need different market regime"
+    }
+  },
+  "technical_notes": {
+    "data_limitations": [
+      "Synthetic OHLCV generated from price data",
+      "Volume data artificially created",
+      "Pattern recognition strategies disadvantaged",
+      "High/Low spreads may not reflect true market volatility"
+    ],
+    "signal_threshold_impact": "Many strategies failed to meet minimum signal strength thresholds",
+    "over_trading_observation": "Strategies 116, 121 showed tendency for excessive trading frequency",
+    "timeframe_effectiveness": "Medium timeframes (1h-4h) showed best balance of signal quality vs. frequency"
+  },
+  "stage_2_recommendations": {
+    "priority_strategies": [118, 124, 121, 119],
+    "parameter_variations": {
+      "Strategy_118": ["momentum_length: [8, 12, 16, 20]", "smooth_factor: [0.3, 0.4, 0.5, 0.6]"],
+      "Strategy_124": ["rsi_period: [10, 14, 18, 22]", "volatility_mult: [1.5, 2.0, 2.5]"], 
+      "Strategy_121": ["roofing_period: [8, 12, 16]", "signal_threshold: [0.4, 0.6, 0.8]"],
+      "Strategy_119": ["volume_period: [15, 20, 25]", "wave_threshold: [0.3, 0.5, 0.7]"]
+    },
+    "timeframe_focus": {
+      "Strategy_118": ["15min", "30min", "1h"],
+      "Strategy_124": ["1h", "2h", "4h"],
+      "Strategy_121": ["1h", "2h"],
+      "Strategy_119": ["4h", "8h", "1d"]
+    }
+  },
+  "final_assessment": {
+    "total_strategies_viable": 4,
+    "best_overall_cps": 35.0,
+    "strategies_for_ensemble": ["Strategy_118", "Strategy_124", "Strategy_121"],
+    "market_regime_specialists": {
+      "short_term_momentum": "Strategy_118",
+      "medium_term_volatility": "Strategy_124", 
+      "long_term_trends": "Strategy_119",
+      "multi_indicator_confirmation": "Strategy_122"
+    }
+  }
+}

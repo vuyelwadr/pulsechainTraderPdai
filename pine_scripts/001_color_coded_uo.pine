@@ -1,0 +1,18 @@
+//
+// @author LazyBear
+// @credits This is derived from the stock UO code at TV
+// 
+study(title="Ultimate Oscillator Bars [LazyBear]", shorttitle="UO_BARS [LazyBear]")
+length7 = input(7, minval=1), length14 = input(14, minval=1), length28 = input(28, minval=1)
+lengthSlope = input(1)
+average(bp, tr_, length) => sum(bp, length) / sum(tr_, length)
+high_ = max(high, close[1])
+low_ = min(low, close[1])
+bp = close - low_
+tr_ = high_ - low_
+avg7 = average(bp, tr_, length7)
+avg14 = average(bp, tr_, length14)
+avg28 = average(bp, tr_, length28)
+out = 100 * (4*avg7 + 2*avg14 + avg28)/7
+plot(out, color=red, title="UO")
+bgcolor(falling(out, lengthSlope) ? red : (rising(out, lengthSlope) ? green : blue), transp=50)

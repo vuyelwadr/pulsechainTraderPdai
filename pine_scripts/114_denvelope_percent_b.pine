@@ -1,0 +1,23 @@
+//
+// @author LazyBear
+// List of all my indicators: https://www.tradingview.com/v/4IneGo8h/
+//
+study("DEnvelope %B [LazyBear]", shorttitle="DENV%B_LB")
+lb=input(20, title="DEnvelope lookback length")
+de=input(2, title="DEnvelope band deviation")
+cutoff=input(3)
+alp=2/(lb+1)
+src=hlc3
+mt=alp*src+(1-alp)*nz(mt[1])
+ut=alp*mt+(1-alp)*nz(ut[1])
+dt=((2-alp)*mt-ut)/(1-alp)
+mt2=alp*abs(src-dt)+(1-alp)*nz(mt2[1])
+ut2=alp*mt2+(1-alp)*nz(ut2[1])
+dt2=((2-alp)*mt2-ut2)/(1-alp)
+but=dt+de*dt2
+blt=dt-de*dt2
+dbr = but>blt?(src - blt)/(but - blt)%cutoff:0
+plot(dbr, color=teal, linewidth=2)
+band1 = hline(1, color=gray, linestyle=dashed)
+band0 = hline(0, color=gray, linestyle=dashed)
+fill(band1, band0, color=teal)

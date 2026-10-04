@@ -1,0 +1,20 @@
+//@version=5
+study(title="Chande Composite Momentum Index [LazyBear]", shorttitle="CCMI_LB")
+src=input(close, title="Source")
+lenSmooth=input(3, title="Composite Smoothing Length")
+trigg=input(5, title="Signal Length")
+calc_dema(src, length) => 
+    e1 = ema(src, length)
+    e2 = ema(e1, length)
+    2 * e1 - e2
+
+cmo51=sum( iff( src > src[1] , ( src - src[1] ) ,0 ) ,5 )
+cmo52=sum( iff( src < src[1] , ( src[1] - src ) ,0 ) ,5 )
+cmo5=calc_dema(100 * nz(( cmo51 - cmo52) /( cmo51+cmo52)),3)
+cmo101=sum( iff( src > src[1] , ( src - src[1] ) ,0 ) ,10 )
+cmo102=sum( iff( src < src[1] , ( src[1] - src ) ,0 ) ,10 )
+cmo10=calc_dema(100 * nz(( cmo101 - cmo102) /( cmo101+cmo102)),3)
+cmo201=sum( iff( src > src[1] , ( src - src[1] ) ,0 ) ,20 )
+cmo202=sum( iff( src < src[1] , ( src[1] - src ) ,0 ) ,20 )
+cmo20=calc_dema(100 * nz(( cmo201 - cmo202) /( cmo201+cmo202)),3)
+dmi=((stdev(src,5)* cmo5)+(stdev(src,10)* cmo10)+(stdev(src,20)*cmo20))/(stdev(src,5)+stdev(src,10)+stdev(src,20))

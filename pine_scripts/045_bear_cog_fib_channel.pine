@@ -1,0 +1,43 @@
+// @author LazyBear
+//
+// If you use this code in its original/modified form, do drop me a note.
+//
+study(title="COG Fibs [LazyBear]", shorttitle="COGFibs_LB", overlay=true)
+length = input(20, "Period")
+
+calc_wima(src, length) =>
+    MA_s=(src + nz(MA_s[1] * (length-1)))/length
+    MA_s
+
+calc_ma(s, l) => sma(s,l)
+
+median=0
+th=linreg(high, length, median)
+tl=linreg(low, length, median)
+tr_c=th-tl
+tra= calc_wima(tr_c,length)
+
+mp=calc_ma( close, length)
+ub_4p2360 = mp + ( 4.2360 * tra)
+ub_3p6180=mp + ( 3.6180 * tra)
+ub_2p6180=mp + ( 2.6180 * tra)
+ub_1p6180=mp + ( 1.6180 * tra)
+ub_0p618=mp + ( 0.618 * tra)
+
+lb_1p6180=mp - ( 1.6180 * tra)
+lb_2p6180=mp - ( 2.6180 * tra)
+lb_3p6180=mp - ( 3.6180 * tra)
+lb_4p2360=mp - ( 4.2360 * tra)
+lb_0p618=mp - ( 0.618 * tra)
+
+plot(mp, title="Middlepoint", color=green)
+plot(lb_0p618,title="-0.618", color=teal)
+plot(ub_0p618,title="+0.618", color=teal)
+plot(ub_1p6180,title="+1.618", color=red)
+plot(lb_1p6180,title="-1.618", color=red)
+plot(ub_2p6180,title="+2.618", color=orange)
+plot(lb_2p6180,title="-2.618", color=orange)
+plot(ub_3p6180,title="+3.618", color=blue)
+plot(lb_3p6180,title="-3.618", color=blue)
+plot(ub_4p2360,title="+4.2360", color=silver)
+plot(lb_4p2360,title="-4.2360", color=silver)

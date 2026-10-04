@@ -1,0 +1,25 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Vervoort LongTerm Heiken-Ashi Candlestick Oscillator [LazyBear]", shorttitle="HACOLT_LB")
+length = input(defval=55, title="TEMA Period")
+emaLength = input(defval=60, title="EMA Period")
+candleSizeFactor = input(defval=1.1, title="Candle size factor")
+overlayMode=input(false)
+calc_tema(src, length) =>
+    tema1 = ema(src, length)
+    tema2 = ema(tema1, length)
+    tema3 = ema(tema2, length)
+    3 * (tema1 - tema2) + tema3
+
+haOpen = nz((haOpen[1] + ohlc4) / 2, ohlc4)
+haClose = (haOpen + max(high, haOpen) + min(low, haOpen) + ohlc4) / 4
+thaClose = calc_tema(haClose, length)
+thl2 = calc_tema(hl2, length)
+haCloseSmooth = 2 * thaClose - calc_tema(thaClose, length)
+hl2Smooth = 2 * thl2 - calc_tema(thl2, length)
+shortCandle = abs(close - open) < ((high - low) * candleSizeFactor)
+keepn1 = ((haClose >= haOpen) and (haClose[1] >= haOpen[1])) or (close >= haClose) or (high > high[1]) or (low > low[1]) or (hl2Smooth >= haCloseSmooth)
+keepall1 = keep

@@ -1,0 +1,64 @@
+//
+// @author LazyBear 
+// List of all my indicators: 
+// https://docs.google.com/document/d/15AGCufJZ8CIUvwFJ9W-IKns88gkWOKBCvByMEvm5MLo/edit?usp=sharing
+//
+study("Vervoort Heiken Ashi Candlestick Oscillator [LazyBear]", shorttitle="HACO_LB")
+avgup = input(title="Up TEMA Length", defval=34, minval=1, maxval=100 ) 
+avgdn = input(title="Down TEMA Length", defval=34, minval=1, maxval=100 ) 
+overlayMode=input(defval=false, title="Overlay mode (color bars)?")
+
+calc_tema(src, length) =>
+	ema1 = ema(src, length)
+	ema2 = ema(ema1, length)
+	ema3 = ema(ema2, length)
+	3 * (ema1 - ema2) + ema3
+
+calc_zltema( src, length ) => 
+	tma1 = calc_tema( src, length ) 
+	tma2 = calc_tema( tma1, length ) 
+	diff = tma1 - tma2 
+	tma1 + diff  
+ 
+haO = (ohlc4[1] + nz(haO[1]))/2
+haC = (ohlc4+haO+max(high,haO)+min(low,haO))/4
+
+upTMA1= calc_zltema(haC,avgup)
+upTMA2= calc_zltema(upTMA1,avgup)
+upDiff= upTMA1 - upTMA2
+upZlHa= upTMA1 + upDiff
+upTMA12= calc_zltema(hl2,avgup)
+upTMA22= calc_zltema(upTMA12,avgup)
+upDiff2= upTMA12 - upTMA22
+upZlCl= upTMA12 + upDiff2
+upZlDiff= upZlCl - upZlHa
+upKeep1= (haC >= haO) and (haC[1] >= haO[1])
+upKeep2= upZlDiff>=0
+upKeeping= (upKeep1 or upKeep2)
+upKeepAll= upKeeping or (nz(upKeeping[1]) and (close>=open) or close>=close[1])
+upKeep3= (abs(close-open)<(high-low)*0.35 and high>=(low[1]))
+upTrend= upKeepAll or (nz(upKeepAll[1]) and upKeep3)
+
+dnTMA1= calc_zltema(haC,avgdn)
+dnTMA2= calc_zltema(dnTMA1,avgdn)
+dnDiff= dnTMA1 - dnTMA2
+dnZlHa= dnTMA1 + dnDiff
+dnTMA12= calc_zltema(hl2,avgdn)
+dnTMA22= calc_zltema(dnTMA12,avgdn)
+dnDiff2= dnTMA12 - dnTMA22
+dnZlCl= dnTMA12 + dnDiff2
+dnZlDiff= dnZlCl - dnZlHa
+dnKeep1= haC<haO and (haC[1]<haO[1]) 
+dnKeep2= dnZlDiff<0
+dnKeep3= abs(close-open)<(high-low)*0.35 and low<=high[1]
+dnKeeping= dnKeep1 or dnKeep2
+dnKeepAll= dnKeeping or (nz(dnKeeping[1]) and (close<open) or (close<close[1]))
+dnTrend= iff(dnKeepAll or (nz(dnKeepAll[1]) and dnKeep3)==1,1,0)
+
+upw= dnTrend==0 and nz(dnTrend[1]) and upTrend
+dnw= upTrend==0 and nz(upTrend[1]) and dnTrend
+haco= iff(upw,1,iff(dnw,-1,nz(haco[1])))
+haco_c=haco>0?green:red
+
+plot(not overlayMode ? haco : na, style=columns, color=haco_c)
+barcolor(overlayMode ? haco_c : na)

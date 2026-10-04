@@ -1,0 +1,27 @@
+study("Kaufman Stress Indicator [LazyBear]", shorttitle="KSI_LB")
+length=input(60)
+oblvl=input(90,title="Overbought Level")
+oslvl=input(10,title="Oversold Level")
+normlvl=input(50,title="Normal Level")
+d2sym=input("SPY", type=symbol)	
+
+calc_range(hi, lo, len) => 
+ highest( hi, len ) - lowest( lo, len ) 
+ 
+d2low=security(d2sym, period, low)
+d2high=security(d2sym, period, high)
+d2close=security(d2sym, period, close)
+r1 = calc_range(high, low, length) 
+r2 = calc_range(d2high, d2low, length) 
+s1 = (r1 != 0 and r2 != 0) ? ( close - lowest( low, length ) ) / r1 : 50
+s2 = (r1 != 0 and r2 != 0) ? ( d2close - lowest( d2low, length ) ) / r2 : 50
+d = s1 - s2
+r11 = calc_range(d, d, length) 
+sv = r11 != 0 ? 100 * ( d - lowest( d, length ) ) / r11 : 50
+
+plot( sv, title="Stress", color=red, linewidth=2 ) 
+plot( s1 * 100, title="D1 Stoch", color=green ) 
+plot( s2 * 100, title="D2 Stoch", color=blue ) 
+plot( oblvl, title="OverBought", style=3, color=red ) 
+plot( oslvl, title="OverSold", color=green, style=3 ) 
+plot( normlvl, title="Normal", color=gray, style=3 )

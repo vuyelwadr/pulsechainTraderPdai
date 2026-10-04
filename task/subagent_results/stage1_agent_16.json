@@ -1,0 +1,975 @@
+{
+  "agent_id": 16,
+  "test_date": "2025-09-11T18:18:42.824728",
+  "data_period": "2024-09-10 23:20:00+00:00 to 2025-09-10 23:20:00+00:00",
+  "strategies_tested": [
+    "VariableMovingAverage",
+    "VMABands",
+    "MarketDirectionIndicator",
+    "AnchoredMomentum",
+    "CoralTrendIndicator",
+    "EMAWaveIndicator",
+    "VolatilitySwitchIndicator",
+    "SARAlarm",
+    "JustAnotherPivot",
+    "PriceVolumeRank"
+  ],
+  "results": {
+    "VariableMovingAverage": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "VMABands": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "MarketDirectionIndicator": {
+      "5min": {
+        "timeframe": "5min",
+        "total_return": -99.99801599202608,
+        "max_drawdown": 99.99801599202608,
+        "sharpe_ratio": -60.03246449259102,
+        "win_rate": 0,
+        "total_trades": 4152,
+        "data_points": 104900,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "15min": {
+        "timeframe": "15min",
+        "total_return": -99.21414006171723,
+        "max_drawdown": 99.22082128586416,
+        "sharpe_ratio": -43.48780565464247,
+        "win_rate": 0,
+        "total_trades": 1654,
+        "data_points": 35038,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "30min": {
+        "timeframe": "30min",
+        "total_return": -92.91471610355828,
+        "max_drawdown": 94.03466987294392,
+        "sharpe_ratio": -33.208209873567135,
+        "win_rate": 0,
+        "total_trades": 788,
+        "data_points": 17521,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "1h": {
+        "timeframe": "1h",
+        "total_return": -78.80940164587477,
+        "max_drawdown": 82.89026850642797,
+        "sharpe_ratio": -25.687179047718303,
+        "win_rate": 0,
+        "total_trades": 444,
+        "data_points": 8761,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "2h": {
+        "timeframe": "2h",
+        "total_return": -58.938336775110386,
+        "max_drawdown": 69.14426239578044,
+        "sharpe_ratio": -21.986848393623085,
+        "win_rate": 0,
+        "total_trades": 202,
+        "data_points": 4381,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "4h": {
+        "timeframe": "4h",
+        "total_return": -22.00224030178841,
+        "max_drawdown": 43.800286269717944,
+        "sharpe_ratio": -8.535488838204369,
+        "win_rate": 0,
+        "total_trades": 94,
+        "data_points": 2191,
+        "cps_total": 10.8,
+        "profit_score": 6.0,
+        "capital_score": 16.2,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "8h": {
+        "timeframe": "8h",
+        "total_return": -11.987715064121726,
+        "max_drawdown": 35.76559532498817,
+        "sharpe_ratio": -3.7956367623775815,
+        "win_rate": 0,
+        "total_trades": 32,
+        "data_points": 1096,
+        "cps_total": 18.9,
+        "profit_score": 26.0,
+        "capital_score": 24.2,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "16h": {
+        "timeframe": "16h",
+        "total_return": 2.1271441480423015,
+        "max_drawdown": 5.315025075519282,
+        "sharpe_ratio": 9.461789795696424,
+        "win_rate": 0,
+        "total_trades": 4,
+        "data_points": 548,
+        "cps_total": 78.5,
+        "profit_score": 100,
+        "capital_score": 80,
+        "risk_score": 80,
+        "activity_score": 70,
+        "trend_score": 20
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "AnchoredMomentum": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "CoralTrendIndicator": {
+      "5min": {
+        "timeframe": "5min",
+        "total_return": -17.84512357402447,
+        "max_drawdown": 34.18449652088194,
+        "sharpe_ratio": -0.48521584767900533,
+        "win_rate": 0,
+        "total_trades": 462,
+        "data_points": 104900,
+        "cps_total": 15.7,
+        "profit_score": 14.3,
+        "capital_score": 25.8,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "15min": {
+        "timeframe": "15min",
+        "total_return": 16.6323012724533,
+        "max_drawdown": 27.497288775725867,
+        "sharpe_ratio": 1.8552670301380358,
+        "win_rate": 0,
+        "total_trades": 76,
+        "data_points": 35038,
+        "cps_total": 67.1,
+        "profit_score": 100,
+        "capital_score": 32.5,
+        "risk_score": 60,
+        "activity_score": 100,
+        "trend_score": 20
+      },
+      "30min": {
+        "timeframe": "30min",
+        "total_return": 0.8526979772468607,
+        "max_drawdown": 37.43753205220647,
+        "sharpe_ratio": 1.081867458005636,
+        "win_rate": 0,
+        "total_trades": 28,
+        "data_points": 17521,
+        "cps_total": 56.9,
+        "profit_score": 74.4,
+        "capital_score": 22.6,
+        "risk_score": 60,
+        "activity_score": 100,
+        "trend_score": 20
+      },
+      "1h": {
+        "timeframe": "1h",
+        "total_return": 51.46113460330032,
+        "max_drawdown": 29.052989704133676,
+        "sharpe_ratio": 7.789118259656565,
+        "win_rate": 0,
+        "total_trades": 22,
+        "data_points": 8761,
+        "cps_total": 70.7,
+        "profit_score": 100,
+        "capital_score": 30.9,
+        "risk_score": 80,
+        "activity_score": 100,
+        "trend_score": 20
+      },
+      "2h": {
+        "timeframe": "2h",
+        "total_return": 13.590128945238064,
+        "max_drawdown": 25.1766340459623,
+        "sharpe_ratio": 4.881420050030738,
+        "win_rate": 0,
+        "total_trades": 6,
+        "data_points": 4381,
+        "cps_total": 68.7,
+        "profit_score": 100,
+        "capital_score": 34.8,
+        "risk_score": 80,
+        "activity_score": 80,
+        "trend_score": 20
+      },
+      "4h": {
+        "timeframe": "4h",
+        "total_return": 34.3016417646671,
+        "max_drawdown": 31.140298988675184,
+        "sharpe_ratio": 13.060059611804949,
+        "win_rate": 0,
+        "total_trades": 4,
+        "data_points": 2191,
+        "cps_total": 65.7,
+        "profit_score": 100,
+        "capital_score": 28.9,
+        "risk_score": 80,
+        "activity_score": 70,
+        "trend_score": 20
+      },
+      "8h": {
+        "timeframe": "8h",
+        "total_return": -4.80124137009255,
+        "max_drawdown": 26.681708869122602,
+        "sharpe_ratio": -1.276375502209384,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 1096,
+        "cps_total": 28.4,
+        "profit_score": 40.4,
+        "capital_score": 33.3,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "timeframe": "1d",
+        "total_return": 2.149993430736941,
+        "max_drawdown": 31.584876509297384,
+        "sharpe_ratio": 7.11910372766355,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 366,
+        "cps_total": 65.6,
+        "profit_score": 100,
+        "capital_score": 28.4,
+        "risk_score": 80,
+        "activity_score": 70,
+        "trend_score": 20
+      }
+    },
+    "EMAWaveIndicator": {
+      "5min": {
+        "timeframe": "5min",
+        "total_return": -5.519927078320331,
+        "max_drawdown": 11.677206613704795,
+        "sharpe_ratio": -0.5173317514625284,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 104900,
+        "cps_total": 34.7,
+        "profit_score": 39.0,
+        "capital_score": 60,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "timeframe": "1h",
+        "total_return": 7.148391583079147,
+        "max_drawdown": 41.573027834537335,
+        "sharpe_ratio": 2.6564661750411593,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 8761,
+        "cps_total": 63.1,
+        "profit_score": 100,
+        "capital_score": 18.4,
+        "risk_score": 80,
+        "activity_score": 70,
+        "trend_score": 20
+      },
+      "2h": {
+        "timeframe": "2h",
+        "total_return": -14.644304237324967,
+        "max_drawdown": 32.406490300894795,
+        "sharpe_ratio": -1.4072967366550189,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 4381,
+        "cps_total": 21.1,
+        "profit_score": 20.7,
+        "capital_score": 27.6,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      },
+      "4h": {
+        "timeframe": "4h",
+        "total_return": -16.553884932564603,
+        "max_drawdown": 32.07475372256756,
+        "sharpe_ratio": -3.4827874374079197,
+        "win_rate": 0,
+        "total_trades": 2,
+        "data_points": 2191,
+        "cps_total": 20.0,
+        "profit_score": 16.9,
+        "capital_score": 27.9,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      },
+      "8h": {
+        "timeframe": "8h",
+        "total_return": -24.82117389363676,
+        "max_drawdown": 34.72075945960136,
+        "sharpe_ratio": -18.096304485759983,
+        "win_rate": 0,
+        "total_trades": 4,
+        "data_points": 1096,
+        "cps_total": 14.4,
+        "profit_score": 0.4,
+        "capital_score": 25.3,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      },
+      "16h": {
+        "timeframe": "16h",
+        "total_return": 8.509972300455884,
+        "max_drawdown": 17.274200701568947,
+        "sharpe_ratio": 12.81369153338469,
+        "win_rate": 0,
+        "total_trades": 4,
+        "data_points": 548,
+        "cps_total": 68.5,
+        "profit_score": 100,
+        "capital_score": 40,
+        "risk_score": 80,
+        "activity_score": 70,
+        "trend_score": 20
+      },
+      "1d": {
+        "timeframe": "1d",
+        "total_return": -22.369555434776277,
+        "max_drawdown": 23.569878922255512,
+        "sharpe_ratio": -43.67590822902127,
+        "win_rate": 0,
+        "total_trades": 4,
+        "data_points": 366,
+        "cps_total": 18.7,
+        "profit_score": 5.3,
+        "capital_score": 36.4,
+        "risk_score": 0,
+        "activity_score": 40,
+        "trend_score": 20
+      }
+    },
+    "VolatilitySwitchIndicator": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "SARAlarm": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "JustAnotherPivot": {
+      "5min": {
+        "timeframe": "5min",
+        "total_return": -99.99800317778704,
+        "max_drawdown": 99.99800910410262,
+        "sharpe_ratio": -57.003839462424146,
+        "win_rate": 0,
+        "total_trades": 4142,
+        "data_points": 104900,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "15min": {
+        "timeframe": "15min",
+        "total_return": -98.96135412470947,
+        "max_drawdown": 98.97170531053509,
+        "sharpe_ratio": -40.92774430176043,
+        "win_rate": 0,
+        "total_trades": 1534,
+        "data_points": 35038,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "30min": {
+        "timeframe": "30min",
+        "total_return": -92.28879051031153,
+        "max_drawdown": 93.57012524761397,
+        "sharpe_ratio": -31.792672505513966,
+        "win_rate": 0,
+        "total_trades": 768,
+        "data_points": 17521,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "1h": {
+        "timeframe": "1h",
+        "total_return": -78.48249632523337,
+        "max_drawdown": 83.74984267454893,
+        "sharpe_ratio": -24.957531598135468,
+        "win_rate": 0,
+        "total_trades": 406,
+        "data_points": 8761,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "2h": {
+        "timeframe": "2h",
+        "total_return": -54.8889139192572,
+        "max_drawdown": 65.87947335061068,
+        "sharpe_ratio": -19.4399433166543,
+        "win_rate": 0,
+        "total_trades": 188,
+        "data_points": 4381,
+        "cps_total": 5.0,
+        "profit_score": 0,
+        "capital_score": 0,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "4h": {
+        "timeframe": "4h",
+        "total_return": -35.46951416341728,
+        "max_drawdown": 52.1724853208424,
+        "sharpe_ratio": -15.718270968205143,
+        "win_rate": 0,
+        "total_trades": 94,
+        "data_points": 2191,
+        "cps_total": 7.0,
+        "profit_score": 0,
+        "capital_score": 7.8,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "8h": {
+        "timeframe": "8h",
+        "total_return": -7.236460650176394,
+        "max_drawdown": 27.42187491034892,
+        "sharpe_ratio": -2.2093801719196113,
+        "win_rate": 0,
+        "total_trades": 24,
+        "data_points": 1096,
+        "cps_total": 23.8,
+        "profit_score": 35.5,
+        "capital_score": 32.6,
+        "risk_score": 0,
+        "activity_score": 20,
+        "trend_score": 20
+      },
+      "16h": {
+        "timeframe": "16h",
+        "total_return": -1.9425257162991052,
+        "max_drawdown": 5.787773450342806,
+        "sharpe_ratio": -6.098707914874745,
+        "win_rate": 0,
+        "total_trades": 6,
+        "data_points": 548,
+        "cps_total": 40.3,
+        "profit_score": 46.1,
+        "capital_score": 80,
+        "risk_score": 0,
+        "activity_score": 30,
+        "trend_score": 20
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    },
+    "PriceVolumeRank": {
+      "5min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "15min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "30min": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "2h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "4h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "8h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "16h": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      },
+      "1d": {
+        "strategy": "No trades executed",
+        "initial_balance": 1000.0,
+        "final_balance": 1000.0,
+        "total_return": 0.0,
+        "error": "No trades were executed"
+      }
+    }
+  },
+  "summary": {
+    "top_performers": [],
+    "capital_preservers": [
+      {
+        "strategy": "MarketDirectionIndicator",
+        "timeframe": "16h",
+        "cps_score": 78.5,
+        "return": 2.1271441480423015,
+        "drawdown": 5.315025075519282,
+        "sharpe": 9.461789795696424,
+        "trades": 4
+      },
+      {
+        "strategy": "JustAnotherPivot",
+        "timeframe": "16h",
+        "cps_score": 40.3,
+        "return": -1.9425257162991052,
+        "drawdown": 5.787773450342806,
+        "sharpe": -6.098707914874745,
+        "trades": 6
+      },
+      {
+        "strategy": "EMAWaveIndicator",
+        "timeframe": "5min",
+        "cps_score": 34.7,
+        "return": -5.519927078320331,
+        "drawdown": 11.677206613704795,
+        "sharpe": -0.5173317514625284,
+        "trades": 2
+      },
+      {
+        "strategy": "EMAWaveIndicator",
+        "timeframe": "16h",
+        "cps_score": 68.5,
+        "return": 8.509972300455884,
+        "drawdown": 17.274200701568947,
+        "sharpe": 12.81369153338469,
+        "trades": 4
+      },
+      {
+        "strategy": "EMAWaveIndicator",
+        "timeframe": "1d",
+        "cps_score": 18.7,
+        "return": -22.369555434776277,
+        "drawdown": 23.569878922255512,
+        "sharpe": -43.67590822902127,
+        "trades": 4
+      }
+    ],
+    "insights": [
+      "Best performer: MarketDirectionIndicator on 16h with CPS 78.5",
+      "Best return: 51.46% vs Buy&Hold 1.05%",
+      "Average CPS across all tests: 29.3",
+      "Strategies with positive returns: 9/31",
+      "Strategies beating Buy&Hold: 8",
+      "Best capital preserver: MarketDirectionIndicator with 5.3% drawdown"
+    ]
+  }
+}

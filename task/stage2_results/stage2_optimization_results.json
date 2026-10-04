@@ -1,0 +1,7 @@
+[
+  {
+    "strategy_name": "Strategy_186",
+    "timeframe": "8h",
+    "error": "'float' object has no attribute 'get'"
+  }
+]

@@ -1,0 +1,21 @@
+//
+// @author lazybear 
+// list of all my indicators: 
+// https://docs.google.com/document/d/15agcufjz8ciuvwfj9w-ikns88gkwokbcvbymevm5mlo/edit?usp=sharing
+//
+study("Mirrored MACD [LazyBear]", shorttitle="MIRRMACD_LB")
+length=input(20), siglength=input(9)
+colorBars=input(false, title="Color bars?")
+ma(s,l) => ema(s,l)
+mao=ma(open, length), mac =ma(close, length)
+mc=mac-mao, mo=mao-mac, signal=sma(mc, siglength)
+plot(0, title="ZeroLine", color=gray)
+
+plot(mc, color=green, linewidth=2, style=histogram,title="BullHisto")
+plot(mo, color=red, linewidth=2, style=histogram,title="BearHisto")
+plot(mo, color=red, linewidth=2,title="BearLine")
+plot(mc, color=green, linewidth=2,title="BullLine")
+plot(signal, color=blue, linewidth=2,title="Signal")
+
+us=max(mc,mo), bc=us>=signal?(us==mc?lime:maroon):na
+barcolor(colorBars?bc:na)

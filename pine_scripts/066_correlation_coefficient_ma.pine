@@ -1,0 +1,20 @@
+//
+// @author LazyBear
+// If you use this code in its original / modified form, do drop me a note. Thx.
+//
+study(title = "Instruments Correlation [LazyBear]", shorttitle="CC_LB")
+ccSymbol=input("DOWI", title="Correlation Symbol", type=symbol)
+lengthCorrelation=input(20)
+lengthMA=input(10)
+s2=close
+s1=security(ccSymbol, period, close)
+c=correlation(s1, s2, lengthCorrelation)
+
+plot(c, color=red, style=area)
+plot(sma(c, lengthMA), color=navy, linewidth=2)
+hline(0, color=gray)
+u=hline(0.2, color=maroon)
+l=hline(-0.2, color=maroon)
+fill(u,l, maroon)
+hline(1.0, color=green, linewidth=2, title="Perfect positive correlation")
+hline(-1.0, color=red, linewidth=2, title="Perfect negative correlation")

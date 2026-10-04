@@ -1,0 +1,35 @@
+//
+// @author LazyBear
+// If you use this code in its original / modified form, do drop me a note. Thx.
+//
+study(title="Elder's Force Index [LazyBear]", shorttitle="EFI_LB")
+length = input(13, minval=1)
+lengthMA=input(8)
+efi = sma(change(close) * volume, length)
+s=sma(efi, lengthMA)
+
+hline(0, title="Zero")
+plot(efi, color=green, title="EFI", linewidth=2)
+plot(s, color=orange)
+
+// Draw BB on indices
+BBEnabled=input(false,title="BB Enabled?", type=bool)
+mult=input(2.5)
+length_bb=input(20, title="BB Length")
+HighlightBreaches=input(false, type=bool)
+
+bb_s = s
+basis = sma(bb_s, length)
+dev = (mult * stdev(bb_s, length))
+upper = (basis + dev)
+lower = (basis - dev)
+
+plot(BBEnabled ? basis : na, color=gray, style=cross)
+p1_bb = plot(BBEnabled ? upper:na, color=gray)
+p2_bb = plot(BBEnabled ? lower:na , color=gray)
+fill(p1_bb, p2_bb, silver)
+
+b_color = (bb_s > upper) ? red : (bb_s < lower) ? green : na
+offset = (bb_s > upper) ? 6 : (bb_s < lower ? -6 : 0)
+Breached=(bb_s > upper) or (bb_s < lower)
+plot((BBEnabled and HighlightBreaches and Breached) ? bb_s+offset : na, style=cross, color=b_color,linewidth=2)
